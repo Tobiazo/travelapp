@@ -1,10 +1,10 @@
-const User = require('../models/userModel');
+let userModel = require('../models/userModel');
 
 
-//lager ny bruker
+//lager ny bruker. funker ikke:) 
 exports.createUser = async (req, res) => {
   try {
-    const user = new User(req.body);
+    const user = new userModel(req.body);
     await user.save();
     res.status(201).json(user);
   } catch (error) {
@@ -12,15 +12,18 @@ exports.createUser = async (req, res) => {
   }
 };
 
-
-
-
-
 //Sletter bruker
 
-//Få alle brukere
 
-//Få en bruker fra id
+//get alle brukere
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await userModel.find();
+        res.json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
 
-//Oppdater en bruker fra id
 

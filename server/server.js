@@ -22,8 +22,9 @@ mongoose.connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
 });
 
-// Routes
-app.use('/api', require('./routes/routes'));
+//Henter routes filen
+const userRoutes = require('./routes/routes')
+app.use('/users', userRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;
