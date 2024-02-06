@@ -6,7 +6,7 @@ function Footer(){
             <div class="wrap">
             <p> © NTNU {new Date().getFullYear()} studenter TDT4140</p>
             </div>
-        </div>
+        </div> 
     )
 }
 export default Footer;
