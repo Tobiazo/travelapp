@@ -1,0 +1,13 @@
+#footer {
+  color: rgb(15, 117, 133);
+  font-size: large;
+  padding: 50px;
+  position: fixed;
+  bottom: 0;
+}
+
+#header {
+  position: sticky;
+  font-size: x-large;
+  padding: 50px;
+}
