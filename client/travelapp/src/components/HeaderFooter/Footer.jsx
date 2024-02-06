@@ -1,10 +1,13 @@
 import React from 'react';
+import './HeaderFooter.css';
 
 function Footer(){
     return (
-        <footer>
+        <div id= "footer">
+            <div class="wrap">
             <p> © NTNU {new Date().getFullYear()} studenter TDT4140</p>
-        </footer>
+            </div>
+        </div>
     )
 }
 export default Footer;

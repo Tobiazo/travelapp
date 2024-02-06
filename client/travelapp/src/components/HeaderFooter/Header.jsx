@@ -1,11 +1,11 @@
 import React from 'react';
 function Header(){
     return (
-        <header>
-            <p> PRODUKTNAMN 
-                Testestestestest
-            </p>
-        </header>
+        <div id="header">
+            <p> PRODUKTNAMN </p>
+        </div>
+       
+         
     )
 }
 
