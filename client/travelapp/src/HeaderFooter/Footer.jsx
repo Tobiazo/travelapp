@@ -1,8 +1,10 @@
+import React from 'react';
+
 function Footer(){
     return (
-        <Footer>
+        <footer>
             <p> © NTNU {new Date().getFullYear} studenter TDT4140</p>
-        </Footer>
+        </footer>
     )
 }
 export default Footer;

@@ -1,8 +1,9 @@
+import React from 'react';
 function Header(){
     return (
-        <Header>
+        <header>
             <p> PRODUKTNAMN </p>
-        </Header>
+        </header>
     )
 }
 

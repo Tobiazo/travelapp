@@ -1,14 +1,16 @@
+import React from 'react';
 import Header from './components/HeaderFooter/Header';
-import Footer from './components/HeaderFoote/Footer';
+import Footer from './components/HeaderFooter/Footer';
 
 function App(){
     return(
-    <>
-    <Header/>
-    <Footer/>
+        <>
+        <Header/> 
+        <Footer/>
     
-    
-    </>)
+    </>
+
+    );
 }
 
 export default App;
