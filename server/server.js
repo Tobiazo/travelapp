@@ -24,7 +24,7 @@ mongoose.connection.once('open', () => {
 
 //Henter routes filen
 const userRoutes = require('./routes/routes')
-app.use('/users', userRoutes);
+app.use('/api', userRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;
