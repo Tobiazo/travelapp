@@ -12,7 +12,7 @@ const Home = (props) => {
             <div>Welcome! HOME</div>
         </div>
         <div>
-            This is the home page!.
+            This is the home page.
         </div>
         <div className={"buttonContainer"}>
             <ul>

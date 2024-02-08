@@ -1,20 +1,32 @@
-import React from 'react';
-import Header from './components/HeaderFooter/Header';
-import Footer from './components/HeaderFooter/Footer';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
+import logo from './logo.svg';
+import './App.css';
+import { BrowserRouter, Link, NavLink, Route, Routes, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
-function App(){
-    return(
-        <>
-        <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Layout />} />
-            <Route path="new" element={<Header />} /> 
-        </Routes>
-      </BrowserRouter>
-        </>
-    );
+
+
+function App() {
+
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />
+    },
+    {
+      path: "/Login",
+      element: <Login />
+  }
+
+  ])
+
+  return (
+
+      <RouterProvider router = {router} />
+      
+  );
 }
 
 export default App;
