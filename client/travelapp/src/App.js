@@ -1,14 +1,18 @@
 import React from 'react';
 import Header from './components/HeaderFooter/Header';
 import Footer from './components/HeaderFooter/Footer';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 
 function App(){
     return(
         <>
-        <Layout content={<p> my text</p>}/>
-        
+        <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Layout />} />
+            <Route path="new" element={<Header />} /> 
+        </Routes>
+      </BrowserRouter>
         </>
     );
 }
