@@ -4,6 +4,7 @@ import { BrowserRouter, Link, NavLink, Route, Routes, createBrowserRouter, Route
 import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Layout from './components/Layout/Layout'
 
 
 
@@ -13,11 +14,11 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />
+      element: <Layout content={<Home />}/>
     },
     {
       path: "/Login",
-      element: <Login />
+      element: <Layout content={<Login />}/>
   }
 
   ])

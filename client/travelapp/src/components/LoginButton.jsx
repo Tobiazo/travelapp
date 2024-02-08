@@ -7,7 +7,7 @@ const LoginButton = ({children}) => {
     }
 
     return (
-        <button onClick={handleClick}>
+        <button id="loginKnapp" onClick={handleClick}>
             {children}
         </button>
     );
