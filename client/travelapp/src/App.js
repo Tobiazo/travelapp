@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './styles/DestinasjonsBoks.css'
 import { BrowserRouter, Link, NavLink, Route, Routes, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Home from './pages/Home';
@@ -19,7 +20,11 @@ function App() {
     {
       path: "/Login",
       element: <Layout content={<Login />}/>
-  }
+  },
+  {
+    path: "/Paris",
+    element: <Layout content={"Dette er parissiden"}/>
+    }
 
   ])
 

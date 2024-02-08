@@ -2,6 +2,7 @@ import React from "react"
 import { NavLink, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import LoginButton from "./../components/LoginButton";
+import Destinasjonsboks from "../components/Destinasjonsboks";
 
 const Home = (props) => {
     const { loggedIn, email } = props
@@ -24,7 +25,10 @@ const Home = (props) => {
                 Your email address is {email}
             </div> : <div/>)}
         </div>
-
+        
+        <Destinasjonsboks land={"Canada"} tittel={"Amerika"}/>
+        <Destinasjonsboks land={"norge"} tittel={"sa"}/>
+        <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"}/>
 
     </div>
 }
