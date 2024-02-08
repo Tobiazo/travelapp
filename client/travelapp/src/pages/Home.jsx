@@ -14,7 +14,7 @@ const Home = (props) => {
         <div>
             This is the home page.
         </div>
-        <div className={"buttonContainer"}>
+        <div id="innloggingsknapp" className={"buttonContainer"}>
             <ul>
                 <li>
                     <NavLink to ="/Login"> Login </NavLink>
