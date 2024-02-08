@@ -6,7 +6,7 @@ export default function Layout({content}) {
   return (
     <div>
       <Header />
-
+        {content}
       <Footer />
     </div>
   )
