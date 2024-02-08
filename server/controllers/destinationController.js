@@ -15,7 +15,7 @@ exports.createDestination = async (req, res) => {
 
 
 //henter alle eller spesifikke destinasjoner basert på parametre i find({})
-exports.getSpecificDestinations = async (req, res) => {
+exports.getAllDestinations = async (req, res) => {
     try {
         const destinations = await destinationModel.find({}); //Legg inn info i find for å filtrere?
         res.json(destinations);

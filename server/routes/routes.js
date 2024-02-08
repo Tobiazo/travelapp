@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const travelDestinationController = require('../controllers/travelDestinationController')
+const destinationController = require('../controllers/destinationController')
 
 //----Users---//
 
@@ -27,12 +27,12 @@ router.get('/users/:id', userController.getUserByID);
 //----TravelDestinations---//
 
 //Lage ny destinasjon
-router.post('/travelDestinations',travelDestinationController.createDestination)
+router.post('/travelDestinations', destinationController.createDestination)
 
 //Hente ut destinasjoner basert på kriterie
-router.post('/travelDestinations', travelDestinationController.getSpecificDestinations)
+router.get('/travelDestinations', destinationController.getAllDestinations)
 
 //Hente ut en destinasjon basert på ID
-router.post('/travelDestinations/:id', travelDestinationController.getDestinationByID)
+router.get('/travelDestinations/:id', destinationController.getDestinationByID)
 
 module.exports = router;
