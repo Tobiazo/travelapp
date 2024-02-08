@@ -6,7 +6,10 @@ import Layout from './components/Layout/Layout';
 
 function App(){
     return(
+        <>
         <Layout content={<p> my text</p>}/>
+        
+        </>
     );
 }
 
