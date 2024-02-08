@@ -13,6 +13,8 @@ router.get('/users', userController.getAllUsers);
 //henter et bruker objekt med ID
 router.get('/users/:id', userController.getUserByID); 
 
+///---------------------------------------------------------///
+//Til senere utvikling:
 
 //Fungerer ikke. Tror d har noe med access til database??
 // //Oppdaterer den spesifikke brukeren

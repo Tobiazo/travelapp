@@ -14,10 +14,8 @@ app.use(express.json());
 
 // Database connection
 mongoose.connect(process.env.ATLAS_URI, {
-    //fjerner dette da det ikke har noen effekt. Men hva brukes det egentlig til? 
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
 });
+
 mongoose.connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
 });
