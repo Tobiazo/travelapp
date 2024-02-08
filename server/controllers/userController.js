@@ -17,7 +17,7 @@ exports.createUser = async (req, res) => {
 //get alle brukere
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await userModel.find();
+        const users = await userModel.find({});
         //skal vi legge inn en status her?
         res.json(users);
     } catch (error) {

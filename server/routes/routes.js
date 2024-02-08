@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+const travelDestinationController = require('../controllers/travelDestinationController')
 
 //----Users---//
 
@@ -22,5 +23,16 @@ router.get('/users/:id', userController.getUserByID);
 
 // //Sletter en bruker med ID
 // router.delete('users/:id', userController.deleteUser)
+
+//----TravelDestinations---//
+
+//Lage ny destinasjon
+router.post('/travelDestinations',travelDestinationController.createDestination)
+
+//Hente ut destinasjoner basert på kriterie
+router.post('/travelDestinations', travelDestinationController.getSpecificDestinations)
+
+//Hente ut en destinasjon basert på ID
+router.post('/travelDestinations/:id', travelDestinationController.getDestinationByID)
 
 module.exports = router;
