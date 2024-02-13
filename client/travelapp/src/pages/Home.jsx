@@ -3,10 +3,31 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import LoginButton from "./../components/LoginButton";
 import Destinasjonsboks from "../components/Destinasjonsboks";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 const Home = (props) => {
+    const [traveldestiantions, setTraveldestinations] = useState(null); 
     const { loggedIn, email } = props
-    const navigate = useNavigate();    
+    //const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchTraveldestinations = async () => {
+            //feches data from server: 
+            const response = await fetch('http://localhost:4000/api/travelDestinations');
+            //makes an array of userobjects:  
+            const json = await response.json(); 
+
+            if (response.ok) {
+                setTraveldestinations(json);   
+            }
+
+        }
+
+         fetchTraveldestinations(); 
+    }, [])
+
 
     return (
         <div>
@@ -22,13 +43,12 @@ const Home = (props) => {
                 Your email address is {email}
             </div> : <div/>)}
         </div>
-        
-        <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Amerika"} beskrivelse={"hegfuoashakshhegfuoashaks hhegfuoashakshhegfuoashaks hhegfuoa"}/>
-        <Destinasjonsboks rating ={4} land={"norge"} tittel={"sa"} beskrivelse={"hegfuoegfuoashakshhegfuoas hakshhegfuoashakhhegfuoashaksh"}/>
-        <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"} />
-        <Destinasjonsboks land={"Canada"} tittel={"Amerika"}/>
-        <Destinasjonsboks land={"norge"} tittel={"sa"}/>
-        <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"}/>
+        <div className="Traveldestinations">
+                    {traveldestiantions && traveldestiantions.map((traveldestiantion) => (
+                    <Destinasjonsboks key = {traveldestiantion._id} rating ={4} land={traveldestiantion.destination_country} tittel={traveldestiantion.destination_name
+                    } beskrivelse={"hegfuoashakshhegfuoashaks hhegfuoashakshhegfuoashaks hhegfuoa"}/>) )} 
+                </div> 
+
         </div>
     )
     
