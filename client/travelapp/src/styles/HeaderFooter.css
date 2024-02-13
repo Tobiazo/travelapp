@@ -7,16 +7,21 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
+    z-index: 2;
 }
 
 #header {
+  position: fixed;
   color: white;
   font-size: x-large;
-  padding: 50px;
+  z-index: 1;
+  padding: 20px;
+  width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   background-color: rgb(54, 53, 53);
   margin: 10;
+  height: 5%;
 
 
 }
@@ -38,6 +43,6 @@
 
 #navlinklogginn{
   position: absolute;
-  right: 20px;
+  right: 5%;
 
 }
