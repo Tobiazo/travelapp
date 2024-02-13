@@ -17,7 +17,7 @@ exports.createUser = async (req, res) => {
 //get alle brukere
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await userModel.find();
+        const users = await userModel.find({});
         //skal vi legge inn en status her?
         res.json(users);
     } catch (error) {
@@ -42,6 +42,19 @@ exports.getUserByID = async (req, res) => {
   }
 }
 
+//Sletter bruker ved hjelp av ID
+exports.deleteUserByID= async (req, res) => {
+  try {
+    const deletedUser = await userModel.findByIdAndDelete(req.params.id);
+    if(!deletedUser){
+      return res.status(404).json({error: "User not found"})
+    }
+    res.status(200).send("User deleted!");
+  } catch (error) {
+    console.error(error); 
+    res.status(500).json({ message: error.message })
+  }
+}
 //Fungerer ikke. Har dette med access til DB?
 // //endrer en bruker i databasen med id 
 // exports.updateUser = async (req, res) => {
