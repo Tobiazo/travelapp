@@ -26,6 +26,9 @@ const Home = (props) => {
             </div> : <div/>)}
         </div>
         
+        <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Amerika"} beskrivelse={"hegfuoashakshhegfuoashaks hhegfuoashakshhegfuoashaks hhegfuoa"}/>
+        <Destinasjonsboks rating ={4} land={"norge"} tittel={"sa"} beskrivelse={"hegfuoegfuoashakshhegfuoas hakshhegfuoashakhhegfuoashaksh"}/>
+        <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"} />
         <Destinasjonsboks land={"Canada"} tittel={"Amerika"}/>
         <Destinasjonsboks land={"norge"} tittel={"sa"}/>
         <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"}/>
