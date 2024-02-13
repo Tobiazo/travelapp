@@ -40,3 +40,17 @@ exports.getDestinationByID = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+//Sletter en bruker fra databasen med ID
+exports.deleteDestinationByID= async (req, res) => {
+  try {
+    const deletedDestination = await destinationModel.findByIdAndDelete(req.params.id);
+    if(!deletedDestination){
+      return res.status(404).json({error: "Destination not found"})
+    }
+    res.status(200).send("Destination deleted!");
+  } catch (error) {
+    console.error(error); 
+    res.status(500).json({ message: error.message })
+  }
+}

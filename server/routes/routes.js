@@ -24,9 +24,6 @@ router.get('/users/delete/:id', userController.deleteUserByID);
 // //Oppdaterer den spesifikke brukeren
 // router.put('users/:id', userController.updateUser);
 
-// //Sletter en bruker med ID
-// router.delete('users/:id', userController.deleteUser)
-
 //----TravelDestinations---//
 
 //Lage ny destinasjon
@@ -38,5 +35,7 @@ router.get('/travelDestinations', destinationController.getAllDestinations)
 //Hente ut en destinasjon basert på ID
 router.get('/travelDestinations/:id', destinationController.getDestinationByID)
 
+//Sletter en destinasjon basert på ID
+router.get('travelDestination/delete/:id')
 
 module.exports = router;
