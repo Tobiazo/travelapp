@@ -6,7 +6,7 @@ function Header(){
     return (
         <div id="header">
             <div id="links" >
-            <NavLink id="navtohome" to ="/"> Produktnamn </NavLink>
+            <NavLink id="navtohome" to ="/"> EventyrListen </NavLink>
             <Button/>
             </div>
         </div> 
