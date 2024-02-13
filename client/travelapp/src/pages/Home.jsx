@@ -14,19 +14,14 @@ const Home = (props) => {
         <div>
             This is the home page.
         </div>
-        <div id="innloggingsknapp" className={"buttonContainer"}>
-            <ul>
-                <li>
-                    <NavLink to ="/Login"> Login </NavLink>
-                </li>
-            </ul>
+
             {(loggedIn ? <div>
                 Your email address is {email}
             </div> : <div/>)}
         </div>
 
 
-    </div>
+    
 }
 
 export default Home
