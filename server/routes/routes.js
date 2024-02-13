@@ -12,7 +12,10 @@ router.post('/users', userController.createUser);
 router.get('/users', userController.getAllUsers); 
 
 //henter et bruker objekt med ID
-router.get('/users/:id', userController.getUserByID); 
+router.get('/users/find/:id', userController.getUserByID); 
+
+//sletter en bruker basert på ID
+router.get('/users/delete/:id', userController.deleteUserByID);
 
 ///---------------------------------------------------------///
 //Til senere utvikling:
@@ -34,5 +37,6 @@ router.get('/travelDestinations', destinationController.getAllDestinations)
 
 //Hente ut en destinasjon basert på ID
 router.get('/travelDestinations/:id', destinationController.getDestinationByID)
+
 
 module.exports = router;
