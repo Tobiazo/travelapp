@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Layout from './components/Layout/Layout'
+import Destinasjonsside from './pages/Destinasjonsside';
 
 
 
@@ -23,7 +24,7 @@ function App() {
   },
   {
     path: "/Paris",
-    element: <Layout content={"Dette er parissiden"}/>
+    element: <Layout content={<Destinasjonsside />}/>
     }
 
   ])

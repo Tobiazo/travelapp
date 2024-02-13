@@ -7,7 +7,7 @@
 #footer {
   color: rgb(67, 69, 70);
   font-size: large;
-  position: fixed;
+  position: relative;
     height: 50px;
     background-color: lightgrey;
     bottom: 0px;

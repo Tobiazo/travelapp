@@ -1,0 +1,17 @@
+#tekstligBeskrivelse{
+    padding: 30px;
+}
+
+#tittel{
+    font-weight: bold;
+    font-size: large;
+}
+
+.BildePaDestinasjonsside{
+    width: 500px;
+    height: 500px;
+    margin: 10px;
+    position: relative;
+}
+
+
