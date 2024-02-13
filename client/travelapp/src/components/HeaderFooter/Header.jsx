@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react"
+import { NavLink, useNavigate } from "react-router-dom";
+import Button from "./Button";
+
 function Header(){
     return (
         <div id="header">
-            <p> PRODUKTNAMN </p>
-         
+            <div id="links" >
+            <NavLink id="navtohome" to ="/"> Produktnamn </NavLink>
+            <Button/>
             </div>
-            
-    
-       
+        </div> 
          
     )
 }
