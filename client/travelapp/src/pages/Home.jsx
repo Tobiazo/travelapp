@@ -8,19 +8,16 @@ const Home = (props) => {
     const { loggedIn, email } = props
     const navigate = useNavigate();    
 
-    return <div className="mainContainer">
+    return (
+        <div>
+    <div className="mainContainer">
         <div className={"titleContainer"}>
             <div>Welcome! HOME</div>
         </div>
         <div>
             This is the home page.
         </div>
-        <div id="innloggingsknapp" className={"buttonContainer"}>
-            <ul>
-                <li>
-                    <NavLink to ="/Login"> Login </NavLink>
-                </li>
-            </ul>
+
             {(loggedIn ? <div>
                 Your email address is {email}
             </div> : <div/>)}
@@ -32,8 +29,9 @@ const Home = (props) => {
         <Destinasjonsboks land={"Canada"} tittel={"Amerika"}/>
         <Destinasjonsboks land={"norge"} tittel={"sa"}/>
         <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"}/>
-
-    </div>
+        </div>
+    )
+    
 }
 
 export default Home
