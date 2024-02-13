@@ -5,4 +5,10 @@
 .destinasjonsBoks{
     display: inline-block;
     margin: 30px;
+    padding: 20px;
+    background-color: rgb(236, 236, 236);
+}
+
+.beskrivelse{
+    display: none;
 }

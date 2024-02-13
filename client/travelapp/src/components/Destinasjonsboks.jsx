@@ -7,12 +7,13 @@ export default function Destinasjonsboks({land, tittel, beskrivelse}) {
     <div class='destinasjonsBoks'>
         {tittel}
         <div>
-        
             <a href="/Paris">
                 <img class='destinasjonsBilde' src={ParisImage} alt='Her er ett bilde av pariestårnet'/>
             </a>
         </div>
-        {beskrivelse}
+        <div on>
+            {beskrivelse}
+        </div>
     </div>
   )
 }
