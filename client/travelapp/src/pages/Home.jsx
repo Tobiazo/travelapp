@@ -17,7 +17,12 @@ const Home = (props) => {
         <div>
             This is the home page.
         </div>
-
+        <div className={"buttonContainer"}>
+            <ul>
+                <li>
+                    <NavLink to ="/Login"> Log in / Become a new member </NavLink>
+                </li>
+            </ul>
             {(loggedIn ? <div>
                 Your email address is {email}
             </div> : <div/>)}

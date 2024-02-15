@@ -7,6 +7,7 @@ const LoginButton = ({children}) => {
     }
 
     return (
+
         <button onClick={handleClick}>
             {children}
         </button>
