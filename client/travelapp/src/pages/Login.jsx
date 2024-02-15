@@ -39,12 +39,12 @@ const Login = (props) => {
                 <div class="signup-form">
                     <h2 class="form-title">Log in</h2>
                         <div class="form-group">
-                            <label for="Username"></label>
+                            <label class="loginLabel" for="Username"></label>
                             <input type="text" name="Username" id="name" placeholder="Your Name" 
                             onChange={(e) => setName(e.target.value)}/>
                         </div>
                         <div class="form-group">
-                            <label for="Password"></label>
+                            <label class="loginLabel" for="Password"></label>
                             <input type="text" name="Password" id="name" placeholder="Your Password" 
                             onChange={(e) => setPassword(e.target.value)} />
                         </div>
