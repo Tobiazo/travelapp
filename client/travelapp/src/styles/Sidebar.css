@@ -7,4 +7,16 @@
     width: 25%;
     background-color:  rgb(66, 65, 65);
     color: aliceblue;
+    padding: 1%;
+}
+
+#kontinentCheckboxContainer{
+    position: relative;
+    margin-bottom: 10%;
+    left: 3%;
+    margin-top: 0;
+}
+
+#tagsContainer{
+    margin-bottom: 10%;
 }

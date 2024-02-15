@@ -5,6 +5,8 @@ import './styles/HeaderFooter.css';
 import './styles/Sidebar.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ContinuousSlider from './components/HeaderFooter/ContinuousSlider';
+import TempSlider from './components/HeaderFooter/Tempslider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
