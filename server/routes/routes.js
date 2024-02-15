@@ -15,7 +15,10 @@ router.get('/users', userController.getAllUsers);
 router.get('/users/find/:id', userController.getUserByID); 
 
 //sletter en bruker basert på ID
-router.get('/users/delete/:id', userController.deleteUserByID);
+router.delete('/users/delete/:id', userController.deleteUserByID);
+
+//Oppdaterer en bruker basert på ID
+router.put('/users/edit/:id', userController.updateUserByID)
 
 ///---------------------------------------------------------///
 //Til senere utvikling:
@@ -36,6 +39,9 @@ router.get('/travelDestinations', destinationController.getAllDestinations)
 router.get('/travelDestinations/:id', destinationController.getDestinationByID)
 
 //Sletter en destinasjon basert på ID
-router.get('travelDestination/delete/:id')
+router.delete('/travelDestinations/delete/:id', destinationController.deleteDestinationByID)
+
+//Oppdaterer en destinasjon basert på ID
+router.put('/travelDestinations/edit/:id', destinationController.updateDestinationByID)
 
 module.exports = router;
