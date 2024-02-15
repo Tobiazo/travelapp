@@ -4,15 +4,38 @@ import ParisImage from '../bilder/ParisBilde.jpg';
 import Paris2 from '../bilder/Paris2.jpg';
 import PhotoCarousel from '../components/PhotoCarousel.jsx'
 import '../styles/Destinasjonsside.css';
+import { useEffect, useState } from "react";
+import axios from 'axios'
+import { useHistory ,useLocation } from 'react-router-dom';
 
 
-function Destinasjonsside({beskrivelse, rating}){
+const Destinasjonsside = () => {
     /*
     const images = [
         {ParisImage},
         {Paris2},
       ];
     */
+      //const navigate = useNavigate();
+  
+    const id = useLocation().pathname.split("/")[2]
+    const [traveldestination, setDestination] = useState({});
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true);
+        axios
+        .get(`http://localhost:4000/api/travelDestinations/${id}`)
+        .then((response) => {
+            setDestination(response.data)
+            setLoading(false)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }, [])
+
+
     return (
         <div>
             {/*<PhotoCarousel images={images}/>*/}
@@ -25,7 +48,7 @@ function Destinasjonsside({beskrivelse, rating}){
                     <p>Rating: 4/10</p>
                 </div>
 
-                <p id="tittel">Tittel</p>
+                <p id="tittel">{traveldestination.destination_name}</p>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis massa nec libero porttitor elementum. Donec id ipsum orci. Pellentesque ultricies auctor justo, a mollis turpis placerat id. Vestibulum ultrices nisl orci. Proin ipsum sem, tempor vel blandit in, vestibulum vitae dui. Proin mattis pulvinar pellentesque. Suspendisse blandit bibendum diam in posuere. Quisque egestas convallis eros. Suspendisse a dolor vel purus ornare mollis. Ut nec nisl condimentum, cursus massa quis, ullamcorper arcu. Proin accumsan at libero ac auctor. Donec sit amet eros diam. Curabitur lacinia tortor non metus varius, vitae dictum neque tincidunt. Vestibulum nec enim ut nibh malesuada porta euismod eget odio. Nam placerat egestas erat, nec tincidunt leo iaculis et.
 

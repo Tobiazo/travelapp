@@ -23,7 +23,7 @@ function App() {
       element: <Layout content={<Login />}/>
   },
   {
-    path: "/Paris",
+    path: "/destinations/:id",
     element: <Layout content={<Destinasjonsside />}/>
     }
 
