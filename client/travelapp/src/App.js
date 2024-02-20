@@ -5,14 +5,12 @@ import { BrowserRouter, Link, NavLink, Route, Routes, createBrowserRouter, Route
 import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Layout from './components/Layout/Layout'
 import Destinasjonsside from './pages/Destinasjonsside';
 import Upload from './pages/Upload';
 
-
-
 function App() {
-
 
   const router = createBrowserRouter([
     {
@@ -21,7 +19,12 @@ function App() {
     },
     {
       path: "/Login",
-      element: <Layout content={<Login />}/>
+      element: <Layout content={<Login />} sidebarToggle={false}/>
+    }, 
+    {
+      path: "/Register",
+      element: <Layout content={<Register />} sidebarToggle={false}/>
+
   },
   {
     path: "/destinations/:id",

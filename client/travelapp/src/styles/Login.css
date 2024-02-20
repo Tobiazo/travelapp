@@ -1,0 +1,119 @@
+.main-container {
+    padding: 150px 0;
+    display: block;
+}
+
+.container {
+    margin: 0 auto;
+    border-radius: 20px;
+    width: 50%;
+}
+
+.signup-content{
+    flex-direction: column;
+    justify-content: center;
+    padding: 75px 0;
+}
+
+.signup-form {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 30px;
+
+    width: 100%;
+    display: block;
+    margin-top: 0;
+}
+
+h2 {
+    line-height: 1.66;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    color: black;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 33px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+#loginLabel {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #222;
+    cursor: default;
+}
+
+input#name{
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 2px solid #999;
+    padding: 6px 30px;
+    box-sizing: border-box;   
+    
+    &:focus {
+        outline: none;
+        border-color:skyblue;
+    }
+    outline: none;
+    appearance: unset!important;
+}
+
+input[type="text" i]#name {
+    writing-mode: horizontal-tb !important;
+    padding-block: 1px;
+    padding-inline: 2px;
+}
+
+input[type="submit" i]#name {
+    user-select: none;
+    appearance: auto;
+    align-items: flex-start;
+    text-align: center;
+    white-space: pre;
+    padding-block: 1px;
+    padding-inline: 6px;
+}
+
+button {
+    user-select: none;
+    appearance: auto;
+    align-items: flex-start;
+    text-align: center;
+    white-space: pre;
+    padding-block: 5px;
+    padding-inline: 6px;
+
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    box-sizing: border-box; 
+}
+
+.form-group span {
+    position: absolute;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+.form-group input:valid + span, 
+.form-group input:focus + span {
+    transform: translate3d(0, -120%, 0);
+}
+

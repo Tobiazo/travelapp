@@ -4,16 +4,28 @@ import Footer from '../HeaderFooter/Footer';
 import Button from '../HeaderFooter/Button';
 import Sidebar from '../HeaderFooter/Sidebar';
 import '../../styles/Forside.css';
+import { useLocation } from 'react-router-dom';
 
 
-export default function Layout({content}) {
+export default function Layout({content, sidebarToggle = true}) {
+
+  let location = useLocation()
+  let className = ""
+
+  if (location.pathname === '/Login') {
+    className = 'loginMain';
+  } else if (location.pathname === '/Register') {
+    className = 'loginMain';
+  } else{
+    className = 'defaultMain';
+  }
   return (
     <div>
        
       <Header />
-       <Sidebar/>
+      {sidebarToggle && <Sidebar/>}
       
-       <main>
+       <main class={className}>
         {content}
         </main>
         <div>
