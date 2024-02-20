@@ -1,13 +1,11 @@
 .defaultMain{
-    padding-bottom: 80px;
+    padding-bottom: 0px;
     padding-top: 20px;
     width: 80%;
 
 }
 
 .loginMain{
-    padding-bottom: 80px;
-    padding-top: 20px;
     width: 100%;
 
 }
