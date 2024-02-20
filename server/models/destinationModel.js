@@ -6,7 +6,8 @@ const destinationSchema = new mongoose.Schema({
   ShortDescription: { type: String, required: true},
   category: { type:[String], required: false}, 
   rating: {type: Number, required: false}, 
-  imgPath: {type: String, require: false},
+  imgPath: {type: String, required: false},
+  longDescription : {type: String, required: false},
 });
 
 module.exports = mongoose.model('travelDestinations', destinationSchema);
