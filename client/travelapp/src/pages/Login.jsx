@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react"
-import { NavLink } from "react-router-dom";
+import { NavLink, json, Navigate } from "react-router-dom";
 import '../styles/Login.css';
 
 const Login = (props) => {
     const [username, setName] = useState();
     const [password, setPassword] = useState();
+    const [loggedIn, setLoggedIn] = useState(false);
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('hhtp:///localhost:4000/api/users');
-
+            const response = await fetch('http:///localhost:4000/api/users');
             const json = await response.json();
 
             if(response.ok) {
@@ -21,19 +21,30 @@ const Login = (props) => {
     }, [])
 
     const handleLogin = (e) => {
-        for(let user in users) {
-            if (user.username === username)
-                if(user.password !== password) {
-                    console.log('Wrong password')
+        for (let index = 0; index < users.length; index++) {
+            if (JSON.stringify(users[index].username) === JSON.stringify(username)) {
+                if (JSON.stringify(users[index].password) === JSON.stringify(password)) {
+
+                    alert("success")
+
+                    for (let index = 0; index < users.length; index++) {
+                        if (JSON.stringify(users[index].username).toLowerCase() === JSON.stringify(username).toLowerCase()) {
+                            localStorage.setItem('loggedIn', users[index]._id)
+                            setLoggedIn(true)
+                            return
+                        }
+                    }
+                    return
                 }
-            else {
-                console.log('Username does not exist')
+                alert("wrong password")
+                return
             }
         }
+        alert("username does not exists")
     }
-    
 
-    return <div class="main-container">
+    if (!loggedIn) {
+        return <div class="main-container">
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
@@ -48,23 +59,22 @@ const Login = (props) => {
                             <input type="text" name="Password" id="name" placeholder="Your Password" 
                             onChange={(e) => setPassword(e.target.value)} />
                         </div>
-                        
                     <div class="form-group form-button">
-                            <button >Log In</button>
+                        <button onClick={handleLogin}>Log In</button>
                     </div>
                     <div class="form-group form-button">
                         <NavLink to="/Register" style={{textDecoration: 'none'}}>
-                            <button type = "submit" onClick={handleLogin} >New? Register here</button>
+                            <button>New? Register here</button>
                         </NavLink>
-                        
                     </div>
                 </div>
             </div>
         </div>
-
-
 </div>
-        
+    }
+    else {
+        return<Navigate to="/"> </Navigate>;
+    }   
 };
 
 export default Login

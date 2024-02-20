@@ -88,7 +88,7 @@ input[type="submit" i]#name {
 }
 
 button {
-    user-select: none;
+    /* user-select: none; */
     appearance: auto;
     align-items: flex-start;
     text-align: center;
@@ -102,6 +102,11 @@ button {
     border-bottom: 1px solid #999;
     padding: 6px 30px;
     box-sizing: border-box; 
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: lightgray;
 }
 
 .form-group span {
