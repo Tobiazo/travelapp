@@ -11,15 +11,20 @@ export default function Destinasjonsboks({id, land, tittel, beskrivelse, rating}
       
       
       <div>
-        <a href={'/destinations/' + id} >
-          <img class='destinasjonsBilde' src={ParisImage} alt='Her er ett bilde av pariestårnet'/>
-        </a>
+        <div id='destinasjonsBildeDiv'>
+            <a href={'/destinations/' + id}>
+          
+              <img class='destinasjonsBilde' src={Paris2} alt='Her er ett bilde av pariestårnet'/>
+            </a>
+          
+          
+        </div>
       </div>
       <div id='underBilde'>
         <div>
         
           <div id="tittelDiv">
-            <a href="/Paris">
+            <a href={'/destinations/' + id}>
               <p>{tittel}</p>
             </a>
 

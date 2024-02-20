@@ -39,13 +39,6 @@
 
   }
 
-#tekstBeskrivelseReisedestinasjonsBoksDiv{
-    left: 10px;
-}
-
-#tekstBeskrivelseReisedestinasjonsBoks{
-    font-size: 15px;
-}
 
 #ratingDiv{
     position: absolute  ;
@@ -78,4 +71,13 @@
 #tittelDiv p{
     font-size: larger;
     margin: 0;
+}
+
+
+#tekstBeskrivelseReisedestinasjonsBoksDiv{
+    left: 10px;
+}
+
+#tekstBeskrivelseReisedestinasjonsBoks{
+    font-size: 15px;
 }

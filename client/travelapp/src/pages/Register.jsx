@@ -9,6 +9,7 @@ const Register = (props) => {
     const [password1, setPassword1] = useState();
     const [users, setUsers] = useState(null);
     const [registered, setregistered] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -32,7 +33,7 @@ const Register = (props) => {
 
     function sendRequest(e) {
         e.preventDefault()
-        axios.post('http://localhost:4000/api/users', {username, password})
+        axios.post('http://localhost:4000/api/users', {username, password, isAdmin})
         .then(result => console.log(result))
         .catch(err => console.log(err));
     }
