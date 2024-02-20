@@ -18,11 +18,11 @@ function App() {
     },
     {
       path: "/Login",
-      element: <Layout content={<Login />} />
+      element: <Layout content={<Login />} sidebarToggle={false}/>
     }, 
     {
       path: "/Register",
-      element: <Layout content={<Register />} />
+      element: <Layout content={<Register />} sidebarToggle={false}/>
 
   },
   {

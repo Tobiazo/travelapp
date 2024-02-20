@@ -8,25 +8,30 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
+    z-index: 2;
 }
 
 #header {
+  display: flex;
+  position: fixed;
   color: white;
   font-size: x-large;
-  padding: 50px;
+  z-index: 1;
+  width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   background-color: rgb(54, 53, 53);
-  margin: 10;
-
-
+  height: 10%;
 }
 
+#linksContainer{
+  padding: 1.5%;
+}
 #links a{
   color: white;
   text-decoration: none;
   background-color: rgb(54, 53, 53);
-
+  
 }
 
 
@@ -39,6 +44,6 @@
 
 #navlinklogginn{
   position: absolute;
-  right: 20px;
+  right: 5%;
 
 }

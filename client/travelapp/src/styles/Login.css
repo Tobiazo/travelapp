@@ -46,7 +46,7 @@ h2 {
     margin-bottom: 0;
 }
 
-label {
+#loginLabel {
     position: absolute;
     left: 0;
     top: 50%;
@@ -55,7 +55,7 @@ label {
     cursor: default;
 }
 
-input {
+input#name{
     width: 100%;
     display: block;
     border: none;
@@ -67,22 +67,17 @@ input {
         outline: none;
         border-color:skyblue;
     }
-}
-
-input, select, textarea {
     outline: none;
     appearance: unset!important;
-    
-
 }
 
-input[type="text" i] {
+input[type="text" i]#name {
     writing-mode: horizontal-tb !important;
     padding-block: 1px;
     padding-inline: 2px;
 }
 
-input[type="submit" i] {
+input[type="submit" i]#name {
     user-select: none;
     appearance: auto;
     align-items: flex-start;

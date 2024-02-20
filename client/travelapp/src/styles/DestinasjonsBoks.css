@@ -1,34 +1,81 @@
 .destinasjonsBilde{
-    width: 300px;
-    margin-left: 2%;
-    margin-right: auto;
-    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+    /*object-position: center top;*/
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+
 }   
+
+#destinasjonsBildeDiv{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+
 .destinasjonsBoks{
+    border-radius: 20px;
+    width: 340px;
+    height: 340px;
     vertical-align: top;
-    width: 400px;
-    height: 400px;
     display: inline-block;
-    margin: 30px;
-    padding: 20px;
+    margin: 1%;
     background-color: rgb(236, 236, 236);
     position: relative;
+
 }
 
-.beskrivelse{
-    display: none;
+.destinasjonsBoks a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+
+  }
+
+  .destinasjonsBoks a:hover{
+    text-decoration: underline;
+
+  }
+
+#tekstBeskrivelseReisedestinasjonsBoksDiv{
+    left: 10px;
 }
 
-#stylingDiv{
-    position: absolute;
+#tekstBeskrivelseReisedestinasjonsBoks{
+    font-size: 15px;
+}
+
+#ratingDiv{
+    position: absolute  ;
     top: 5px;
     right: 5px;
+    font-size: larger;
+}
+
+
+#underBilde{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+}
+
+#underTittel{
+    position: absolute;
+    height: 100px;
+    padding-left: 5px;
 }
 
 #tittelDiv{
     display: inline-block;
     width: 20px;
-    position: absolute;
+    position: relative;
     top: 5px;
     left: 5px;
+}
+
+#tittelDiv p{
+    font-size: larger;
+    margin: 0;
 }

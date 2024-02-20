@@ -1,8 +1,22 @@
 #sidebar{
     position:fixed;
+    z-index: 1;
     right: 0px;
+    top: 10%;
     height: 100%;
     width: 25%;
     background-color:  rgb(66, 65, 65);
     color: aliceblue;
+    padding: 1%;
+}
+
+#kontinentCheckboxContainer{
+    position: relative;
+    margin-bottom: 10%;
+    left: 3%;
+    margin-top: 0;
+}
+
+#tagsContainer{
+    margin-bottom: 10%;
 }

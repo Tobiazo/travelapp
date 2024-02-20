@@ -1,8 +1,17 @@
-main{
-    padding-bottom: 80px;
+.defaultMain{
+    padding-bottom: 0px;
     padding-top: 20px;
+    width: 80%;
 
+}
 
+.loginMain{
+    width: 100%;
+
+}
+
+#destinasjonsBokserDiv{
+    padding: 5px
 }
 
 
