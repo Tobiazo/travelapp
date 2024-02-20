@@ -71,7 +71,7 @@ const Home = (props) => {
                     } beskrivelse={traveldestiantion.ShortDescription}/>) )} 
                 </div> 
         </div>
-        </div>
+   
 
     )
     
