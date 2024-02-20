@@ -1,5 +1,6 @@
 import React from 'react'
 import ParisImage from '../bilder/ParisBilde.jpg';
+import Lillehammer from '../bilder/Lillehammer.jpeg'; 
 import { NavLink, useNavigate } from "react-router-dom";
 import '../styles/Forside.css';
 

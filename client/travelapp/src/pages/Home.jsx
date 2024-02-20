@@ -5,6 +5,8 @@ import LoginButton from "./../components/LoginButton";
 import Destinasjonsboks from "../components/Destinasjonsboks";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Paris from '../bilder/ParisBilde.jpg';
+import Lillehammer from '../bilder/Lillehammer.jpeg';
 
 
 const Home = (props) => {
