@@ -27,13 +27,22 @@ const Home = (props) => {
                         Your email address is {email}
                     </div> : <div/>)}
                 </div>
-                
-                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Amerika"} beskrivelse={"hegfuoashakshhegfuoashaks hhegfuoashakshhegfuoashaks hhegfuoa"}/>
-                <Destinasjonsboks rating ={4} land={"norge"} tittel={"sa"} beskrivelse={"hegfuoegfuoashakshhegfuoas hakshhegfuoashakhhegfuoashaksh"}/>
-                <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"} />
-                <Destinasjonsboks land={"Canada"} tittel={"Amerika"}/>
-                <Destinasjonsboks land={"norge"} tittel={"sa"}/>
-                <Destinasjonsboks land={"Canaadfda"} tittel={"Ameadsfrika"}/>
+                <div id="destinasjonsBokserDiv">
+                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
+                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
+                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />
+                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
+                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
+                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />
+                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
+                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
+                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />
+                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
+                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
+                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />    
+
+
+                </div>
             </div>
         </div>
     )
