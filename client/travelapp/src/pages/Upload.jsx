@@ -3,30 +3,17 @@ import axios from 'axios';
 
 const UploadImage = () => {
   const [file, setFile] = useState(null);
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const handleUpload = async () => {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const response = await axios.post('http://localhost:4000/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      console.log('File uploaded:', response.data);
-    } catch (error) {
-      console.error('Error uploading file:', error);
-    }
-  };
+  const handleUpload = (e) => {
+    const formdata = new FormData()
+    formdata.append('file', file)
+    axios.post('http://localhost:4000/upload', formdata) //api?
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
 
   return (
     <div>
-      <input type="file" accept="image/*" onChange={handleFileChange} />
+      <input type="file" onChange={e => setFile(e.target.files[0])} />
       <button onClick={handleUpload}>Upload</button>
     </div>
   );

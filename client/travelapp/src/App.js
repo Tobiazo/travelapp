@@ -32,7 +32,7 @@ function App() {
     }, 
 
     {
-      path: "/Upload",
+      path: "/upload",
       element: <Layout content={<Upload />}/>
   }
   ])
