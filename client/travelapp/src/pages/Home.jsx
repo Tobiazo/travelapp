@@ -35,17 +35,14 @@ const Home = (props) => {
         <div>
             <div className="mainContainer">
                 <div className={"titleContainer"}>
-                    <div>Welcome! HOME</div>
+                    <div>Welcome! HOME
+                    
+                    </div>
                 </div>
                 <div>
                     This is the home page.
                 </div>
                 <div className={"buttonContainer"}>
-                    <ul>
-                        <li>
-                            <NavLink to ="/Login"> Log in / Become a new member </NavLink>
-                        </li>
-                    </ul>
                     {(loggedIn ? <div>
                         Your email address is {email}
                     </div> : <div/>)}
@@ -73,8 +70,9 @@ const Home = (props) => {
                     <Destinasjonsboks key = {traveldestiantion._id} id = {traveldestiantion._id} rating ={traveldestiantion.rating} land={traveldestiantion.destination_country} tittel={traveldestiantion.destination_name
                     } beskrivelse={traveldestiantion.ShortDescription}/>) )} 
                 </div> 
-
         </div>
+        </div>
+
     )
     
 }
