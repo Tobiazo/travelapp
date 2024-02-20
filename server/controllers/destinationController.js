@@ -1,4 +1,8 @@
+const path = require('path');
 let destinationModel = require('../models/destinationModel');
+const multer = require('multer');
+
+
 
 
 //oppretter ny destinasjon
@@ -55,7 +59,7 @@ exports.deleteDestinationByID= async (req, res) => {
   }
 }
 
-//Opdaterer en destinasjon fra databasen med ID
+//Oppdaterer en destinasjon fra databasen med ID
 exports.updateDestinationByID = async (req, res) => {
   try {
     const updatedDestination = await destinationModel.findByIdAndUpdate(req.params.id, req.body);
@@ -68,3 +72,5 @@ exports.updateDestinationByID = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+

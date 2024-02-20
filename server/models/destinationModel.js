@@ -10,4 +10,4 @@ const destinationSchema = new mongoose.Schema({
   longDescription : {type: String, required: false},
 });
 
-module.exports = mongoose.model('travelDestinations', destinationSchema);
+module.exports = mongoose.model('travelDestinations', destinationSchema); 

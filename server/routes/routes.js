@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const destinationController = require('../controllers/destinationController')
+const destinationController = require('../controllers/destinationController');
 
+const imageController = require('../controllers/imageController')
 //----Users---//
 
 //lager ny bruker
@@ -43,5 +44,8 @@ router.delete('/travelDestinations/delete/:id', destinationController.deleteDest
 
 //Oppdaterer en destinasjon basert på ID
 router.put('/travelDestinations/edit/:id', destinationController.updateDestinationByID)
-
+ 
+// //laste opp bilde til reisedestinasjon
+// router.post('/upload', upload.single('file'), imageController.uploadImage)
+  
 module.exports = router;

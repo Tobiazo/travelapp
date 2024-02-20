@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Layout from './components/Layout/Layout'
 import Destinasjonsside from './pages/Destinasjonsside';
+import Upload from './pages/Upload';
 
 
 
@@ -25,8 +26,12 @@ function App() {
   {
     path: "/destinations/:id",
     element: <Layout content={<Destinasjonsside />}/>
-    }
+    }, 
 
+    {
+      path: "/Upload",
+      element: <Layout content={<Upload />}/>
+  }
   ])
 
   return (
