@@ -1,4 +1,8 @@
+const path = require('path');
 let destinationModel = require('../models/destinationModel');
+const multer = require('multer');
+
+
 
 
 //oppretter ny destinasjon
@@ -41,7 +45,7 @@ exports.getDestinationByID = async (req, res) => {
   }
 }
 
-//Sletter en bruker fra databasen med ID
+//Sletter en destinasjon fra databasen med ID
 exports.deleteDestinationByID= async (req, res) => {
   try {
     const deletedDestination = await destinationModel.findByIdAndDelete(req.params.id);
@@ -54,3 +58,19 @@ exports.deleteDestinationByID= async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+//Oppdaterer en destinasjon fra databasen med ID
+exports.updateDestinationByID = async (req, res) => {
+  try {
+    const updatedDestination = await destinationModel.findByIdAndUpdate(req.params.id, req.body);
+    if(!updatedDestination){
+      return res.status(404).json({error: "Destination not found"})
+    }
+    res.status(200).send("Destination updated!");
+  } catch (error) {
+    console.error(error); 
+    res.status(500).json({ message: error.message })
+  }
+}
+
+

@@ -5,20 +5,15 @@ import Paris2 from '../bilder/Paris2.jpg';
 import { NavLink, useNavigate } from "react-router-dom";
 import '../styles/Forside.css';
 
-export default function Destinasjonsboks({land, tittel, beskrivelse, rating}) {
+export default function Destinasjonsboks({id, land, tittel, beskrivelse, rating}) {
   return (
     <div class='destinasjonsBoks'>
       
       
       <div>
-        <div id='destinasjonsBildeDiv'>
-            <a href="/Paris">
-          
-              <img class='destinasjonsBilde' src={Paris2} alt='Her er ett bilde av pariestårnet'/>
-            </a>
-          
-          
-        </div>
+        <a href={'/destinations/' + id} >
+          <img class='destinasjonsBilde' src={ParisImage} alt='Her er ett bilde av pariestårnet'/>
+        </a>
       </div>
       <div id='underBilde'>
         <div>

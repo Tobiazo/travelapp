@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Layout from './components/Layout/Layout'
 import Destinasjonsside from './pages/Destinasjonsside';
+import Upload from './pages/Upload';
 
 function App() {
 
@@ -26,10 +27,14 @@ function App() {
 
   },
   {
-    path: "/Paris",
+    path: "/destinations/:id",
     element: <Layout content={<Destinasjonsside />}/>
-    }
+    }, 
 
+    {
+      path: "/Upload",
+      element: <Layout content={<Upload />}/>
+  }
   ])
 
   return (
