@@ -47,8 +47,8 @@ const Home = (props) => {
         </div>
         <div className="Traveldestinations">
                     {traveldestiantions && traveldestiantions.map((traveldestiantion) => (
-                    <Destinasjonsboks key = {traveldestiantion._id} id = {traveldestiantion._id} rating ={4} land={traveldestiantion.destination_country} tittel={traveldestiantion.destination_name
-                    } beskrivelse={"hegfuoashakshhegfuoashaks hhegfuoashakshhegfuoashaks hhegfuoa"}/>) )} 
+                    <Destinasjonsboks key = {traveldestiantion._id} id = {traveldestiantion._id} rating ={traveldestiantion.rating} land={traveldestiantion.destination_country} tittel={traveldestiantion.destination_name
+                    } beskrivelse={traveldestiantion.ShortDescription}/>) )} 
                 </div> 
 
         </div>
