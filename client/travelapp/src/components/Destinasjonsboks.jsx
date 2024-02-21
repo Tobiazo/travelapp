@@ -1,6 +1,4 @@
 import React from "react";
-import ParisImage from "../bilder/ParisBilde.jpg";
-import Paris2 from "../bilder/Paris2.jpg";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/Forside.css";

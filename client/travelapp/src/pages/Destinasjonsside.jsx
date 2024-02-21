@@ -1,7 +1,5 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import ParisImage from "../bilder/ParisBilde.jpg";
-import Paris2 from "../bilder/Paris2.jpg";
 import PhotoCarousel from "../components/PhotoCarousel.jsx";
 import "../styles/Destinasjonsside.css";
 import { useEffect, useState } from "react";
