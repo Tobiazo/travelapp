@@ -28,12 +28,12 @@ function App() {
   },
   {
     path: "/destinations/:id",
-    element: <Layout content={<Destinasjonsside />}/>
+    element: <Layout content={<Destinasjonsside />} />
     }, 
 
     {
       path: "/upload",
-      element: <Layout content={<Upload />}/>
+      element: <Layout content={<Upload />}sidebarToggle={false}/>
   }
   ])
 
