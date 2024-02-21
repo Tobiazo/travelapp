@@ -73,4 +73,3 @@ exports.updateDestinationByID = async (req, res) => {
   }
 }
 
-

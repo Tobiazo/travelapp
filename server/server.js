@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const multer = require('multer'); // Import multer
 const path = require('path')
+const destinationModel = require('./models/destinationModel')
 // Load environment variables
 dotenv.config();
 
@@ -23,7 +24,7 @@ mongoose.connection.once('open', () => {
 });
 
 //Henter routes filen
-const userRoutes = require('./routes/routes')
+const userRoutes = require('./routes/routes');
 app.use('/api', userRoutes);
 
 //Fil-logikk for å laste opp
@@ -32,7 +33,7 @@ const storage = multer.diskStorage({
     cb(null, 'public/Images')
   },
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originialname))
+    cb(null, file.fieldname + "_" + Date.now() +path.extname(file.originalname))
   }
 })
 
@@ -40,9 +41,13 @@ const upload = multer({
   storage : storage
 })
 
-app.post('/upload', upload.single('file'),(req,res) => {
-  console.log(req.file)
+app.post('/upload', upload.single('file'),async (req,res) => {
+  console.log(req.body.id)
+  console.log(req.file.filename)
+  const updateDestination = await destinationModel.findByIdAndUpdate(req.body.id, {imgPath: req.file.filename})
 })
+
+app.use("/images", express.static("public/Images"));
 
 
 // Start server

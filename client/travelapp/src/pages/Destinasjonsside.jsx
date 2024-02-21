@@ -36,12 +36,12 @@ const Destinasjonsside = () => {
     }, [])
 
     const categoryList = traveldestination.category
-    
+    const imgPath = traveldestination.imgPath
 
     return (
         <div>
             {/*<PhotoCarousel images={images}/>*/}
-            <img class='BildePaDestinasjonsside' src={ParisImage} alt='Her er ett bilde av pariestårnet'/>
+            <img class='BildePaDestinasjonsside' src={`http://localhost:4000/images/${imgPath}`} alt='Her er ett bilde av pariestårnet'/>
             <img class='BildePaDestinasjonsside' src={Paris2} alt='Her er ett bilde av pariestårnet'/>
 
 
