@@ -3,6 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const multer = require('multer'); // Import multer
+const path = require('path')
+const destinationModel = require('./models/destinationModel')
 // Load environment variables
 dotenv.config();
 
@@ -22,28 +24,31 @@ mongoose.connection.once('open', () => {
 });
 
 //Henter routes filen
-const userRoutes = require('./routes/routes')
+const userRoutes = require('./routes/routes');
 app.use('/api', userRoutes);
 
+//Fil-logikk for å laste opp
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // Specify the directory where files will be stored
+  destination: (req,res, cb) => {
+    cb(null, 'public/Images')
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname); // Generate a unique filename
+    cb(null, file.fieldname + "_" + Date.now() +path.extname(file.originalname))
   }
-});
+})
 
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage : storage
+})
 
-// Handle file upload
-app.post('/upload', upload.single('file'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send('No file uploaded.');
-  }
-  // Return the file path or any other relevant data
-  res.send(req.file.path);
-});
+app.post('/upload', upload.single('file'),async (req,res) => {
+  console.log(req.body.id)
+  console.log(req.file.filename)
+  const updateDestination = await destinationModel.findByIdAndUpdate(req.body.id, {imgPath: req.file.filename})
+})
+
+app.use("/images", express.static("public/Images"));
+
 
 // Start server
 const PORT = process.env.PORT || 4000;

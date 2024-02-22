@@ -16,7 +16,9 @@ export default function Layout({content, sidebarToggle = true}) {
     className = 'loginMain';
   } else if (location.pathname === '/Register') {
     className = 'loginMain';
-  } else{
+  } else if (location.pathname === '/Upload') {
+    className = 'loginMain'
+  }else{
     className = 'defaultMain';
   }
   return (

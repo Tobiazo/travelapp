@@ -3,7 +3,6 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const destinationController = require('../controllers/destinationController');
 
-const imageController = require('../controllers/imageController')
 //----Users---//
 
 //lager ny bruker
