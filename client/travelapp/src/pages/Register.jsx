@@ -77,12 +77,12 @@ const Register = (props) => {
                     </div>
                     <div class="form-group">
                         <label for="Password"></label>
-                        <input type="text" name="name" id="name" placeholder="Your Password"
+                        <input type="password" name="name" id="name" placeholder="Your Password"
                         onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <div class="form-group">
                         <label for="Confirm password"></label>
-                        <input type="text" name="name" id="name" placeholder="Confirm Password" 
+                        <input type="password" name="name" id="name" placeholder="Confirm Password" 
                         onChange={(e) => setPassword1(e.target.value)}/>
                     </div>
                     <div class="form-group form-button">

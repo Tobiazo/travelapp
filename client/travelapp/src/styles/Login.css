@@ -77,6 +77,12 @@ input[type="text" i]#name {
     padding-inline: 2px;
 }
 
+input[type="password" i]#name {
+    writing-mode: horizontal-tb !important;
+    padding-block: 1px;
+    padding-inline: 2px;
+}
+
 input[type="submit" i]#name {
     user-select: none;
     appearance: auto;
