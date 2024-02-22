@@ -54,7 +54,7 @@ const Login = (props) => {
                         </div>
                         <div class="form-group">
                             <label class="loginLabel" for="Password"></label>
-                            <input type="text" name="Password" id="name" placeholder="Your Password" 
+                            <input type="password" name="Password" id="name" placeholder="Your Password" 
                             onChange={(e) => setPassword(e.target.value)} />
                         </div>
                     <div class="form-group form-button">
