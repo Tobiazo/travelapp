@@ -49,6 +49,11 @@ const Destinasjonsside = () => {
           <p>Rating: {traveldestination.rating}/10</p>
         </div>
 
+        <div id="minrating">
+          <p>Min rating: {traveldestination.rating}/10</p>
+        </div>
+        
+
         <p id="tittel">{traveldestination.destination_name}</p>
         <p id="Kategorier">
           {" "}
