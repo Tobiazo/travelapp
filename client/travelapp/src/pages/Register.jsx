@@ -41,17 +41,17 @@ const Register = (props) => {
     function verify() {
         for (let index = 0; index < users.length; index++) {
             if (JSON.stringify(username) === undefined) {
-                alert("please fill the fields")
+                alert("Fyll inn feltene")
                 return false
 
             }
             if (JSON.stringify(users[index].username).toLowerCase() === JSON.stringify(username).toLowerCase()) {
-                alert("username taken")
+                alert("Brukernavn er i bruk")
                 return false
             }
         }
         if (password !== password1) {
-            alert('Passwords do not match!')
+            alert('Passordene er ikke like!')
             return false
         }
         return true

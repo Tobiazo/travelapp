@@ -34,11 +34,11 @@ const Login = (props) => {
                     }
                     return
                 }
-                alert("wrong password")
+                alert("Feil passord")
                 return
             }
         }
-        alert("username does not exists")
+        alert("Brukernavnet eksisterer ikke")
     }
 
     if (!loggedIn) {
