@@ -32,9 +32,10 @@ const Home = (props) => {
     <div>
       <div className="mainContainer">
         <div className={"titleContainer"}>
-          <div>Welcome! HOME</div>
+          {/*<div>Welcome! HOME</div>
         </div>
-        <div>This is the home page.</div>
+  <div>This is the home page.</div>*/}
+  </div>
         <div className={"buttonContainer"}>
           {loggedIn ? <div>Your email address is {email}</div> : <div />}
         </div>
