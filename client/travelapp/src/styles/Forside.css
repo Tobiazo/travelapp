@@ -2,11 +2,14 @@
     padding-bottom: 0px;
     padding-top: 20px;
     width: 76%;
+   
+   
 
 }
 
 .loginMain{
     width: 100%;
+    min-height: 100%;
 
 }
 
