@@ -20,3 +20,8 @@
 #tagsContainer{
     margin-bottom: 10%;
 }
+
+.MuiSlider-track, .MuiSlider-rail, .MuiSlider-mark, .MuiSlider-thumb{
+    color: rgb(162, 119, 166);
+}
+
