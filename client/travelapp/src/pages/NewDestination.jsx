@@ -11,7 +11,6 @@ const NewDestination = () => {
   const [longDescription, setLongDescription] = useState("");
   const [uploaded, setUploaded] = useState(false);
   const [preview, setPreview] = useState();
-  const [buttonStatus, setButtonStatus] = useState(true);
 
   useEffect(() => {
     if (!file) {
@@ -44,9 +43,6 @@ const NewDestination = () => {
   };
 
   if (!uploaded) {
-    if (file && destination_name && destination_contry && ShortDescription) {
-      setButtonStatus(false);
-    }
     return (
       <div class="main-container">
         <div class="container">
@@ -111,7 +107,7 @@ const NewDestination = () => {
                       ></input>
                     </div>
                     <div class="form-group form-button">
-                      <button type="submit" disabled={buttonStatus}>
+                      <button type="submit" disabled={!file}>
                         Legg til
                       </button>
                     </div>
