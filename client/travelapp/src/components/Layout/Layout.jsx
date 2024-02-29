@@ -6,7 +6,6 @@ import Sidebar from '../HeaderFooter/Sidebar';
 import '../../styles/Forside.css';
 import { useLocation } from 'react-router-dom';
 
-
 export default function Layout({content, sidebarToggle = true}) {
 
   let location = useLocation()
@@ -24,7 +23,8 @@ export default function Layout({content, sidebarToggle = true}) {
   return (
     <div>
        
-      <Header />
+        <Header />
+
       {sidebarToggle && <Sidebar/>}
       
        <main class={className}>
@@ -33,6 +33,7 @@ export default function Layout({content, sidebarToggle = true}) {
         <div>
       <Footer />
       </div>
+
     </div>
   )
 }
