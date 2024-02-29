@@ -46,23 +46,23 @@ const Login = (props) => {
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
-                    <h2 class="form-title">Log in</h2>
+                    <h2 class="form-title">Innlogging</h2>
                         <div class="form-group">
                             <label class="loginLabel" for="Username"></label>
-                            <input type="text" name="Username" id="name" placeholder="Your Name" 
+                            <input type="text" name="Username" id="name" placeholder=" Navn" 
                             onChange={(e) => setName(e.target.value)}/>
                         </div>
                         <div class="form-group">
                             <label class="loginLabel" for="Password"></label>
-                            <input type="password" name="Password" id="name" placeholder="Your Password" 
+                            <input type="password" name="Password" id="name" placeholder=" Passord" 
                             onChange={(e) => setPassword(e.target.value)} />
                         </div>
                     <div class="form-group form-button">
-                        <button onClick={handleLogin}>Log In</button>
+                        <button onClick={handleLogin}>Logg in</button>
                     </div>
                     <div class="form-group form-button">
                         <NavLink to="/Register" style={{textDecoration: 'none'}}>
-                            <button>New? Register here</button>
+                            <button>Ny? Registrer her</button>
                         </NavLink>
                     </div>
                 </div>

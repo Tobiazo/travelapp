@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../HeaderFooter/Header';
+import DropdownProfile from '../HeaderFooter/DropdownProfile';
 import Footer from '../HeaderFooter/Footer';
 import Button from '../HeaderFooter/Button';
 import Sidebar from '../HeaderFooter/Sidebar';
@@ -31,6 +32,7 @@ export default function Layout({content, sidebarToggle = true}) {
         {content}
         </main>
         <div>
+          <DropdownProfile />
       <Footer />
       </div>
 

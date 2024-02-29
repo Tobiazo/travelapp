@@ -46,7 +46,7 @@ function Sidebar(){
             <p>⭐Vurdering:</p>
         
            <ContinuousSlider/>
-           <p>Temp:</p>
+           <p>🌡️ Temp:</p>
            <TempSlider/>
         </div> 
     )
