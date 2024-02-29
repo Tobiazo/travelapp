@@ -10,7 +10,7 @@ function Sidebar(){
     return (
         <div id="sidebar">
 
-           <p>FILTER</p> 
+           <p class="links"> <NavLink to ="/noSidebar"> &gt; </NavLink>FILTER</p> 
            <div id="Besøkt/Ubesøkt">
            <label> Besøkt/Ubesøkt </label><select name="Besøkte" id="">
                 <option value="Vis Begge">Vis Begge</option>

@@ -19,17 +19,21 @@ function App() {
       element: <Layout content={<Home />}/>
     },
     {
+      path: "/noSidebar",
+      element: <Layout content={<Home />} sidebarToggle={1}/>
+    },
+    {
       path: "/Login",
-      element: <Layout content={<Login />} sidebarToggle={false}/>
+      element: <Layout content={<Login />} sidebarToggle={0}/>
     }, 
     {
       path: "/Register",
-      element: <Layout content={<Register />} sidebarToggle={false}/>
+      element: <Layout content={<Register />} sidebarToggle={0}/>
 
   },
   {
     path: "/destinations/:id",
-    element: <Layout content={<Destinasjonsside />} />
+    element: <Layout content={<Destinasjonsside />} sidebarToggle={0} />
     }, 
 
     {
