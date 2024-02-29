@@ -1,0 +1,146 @@
+.main-container {
+    padding: 150px 0;
+    display: block;
+}
+
+.container {
+    margin: 0 auto;
+    border-radius: 20px;
+    width: 50%;
+}
+
+.preview-picture {
+    width: 90%;
+    margin: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.signup-form {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 30px;
+
+    width: 100%;
+    display: block;
+    margin-top: 0;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.signup-content{
+    flex-direction: column;
+    justify-content: center;
+    padding: 75px 0;
+    text-align: center;
+}
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+button {
+    /* user-select: none; */
+    appearance: auto;
+    align-items: flex-start;
+    text-align: center;
+    white-space: pre;
+    padding-block: 5px;
+    padding-inline: 6px;
+
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    box-sizing: border-box; 
+    border-radius: 5px;
+}
+
+.form-group span {
+    position: absolute;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+.form-group input:valid + span, 
+.form-group input:focus + span {
+    transform: translate3d(0, -120%, 0);
+}
+
+#file {
+    text-align-last: center;
+    margin: auto;
+  }
+
+input#shortInput{
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 2px solid #999;
+    padding: 6px 30px;
+    box-sizing: border-box;   
+    
+    &:focus {
+        outline: none;
+        border-color:skyblue;
+    }
+    outline: none;
+    appearance: unset!important;
+}
+
+#shortInputLabel {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #222;
+    cursor: default;
+}
+
+#longDescriptionLabel {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #222;
+    cursor: default;
+}
+
+textarea#LongDescription{
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 2px solid #999;
+    padding: 6px 30px;
+    box-sizing: border-box; 
+ 
+    
+    &:focus {
+        outline: none;
+        border-color:skyblue;
+    }
+    outline: none;
+    appearance: unset!important;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background: #0d45a5;
+  }
