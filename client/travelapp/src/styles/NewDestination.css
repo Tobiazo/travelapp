@@ -1,6 +1,8 @@
 .main-container {
     padding: 150px 0;
     display: block;
+    width: 90%;
+    margin: auto;
 }
 
 .container {
@@ -20,10 +22,10 @@
     margin-left: 0;
     margin-right: 0;
     padding: 0 30px;
-
-    width: 100%;
+    width: 90%;
     display: block;
     margin-top: 0;
+    margin: auto;
 }
 
 .form-group {
