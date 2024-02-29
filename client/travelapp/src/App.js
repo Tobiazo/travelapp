@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Layout from './components/Layout/Layout'
 import Destinasjonsside from './pages/Destinasjonsside';
-import Upload from './pages/Upload';
+import NewDestination from './pages/NewDestination';
 import MineVurderinger from './pages/MineVurderinger';
 
 function App() {
@@ -37,8 +37,8 @@ function App() {
     }, 
 
     {
-      path: "/upload",
-      element: <Layout content={<Upload />}sidebarToggle={false}/>
+      path: "/newDestination",
+      element: <Layout content={<NewDestination />}sidebarToggle={false}/>
   }, 
 
   {

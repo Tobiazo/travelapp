@@ -42,7 +42,7 @@ const upload = multer({
   storage : storage
 })
 
-app.post('/upload', upload.single('file'),async (req,res) => {
+app.post('/newDestination', upload.single('file'),async (req,res) => {
   try {
     const destinationData = req.body
     const newDestination = new destinationModel(destinationData)
