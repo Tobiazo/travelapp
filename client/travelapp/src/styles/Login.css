@@ -93,7 +93,7 @@ input[type="submit" i]#name {
     padding-inline: 6px;
 }
 
-button {
+.loginPageButton {
     /* user-select: none; */
     appearance: auto;
     align-items: flex-start;
@@ -111,7 +111,7 @@ button {
     border-radius: 5px;
 }
 
-button:hover{
+.loginPageButton:hover{
     background-color: lightgray;
 }
 

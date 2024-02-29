@@ -15,7 +15,7 @@ function Button(){
         <div className={"buttonContainer"}>
 
                 
-                <div id="links">
+                <div class="links">
                 <NavLink className="float" id="navlinklogginn" to ="/Login">{!bruker && "Login"}  </NavLink>
                 
                 <NavLink className="float" id="navlinklogginn" to ="/Login"  onClick={LogOut}> {bruker && "LogOut"}  </NavLink>

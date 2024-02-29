@@ -58,11 +58,11 @@ const Login = (props) => {
                             onChange={(e) => setPassword(e.target.value)} />
                         </div>
                     <div class="form-group form-button">
-                        <button onClick={handleLogin}>Log In</button>
+                        <button class = "loginPageButton" onClick={handleLogin}>Log In</button>
                     </div>
                     <div class="form-group form-button">
                         <NavLink to="/Register" style={{textDecoration: 'none'}}>
-                            <button>New? Register here</button>
+                            <button class = "loginPageButton">New? Register here</button>
                         </NavLink>
                     </div>
                 </div>
