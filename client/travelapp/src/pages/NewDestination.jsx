@@ -40,6 +40,7 @@ const NewDestination = () => {
       .post("http://localhost:4000/upload", formdata)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    setUploaded(true);
   };
 
   if (!uploaded) {
