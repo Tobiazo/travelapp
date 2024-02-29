@@ -25,6 +25,7 @@ mongoose.connection.once('open', () => {
 
 //Henter routes filen
 const userRoutes = require('./routes/routes');
+const { fileURLToPath } = require('url');
 app.use('/api', userRoutes);
 
 //Fil-logikk for å laste opp
@@ -42,9 +43,16 @@ const upload = multer({
 })
 
 app.post('/upload', upload.single('file'),async (req,res) => {
-  console.log(req.body.id)
-  console.log(req.file.filename)
-  const updateDestination = await destinationModel.findByIdAndUpdate(req.body.id, {imgPath: req.file.filename})
+  try {
+    const destinationData = req.body
+    const newDestination = new destinationModel(destinationData)
+    await newDestination.save();
+    const updateDestination = await destinationModel.findByIdAndUpdate(newDestination._id, {imgPath: req.file.filename})
+    res.status(201).json(newDestination);
+  }catch (error) {
+    console.error(error); 
+    res.status(400).json({ message: error.message });
+  }
 })
 
 app.use("/images", express.static("public/Images"));
