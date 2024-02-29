@@ -85,6 +85,18 @@
   
 }
 
+#mainDropdown{
+  width: 10%;
+  text-align: center;
+  margin: 20px;
+  padding: 0.8%;
+  position: relative;
+  background-color: rgb(197, 173, 173);
+ /* z-index: 3;
+  top: 0;
+  right: 0;*/
+}
+
 
 
 
