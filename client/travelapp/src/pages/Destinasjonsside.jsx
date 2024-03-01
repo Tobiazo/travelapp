@@ -36,34 +36,51 @@ const Destinasjonsside = () => {
   const imgPath = traveldestination.imgPath;
 
   return (
-    <div>
-      {/*<PhotoCarousel images={images}/>*/}
-      <img
-        class="BildePaDestinasjonsside"
-        src={`http://localhost:4000/images/${imgPath}`}
-        alt="Her er et bilde av destinasjonen"
-      />
-
-      <div id="tekstligBeskrivelse">
-        <div id="rating">
-          <p>Rating: {traveldestination.rating}/10</p>
+    <div id="destinasjonsside">
+      <div id="content">
+        <div className="bildediv">
+              <img
+                class="BildePaDestinasjonsside"
+                src={`http://localhost:4000/images/${imgPath}`}
+                alt="Her er et bilde av destinasjonen"/>
         </div>
-
-        <div id="minrating">
-          <p>Min rating: {traveldestination.rating}/10</p>
-        </div>
-        
-
-        <p id="tittel">{traveldestination.destination_name}</p>
-        <p id="Kategorier">
-          {" "}
-          Kategorier:
-          {categoryList?.map((s) => (
-            <li>{s}</li>
-          ))}
-        </p>
-
-        <p>{traveldestination.longDescription}</p>
+        <div id="body">
+          <div id="left-side">
+            <div id="tittel">
+              <p id="overtittel">{traveldestination.destination_name}</p>
+              <p id="undertittel"> {traveldestination.destination_contry} </p>
+            </div>
+            <div className="kategoridiv">
+              {categoryList?.map((s) => (
+                <div className="listitem">
+                  <li>{s}</li>
+                </div>
+                ))}
+            </div>
+            <div id="description">
+              <p id="contenttittel"> Om {traveldestination.destination_name}</p>
+              <p>{traveldestination.longDescription}</p>
+            </div>
+          </div>
+          <div id="right-side"> 
+            <div id="ratings">
+              <div class="rating">
+                <p className="ratingtittel">Min Vurdering</p>
+                <div id="ratingboks">
+                  <p className="ratingp"> {traveldestination.rating}</p>
+                  <p className="stjerne">⭐</p>
+                </div>
+              </div>
+              <div class="rating">
+                <p className="ratingtittel">gj.snitt Vurdering</p>
+                <div id="ratingboks">
+                  <p className="ratingp"> {traveldestination.rating}</p>
+                  <p className="stjerne">⭐</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
       </div>
     </div>
   );
