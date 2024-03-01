@@ -1,22 +1,135 @@
-#tekstligBeskrivelse{
-    padding-left: 2%;
-    padding-right: 5%;
+#content{
     width: 90%;
+    border-radius: 5px;
+    /* background-color: lightblue; */
+    margin: auto;
+    margin-top: 1.5%;
+}
+
+#body{
+    display: flex;
+    flex-direction: row;
+}
+
+#right-side{
+    width: 20%;
+    margin-top: 50px;
+}
+
+#left-side{
+    width: 80%;
+    margin-left: 5%;
 }
 
 #tittel{
+display: flex;
+flex-direction: row;
+padding: 0;
+}
+
+#overtittel{
     font-weight: bold;
     font-size: large;
+    font-size: 64px;
+    text-align: left;
+    margin: 0 10px 0 5px;
+    padding: 0;
+    font-family: Consolas, monaco, monospace;
+    color: #0047AB;
+}
+
+#undertittel{
+    font-size: 24px;
+    padding-top: 36px;
+    margin: 0;
+    font-family: Consolas, monaco, monospace;
+}
+
+#contenttittel{
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .BildePaDestinasjonsside{
-    width: auto;
-    height: auto;
-    max-width: 50%;
-    margin: 2%;
     position: relative;
-    padding-top: 4%
+    border-radius: 20px;
+    height: auto;
+    width: 65%;
 }
 
+#destinasjonsside {
+    margin: 75px 0 0 0 ;
+    padding: 5px;
+    border-radius: 2px;
+}
 
+.bildediv{
+    text-align: center;
+}
+
+.kategoridiv{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: left;
+    width: 70%;
+    margin-left: 10px;
+}
+
+.listitem{
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-right: 5px;
+    padding: 2px;
+    width: 15%;
+    text-align: center;
+    background-color: rgb(197, 173, 173);
+    font-family:monospace;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#ratings {
+    margin-left: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.rating{
+    width: 90%;
+    margin: auto;
+}
+
+#ratingboks {
+    padding-left: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+    display: flex;
+}
+
+.ratingtittel{
+    font-size: 24px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+}
+
+.rating p{
+    margin: 0;
+}
+
+#description {
+    width: 90%;
+    margin: auto;
+}
+
+.stjerne{
+font-size: 30px;
+}
+
+.ratingp{
+font-size: 30px;
+}
 
