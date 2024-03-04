@@ -12,11 +12,12 @@ function Sidebar(){
 
            <p>FILTER</p> 
            <div id="Besøkt/Ubesøkt">
-           <label> Besøkt/Ubesøkt </label><select name="Besøkte" id="">
-                <option value="Vis Begge">Vis Begge</option>
-                <option value="Kun Besøkte">Kun Besøkte</option>
-                <option value="Kun Ubesøkte">Kun Ubesøkte</option>
-            </select>
+           <label> Besøkt: </label> <br />
+           <input type="checkbox" /> <label> Ja </label> <br />
+           <input type="checkbox" /> <label> Nei </label> <br />
+           <input type="checkbox" /> <label> Vis begge </label> <br />
+               
+
             </div>
             <br />
 
