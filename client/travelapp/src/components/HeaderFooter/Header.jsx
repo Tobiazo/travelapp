@@ -1,62 +1,75 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isDropdownOpen: false
+const Header = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const bruker = localStorage.getItem("loggedIn");
+
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
+        const userData = response.data;
+        setUsername(userData.username); // Assuming the username property exists in userData
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
     };
-  }
 
-  toggleDropdown = () => {
+    if (bruker) {
+      fetchUser();
+    }
+  }, []);
+
+  const toggleDropdown = () => {
     console.log("Dropdown toggled");
-    this.setState({ isDropdownOpen: !this.state.isDropdownOpen });
-  }
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
-  LogOut = (e) => {
+  const LogOut = (e) => {
     e.preventDefault();
     localStorage.setItem("loggedIn", "");
     window.location.reload(false);
-  }
+  };
 
-  render() {
-    const isLoggedIn = localStorage.getItem("loggedIn"); // Assuming you set this value when the user logs in
+  const isLoggedIn = localStorage.getItem("loggedIn");
 
-    return (
-      <div id="header">
-        <div id="linksContainer">
-          <div id="links">
-            <NavLink id="navtohome" to="/">
-              EventyrListen
+  return (
+    <div id="header">
+      <div id="linksContainer">
+        <div id="links">
+          <NavLink id="navtohome" to="/">
+            EventyrListen
+          </NavLink>
+
+          {/* Render login/logout button */}
+          {isLoggedIn ? (
+            <NavLink className="navlink" id="navlinklogginn" onClick={toggleDropdown}>
+              {username}
             </NavLink>
+          ) : (
+            <NavLink className="navlink" id="navlinklogginn" to="/Login">
+              Logg inn
+            </NavLink>
+          )}
 
-            {/*lager logginn/brukernavn-knapp*/}
-            {isLoggedIn ? (
-              <NavLink className="navlink" id="navlinklogginn" onClick={this.toggleDropdown}>
-                Brukernavn
-              </NavLink>
-            ) : (
-              <NavLink className="navlink" id="navlinklogginn" to="/Login">
-                Logg inn
-              </NavLink>
-            )}
-
-            {/* Innholdet i dropdown-menyen */}
-            {isLoggedIn && (
-              <div className="dropdown">
-                <div className="dropdown-content" style={{ display: this.state.isDropdownOpen ? 'block' : 'none' }} id="dropdownContent">
-                  <NavLink className="dropdownLink" to="/minevurderinger">{'Mine vurderinger'}</NavLink><br/>
-                  <NavLink className="dropdownLink" to="/minevurderinger">{'Legg til destinasjon'}</NavLink><br/>
-                  <NavLink className="dropdownLink" id="navlinklogginn" to="/Login" onClick={this.LogOut}>{'Logg ut'}</NavLink><br/>
-                </div>
+          {/* Dropdown content */}
+          {isLoggedIn && (
+            <div className="dropdown">
+              <div className="dropdown-content" style={{ display: isDropdownOpen ? 'block' : 'none' }} id="dropdownContent">
+                <NavLink className="dropdownLink" to="/minevurderinger">{'Mine vurderinger'}</NavLink><br/>
+                <NavLink className="dropdownLink" to="/minevurderinger">{'Legg til destinasjon'}</NavLink><br/>
+                <NavLink className="dropdownLink" id="navlinklogginn" to="/Login" onClick={LogOut}>{'Logg ut'}</NavLink><br/>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Header;
