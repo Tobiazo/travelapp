@@ -19,27 +19,50 @@ export default function BesokSjekkboks({ id }) {
     fetchUser();
   });
 
-  const setVisit = (e) => {
+  function updateDestinations(newDestinations) {
+    axios
+      .put("http://localhost:4000/api/users/edit/" + user._id, { destinations: newDestinations })
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
+  }
 
+  const setVisit = (e) => {
     //Når sjekkboksen blir aktivert.
     //legger til destinasjonen som blir aktivert til
     //listen med alle destinasjoner for den innloggede brukeren.
     //Oppdaterer databasen
     if (e.target.checked) {
-      const userDestinations = [...user.destinations, { destinationId: id, reviewValue: null }];
+      const userDestinations = [...user.destinations];
 
-      axios
-        .put("http://localhost:4000/api/users/edit/" + user._id, { destinations: userDestinations })
-        .then((result) => console.log(result))
-        .catch((err) => console.log(err));
+      if (userDestinations.some((dest) => dest.destinationId === id)) {
+        userDestinations.map((dest) => {
+          if (dest.destinationId == id) {
+            dest.hasVisited = true;
+            return dest;
+          } else {
+            return dest;
+          }
+        });
+        const newUserDestinations = [...userDestinations];
+        updateDestinations(newUserDestinations);
+      } else {
+        const newUserDestinations = [...userDestinations, { destinationId: id, reviewValue: null, hasVisited: true }];
+        updateDestinations(newUserDestinations);
+      }
 
-        
       //Når sjekkboksen blir deaktivert
       //fjerner destinasjonen som blir deaktivert fra
       //listen med alle destinasjoner
       //oppdaterer databasen
     } else if (!e.target.checked) {
-      const userDestinations = [...user.destinations].filter((dest) => dest.destinationId != id);
+      const userDestinations = [...user.destinations].map((dest) => {
+        if (dest.destinationId == id) {
+          dest.hasVisited = false;
+          return dest;
+        } else {
+          return dest;
+        }
+      });
 
       axios
         .put("http://localhost:4000/api/users/edit/" + user._id, { destinations: userDestinations })
@@ -55,7 +78,11 @@ export default function BesokSjekkboks({ id }) {
           id="cbx-12"
           type="checkbox"
           onChange={setVisit}
-          defaultChecked={user && user.destinations && user.destinations.some((dest) => dest.destinationId == id)}
+          defaultChecked={
+            user &&
+            user.destinations &&
+            user.destinations.some((dest) => dest.destinationId == id && dest.hasVisited == true)
+          }
         />
         <label for="cbx-12"></label>
         <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
