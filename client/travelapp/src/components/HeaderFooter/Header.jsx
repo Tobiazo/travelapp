@@ -48,7 +48,7 @@ const Header = () => {
           {/* Render login/logout button */}
           {isLoggedIn ? (
             <NavLink className="navlink" id="navlinklogginn" onClick={toggleDropdown}>
-              {username}
+              {username} {"▽"}
             </NavLink>
           ) : (
             <NavLink className="navlink" id="navlinklogginn" to="/Login">
