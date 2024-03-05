@@ -13,7 +13,7 @@ const Header = () => {
       try {
         const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
         const userData = response.data;
-        setUsername(userData.username); // Assuming the username property exists in userData
+        setUsername(userData.username); 
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -61,8 +61,8 @@ const Header = () => {
             <div className="dropdown">
               <div className="dropdown-content" style={{ display: isDropdownOpen ? 'block' : 'none' }} id="dropdownContent">
                 <NavLink className="dropdownLink" to="/minevurderinger">{'Mine vurderinger'}</NavLink><br/>
-                <NavLink className="dropdownLink" to="/minevurderinger">{'Legg til destinasjon'}</NavLink><br/>
-                <NavLink className="dropdownLink" id="navlinklogginn" to="/Login" onClick={LogOut}>{'Logg ut'}</NavLink><br/>
+                <NavLink className="dropdownLink" to="/upload">{'Legg til destinasjon'}</NavLink><br/>
+                <NavLink className="dropdownLink" to="/Login" onClick={LogOut}>{'Logg ut'}</NavLink><br/>
               </div>
             </div>
           )}
