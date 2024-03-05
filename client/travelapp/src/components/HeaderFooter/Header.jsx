@@ -22,7 +22,7 @@ function Header() {
             <Button className="dropbtn" />
             <div className="dropdown-content">
                 <NavLink className="dropdownLink" to ="/minevurderinger">{'Mine vurderinger'}  </NavLink><br/>
-                <NavLink className="dropdownLink" to ="/minevurderinger">{'Link 2'}  </NavLink><br/>
+                <NavLink className="dropdownLink" to ="/minevurderinger">{'Legg til destinasjon'}  </NavLink><br/>
                 <NavLink className="dropdownLink" id="navlinklogginn" to ="/Login"  onClick={LogOut}>{'Logg ut'}  </NavLink><br/>
               
             </div>
