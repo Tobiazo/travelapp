@@ -81,9 +81,8 @@
 }
 
 .dropdown:hover .dropdown-content {
-  right: 0; /* Position the dropdown at the right side */
-  top: calc(100% + 25px); /* Position the dropdown below the button */
-  
+  right: 0; 
+  top: calc(100% + 25px); 
 }
 
 #mainDropdown{
