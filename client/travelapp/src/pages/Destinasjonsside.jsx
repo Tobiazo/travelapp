@@ -1,6 +1,4 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import PhotoCarousel from "../components/PhotoCarousel.jsx";
 import "../styles/Destinasjonsside.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,30 +6,30 @@ import { useHistory, useLocation } from "react-router-dom";
 import Rating from "../components/Rating.jsx"
 
 const Destinasjonsside = () => {
-  /*
-    const images = [
-        {ParisImage},
-        {Paris2},
-      ];
-    */
-  //const navigate = useNavigate();
-
   const id = useLocation().pathname.split("/")[2];
   const [traveldestination, setDestination] = useState({});
+  const [averageRating, setAverageRating] = useState(0);
   const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:4000/api/travelDestinations/${id}`)
-      .then((response) => {
-        setDestination(response.data);
+      .all([
+        axios.get(`http://localhost:4000/api/travelDestinations/${id}`),
+        axios.get(`http://localhost:4000/api/travelDestinations/average/${id}`)
+      ])
+      .then(axios.spread((destinationResponse, averageResponse) => {
+        setDestination(destinationResponse.data);
+        setAverageRating(Math.round(averageResponse.data.averageRating * 100) / 100);
         setLoading(false);
-      })
+      }))
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, []); 
+
+  
 
   const categoryList = traveldestination.category;
   const imgPath = traveldestination.imgPath;
@@ -75,7 +73,7 @@ const Destinasjonsside = () => {
               <div class="rating">
                 <p className="ratingtittel">gj.snitt Vurdering</p>
                 <div id="ratingboks">
-                  <p className="ratingp"> {traveldestination.rating}</p>
+                  <p className="ratingp"> {averageRating}</p>
                   <p className="stjerne">⭐</p>
                 </div>
               </div>

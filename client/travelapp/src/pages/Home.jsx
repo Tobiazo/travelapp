@@ -6,31 +6,56 @@ import Destinasjonsboks from "../components/Destinasjonsboks";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Home = (props) => {
-  const [traveldestinations, setTraveldestinations] = useState(null);
+// const Home = (props) => {
+//   const [traveldestinations, setTraveldestinations] = useState(null);
   
-  //const navigate = useNavigate();
+//   //const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchTraveldestinations = async () => {
+//       //feches data from server:
+//       const response = await fetch(
+//         "http://localhost:4000/api/travelDestinations"
+//       );
+//       //makes an array of userobjects:
+//       const json = await response.json();
+
+//       if (response.ok) {
+//         setTraveldestinations(json);
+//       }
+//     };
+//     fetchTraveldestinations();
+    
+//   }, []);
+
+//   function setVisit() {
+
+//   }
+
+
+
+const Home = (props) => {
+  const [traveldestinations, setTravelDestinations] = useState(null);
 
   useEffect(() => {
-    const fetchTraveldestinations = async () => {
-      //feches data from server:
-      const response = await fetch(
-        "http://localhost:4000/api/travelDestinations"
-      );
-      //makes an array of userobjects:
+    const fetchTravelDestinations = async () => {
+      const response = await fetch("http://localhost:4000/api/travelDestinations");
       const json = await response.json();
 
       if (response.ok) {
-        setTraveldestinations(json);
+        // finner gjennomsnitt for hver destinasjon ved å mappe over alle destinasjonene. 
+          const destinationsWithAverage = await Promise.all(json.map(async traveldestination => {
+          const averageResponse = await fetch(`http://localhost:4000/api/travelDestinations/average/${traveldestination._id}`);
+          const averageJson = await averageResponse.json();
+          return { ...traveldestination, averageRating: Math.round(averageJson.averageRating*100)/100 };
+        }));
+
+        setTravelDestinations(destinationsWithAverage);
       }
     };
-    fetchTraveldestinations();
-    
+
+    fetchTravelDestinations();
   }, []);
-
-  function setVisit() {
-
-  }
 
   return (
     <div>
@@ -65,7 +90,7 @@ const Home = (props) => {
             <Destinasjonsboks
               key={traveldestination._id}
               id={traveldestination._id}
-              rating={traveldestination.rating}
+              rating={traveldestination.averageRating}
               land={traveldestination.destination_country}
               tittel={traveldestination.destination_name}
               beskrivelse={traveldestination.ShortDescription}
