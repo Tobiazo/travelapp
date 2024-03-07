@@ -1,5 +1,5 @@
 .main-container {
-    padding: 150px 0;
+    padding: 100px 0;
     display: block;
     width: 90%;
     margin: auto;
@@ -40,8 +40,8 @@
 .signup-content{
     flex-direction: column;
     justify-content: center;
-    padding: 75px 0;
     text-align: center;
+    padding: 1%;
 }
 .form-group:last-child {
     margin-bottom: 0;
