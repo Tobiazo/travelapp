@@ -47,6 +47,21 @@ export default function Rating({
           .then((result) => console.log(result))
           .catch((err) => console.log(err));
       }
+
+    const removeRating = () => {
+      const userDestinations = [...user.destinations];
+      if(userDestinations.some(dest => dest.destinationId === id)) {
+        userDestinations.map((dest) => {
+          if(dest.destinationId === id) {
+            dest.reviewValue = null
+            return dest;
+          }
+        })
+      }
+      const updatedUserDest = [...userDestinations]
+      updateDestinations(updatedUserDest);
+      setRating(null);
+    }
     
     const handleRating = (currentRating) => {
 
@@ -80,6 +95,10 @@ export default function Rating({
 
     return (
         <div>
+          <div>
+            <button onClick={removeRating} id="remove-rating" >Fjern rating
+            </button>
+          </div>
             {[...Array(totalStars)].map((star, index) => {
                 const currentRating = index + 1;
 

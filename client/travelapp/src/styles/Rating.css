@@ -17,3 +17,13 @@ input[type="radio"] {
     margin: 0.05%;
     text-align: center;
 }
+
+#remove-rating {
+    border: 2px solid;
+    transition-duration: 0.4s;
+
+}
+
+#remove-rating:hover {
+    background-color: lightgray;
+}
