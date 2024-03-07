@@ -19,7 +19,7 @@
   position: fixed;
   color: black;
   font-size: x-large;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
@@ -52,73 +52,11 @@
   position: absolute;
   display: inline-block;
   left: 20px;
-  color: black;
-  text-decoration: none;
-  background-color: rgb(197, 173, 173);
+  
 }
 
 #navlinklogginn{
   position: absolute;
   right: 5%;
-  color: black;
-  text-decoration: none;
-  background-color: rgb(197, 173, 173);
 
 }
-
-
-
-.dropdown-content {
-  /* display: none; */
-  position: absolute;
-  background-color: rgb(197, 173, 173);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
-  z-index: 1;
-  border-radius: 25px;
-  border: 2px solid grey;
-  padding: 20px;
-  width: 250px;
-  height: auto; 
-  right: 0px;
-  margin-top: 50px;
-  margin-right: 20px;
-  
- } 
- #hiddenDiv{
-  z-index: 0;
-  position: 'fixed';
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
- }
-/* .dropdown:hover .dropdown-content, 
-.dropdown-content:hover {
-  display: block;
-} */
-
- /* .dropdown { */
-  /* left: 0px; */
-  /* width: 300px; */
-/* }  */
-.dropdownLink{
-  color: black;
-  text-decoration: none;
-  background-color: rgb(197, 173, 173);
-  font-size: large;
-}
-
-.dropdownLink:hover{
-  color: white;
-}
-
-
-
-
-
-
-
-
-
-
-
