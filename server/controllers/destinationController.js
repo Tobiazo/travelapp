@@ -102,7 +102,7 @@ exports.getAverage = async (req, res) => {
     }
 
     // regner ut gjennomsnittlig rating 
-    const averageRating = numberOfRatings > 0 ? (totalRating / numberOfRatings).toFixed(2) : 0;
+    const averageRating = numberOfRatings > 0 ? (totalRating / numberOfRatings).toFixed(1) : 0;
 
     // returnerer ratingen. 
     res.json({ averageRating });
