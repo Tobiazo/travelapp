@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { useClickAway } from "@uidotdev/usehooks";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [username, setUsername] = useState("");
+  const ref = useClickAway(() => {
+    setIsDropdownOpen(false);
+  });
+
 
   useEffect(() => {
     const bruker = localStorage.getItem("loggedIn");
@@ -24,10 +29,13 @@ const Header = () => {
     }
   }, []);
 
+
+
   const toggleDropdown = () => {
-    console.log("Dropdown toggled");
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+    if (isDropdownOpen === false) {
+      setIsDropdownOpen(true); 
+      }
+};
 
   const LogOut = (e) => {
     e.preventDefault();
@@ -58,7 +66,8 @@ const Header = () => {
 
           {/* Dropdown content */}
           {isLoggedIn && (
-            <div className="dropdown">
+            
+            <div className="dropdown"ref={ref}> <button onClick={() => toggleDropdown(false)}></button> 
               <div className="dropdown-content" style={{ display: isDropdownOpen ? 'block' : 'none' }} id="dropdownContent">
                 <NavLink className="dropdownLink" to="/minevurderinger">{'Mine vurderinger'}</NavLink><br/>
                 <NavLink className="dropdownLink" to="/upload">{'Legg til destinasjon'}</NavLink><br/>
@@ -67,6 +76,10 @@ const Header = () => {
             </div>
           )}
         </div>
+        {/* {isDropdownOpen && (
+          // <div ref={ref}> <button onClick={() => toggleDropdown(false)}></button> </div>
+        )} */}
+      
       </div>
     </div>
   );
