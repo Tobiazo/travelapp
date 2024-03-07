@@ -43,10 +43,8 @@ export default function Layout({content, sidebarToggle = 2}) {
         {content}
         </main>
         <div>
-          
       <Footer />
       </div>
-
     </div>
   )
 }

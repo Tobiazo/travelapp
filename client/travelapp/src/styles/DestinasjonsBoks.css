@@ -19,8 +19,6 @@
 .destinasjonsBoks{
     border-radius: 20px;
     width: 30%;
-  
-    overflow: hidden;
     height: 340px;
     vertical-align: top;
     display: inline-block;
@@ -37,7 +35,6 @@
 .destinasjonsBoks a{
     color: rgb(0, 0, 0);
     text-decoration: none;
-    
 
   }
 
@@ -52,8 +49,6 @@
     top: 5px;
     right: 5px;
     font-size: larger;
-    padding: 4px;
-
 }
 
 
@@ -80,7 +75,6 @@
 #tittelDiv p{
     font-size: larger;
     margin: 0;
-    padding: 4px;
 }
 
 
@@ -90,7 +84,6 @@
 
 #tekstBeskrivelseReisedestinasjonsBoks{
     font-size: 15px;
-    padding: 4px;
 }
 
 .Traveldestinations{
