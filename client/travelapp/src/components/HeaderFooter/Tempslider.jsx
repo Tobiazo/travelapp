@@ -7,7 +7,7 @@ function valuetext(value) {
 }
 
 export default function TempSlider() {
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue] = React.useState([-20, 58]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
