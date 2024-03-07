@@ -63,15 +63,16 @@ const Destinasjonsside = () => {
           </div>
           <div id="right-side"> 
             <div id="ratings">
-              <div class="rating">
+              <div class="rating"
+                    style={{display: (localStorage.getItem("loggedIn")) ? 'block' : 'none'}}>
                 <p className="ratingtittel">Min Vurdering</p>
                 <div id="ratingboks">
-                  <Rating />
+                    <Rating />
                   {/*<p className="stjerne">⭐</p>*/}
                 </div>
               </div>
               <div class="rating">
-                <p className="ratingtittel">gj.snitt Vurdering</p>
+                <p className="ratingtittel">Snittvurdering</p>
                 <div id="ratingboks">
                   <p className="ratingp"> {averageRating}</p>
                   <p className="stjerne">⭐</p>
