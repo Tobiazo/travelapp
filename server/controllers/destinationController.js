@@ -1,6 +1,8 @@
 const path = require('path');
 let destinationModel = require('../models/destinationModel');
 const multer = require('multer');
+const { getAllUsers } = require('./userController');
+const userModel = require('../models/userModel')
 
 
 
@@ -72,4 +74,41 @@ exports.updateDestinationByID = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+
+
+
+exports.getAverage = async (req, res) => {
+  try {
+    const destinationId = req.params.id;
+
+    // finner destinasjonen
+    const destination = await destinationModel.findById(destinationId);
+    if (!destination) {
+      return res.status(404).json({ error: "Destination not found." });
+    }
+
+    let totalRating = 0;
+    let numberOfRatings = 0;
+
+    // itererer over hver bruker
+    const users = await userModel.find({});
+    for (const user of users) {
+      // Sjekker om bruker har ratet destinasjonen
+      const ratedDestination = user.destinations.find(dest => dest && dest.destinationId === destinationId);
+      if (ratedDestination && ratedDestination.reviewValue !== null) {
+        totalRating += ratedDestination.reviewValue;
+        numberOfRatings++;
+      }
+    }
+
+    // regner ut gjennomsnittlig rating 
+    const averageRating = numberOfRatings > 0 ? (totalRating / numberOfRatings).toFixed(2) : 0;
+
+    // returnerer ratingen. 
+    res.json({ averageRating });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};
 

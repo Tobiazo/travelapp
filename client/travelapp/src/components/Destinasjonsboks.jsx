@@ -34,8 +34,8 @@ export default function Destinasjonsboks({
             </a>
           </div>
           <div id="ratingDiv">
-            ✰ {rating}
-            {!rating && "-"}/10
+            ✰ {rating}/10
+            {/* {!rating && "-"}/10 */}
           </div>
         </div>
         <div id="underTittel">

@@ -47,4 +47,8 @@ router.put('/travelDestinations/edit/:id', destinationController.updateDestinati
 // //laste opp bilde til reisedestinasjon
 // router.post('/upload', upload.single('file'), imageController.uploadImage)
   
+
+//Hente gjennomsnittsrating:
+router.get('/travelDestinations/average/:id', destinationController.getAverage)
+
 module.exports = router;
