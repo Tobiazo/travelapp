@@ -6,26 +6,55 @@ import Destinasjonsboks from "../components/Destinasjonsboks";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// const Home = (props) => {
+//   const [traveldestinations, setTraveldestinations] = useState(null);
+  
+//   //const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchTraveldestinations = async () => {
+//       //feches data from server:
+//       const response = await fetch(
+//         "http://localhost:4000/api/travelDestinations"
+//       );
+//       //makes an array of userobjects:
+//       const json = await response.json();
+
+//       if (response.ok) {
+//         setTraveldestinations(json);
+//       }
+//     };
+//     fetchTraveldestinations();
+    
+//   }, []);
+
+//   function setVisit() {
+
+//   }
+
+
+
 const Home = (props) => {
-  const [traveldestiantions, setTraveldestinations] = useState(null);
-  const { loggedIn, email } = props;
-  //const navigate = useNavigate();
+  const [traveldestinations, setTravelDestinations] = useState(null);
 
   useEffect(() => {
-    const fetchTraveldestinations = async () => {
-      //feches data from server:
-      const response = await fetch(
-        "http://localhost:4000/api/travelDestinations"
-      );
-      //makes an array of userobjects:
+    const fetchTravelDestinations = async () => {
+      const response = await fetch("http://localhost:4000/api/travelDestinations");
       const json = await response.json();
 
       if (response.ok) {
-        setTraveldestinations(json);
+        // finner gjennomsnitt for hver destinasjon ved å mappe over alle destinasjonene. 
+          const destinationsWithAverage = await Promise.all(json.map(async traveldestination => {
+          const averageResponse = await fetch(`http://localhost:4000/api/travelDestinations/average/${traveldestination._id}`);
+          const averageJson = await averageResponse.json();
+          return { ...traveldestination, averageRating: Math.round(averageJson.averageRating*100)/100 };
+        }));
+
+        setTravelDestinations(destinationsWithAverage);
       }
     };
 
-    fetchTraveldestinations();
+    fetchTravelDestinations();
   }, []);
 
   return (
@@ -37,7 +66,7 @@ const Home = (props) => {
   <div>This is the home page.</div>*/}
   </div>
         <div className={"buttonContainer"}>
-          {loggedIn ? <div>Your email address is {email}</div> : <div />}
+          {/* {loggedIn ? <div>Your email address is {email}</div> : <div />} */}
         </div>
         {/* <div id="destinasjonsBokserDiv">
                 <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
@@ -53,19 +82,19 @@ const Home = (props) => {
                 <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
                 <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />    
                 </div> */}
-        {loggedIn ? <div>Your email address is {email}</div> : <div />}
+        {/* {loggedIn ? <div>Your email address is {email}</div> : <div />} */}
       </div>
       <div className="Traveldestinations">
-        {traveldestiantions &&
-          traveldestiantions.map((traveldestiantion) => (
+        {traveldestinations &&
+          traveldestinations.map((traveldestination) => (
             <Destinasjonsboks
-              key={traveldestiantion._id}
-              id={traveldestiantion._id}
-              rating={traveldestiantion.rating}
-              land={traveldestiantion.destination_country}
-              tittel={traveldestiantion.destination_name}
-              beskrivelse={traveldestiantion.ShortDescription}
-              imgPath={traveldestiantion.imgPath}
+              key={traveldestination._id}
+              id={traveldestination._id}
+              rating={traveldestination.averageRating}
+              land={traveldestination.destination_country}
+              tittel={traveldestination.destination_name}
+              beskrivelse={traveldestination.ShortDescription}
+              imgPath={traveldestination.imgPath}
             />
           ))}
       </div>

@@ -25,15 +25,28 @@
   font-weight: bold;
   background-color: rgb(197, 173, 173);
   height: 10%;
-  overflow : visible;
-
+  overflow : hidden;
+  top: 0;
 }
 
 #linksContainer{
   padding: 1.5%;
 }
+.links a{
+  color: black;
+  text-decoration: none;
+}
+.links{
+  color: black;
+  text-decoration: none;
+}
 
 
+#sidebarOnButton{
+  right: 0.3%;
+  top: 15%;
+  position: absolute;
+}
 
 #navtohome{
   position: absolute;

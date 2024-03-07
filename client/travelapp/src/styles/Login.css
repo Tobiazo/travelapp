@@ -93,7 +93,7 @@ input[type="submit" i]#name {
     padding-inline: 6px;
 }
 
-button {
+.loginPageButton {
     /* user-select: none; */
     appearance: auto;
     align-items: flex-start;
@@ -111,17 +111,10 @@ button {
     border-radius: 5px;
 }
 
-button:hover{
+.loginPageButton:hover{
     background-color: lightgray;
 }
 
-.form-group span {
-    position: absolute;
-    font-size: 0.8rem;
-    opacity: 0.5;
-    pointer-events: none;
-    transition: 0.25s ease;
-}
 
 .form-group input:valid + span, 
 .form-group input:focus + span {

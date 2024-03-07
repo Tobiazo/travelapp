@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
-import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/Forside.css";
+import BesokSjekkboks from "./BesokSjekkboks";
 
 export default function Destinasjonsboks({
+
   id,
   land,
   tittel,
@@ -11,9 +11,11 @@ export default function Destinasjonsboks({
   rating,
   imgPath,
 }) {
+
   return (
     <div class="destinasjonsBoks">
       <div>
+      {localStorage.getItem("loggedIn") && <BesokSjekkboks id = {id} />}
         <div id="destinasjonsBildeDiv">
           <a href={"/destinations/" + id}>
             <img
@@ -31,10 +33,9 @@ export default function Destinasjonsboks({
               <p>{tittel}</p>
             </a>
           </div>
-
           <div id="ratingDiv">
-            ✰ {rating}
-            {!rating && "-"}/10
+            ✰ {rating}/10
+            {/* {!rating && "-"}/10 */}
           </div>
         </div>
         <div id="underTittel">
