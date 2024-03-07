@@ -94,18 +94,7 @@ const NewDestination = () => {
                         placeholder="Navn på destinasjonen"
                       ></input>
                     </div>
-                    <div class="form-group">
-                      <label class="shortInputLabel" for="shortInput"></label>
-                      <input
-                        onChange={(e) =>
-                          setDestinationContinent(e.target.value)
-                        }
-                        type="text"
-                        name="shortInput"
-                        id="shortInput"
-                        placeholder="Kontinent"
-                      ></input>
-                    </div>
+
                     <div class="form-group">
                       <label class="shortInputLabel" for="shortInput"></label>
                       <input
@@ -144,6 +133,22 @@ const NewDestination = () => {
                         id="LongDescription"
                         placeholder="Lang beskrivelse"
                       ></textarea>
+                    </div>
+                    <div class="form-group">
+                      <select
+                        class="select"
+                        onChange={(e) =>
+                          setDestinationContinent(e.target.value)
+                        }
+                      >
+                        <option value="">Velg et kontinent</option>
+                        <option value="Europa">Europa </option>
+                        <option value="Nord-Amerika">Nord-Amerika </option>
+                        <option value="Sør-Amerika">Sør-Amerika </option>
+                        <option value="Asia">Asia</option>
+                        <option value="Afrika">Afrika </option>
+                        <option value="Oseania">Oseania</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <select class="select" onChange={handleSelect} value="">
@@ -188,7 +193,7 @@ const NewDestination = () => {
                           !destination_contry ||
                           !file ||
                           !ShortDescription ||
-                          !destination_continent
+                          destination_continent === ""
                         }
                       >
                         Legg til
