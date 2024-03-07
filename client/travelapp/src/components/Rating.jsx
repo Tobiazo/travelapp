@@ -93,6 +93,7 @@ export default function Rating({
           }
     };
 
+    if(localStorage.getItem("loggedIn")) {
     return (
         <div>
           <div>
@@ -126,3 +127,4 @@ export default function Rating({
         </div>
     );
 };
+}
