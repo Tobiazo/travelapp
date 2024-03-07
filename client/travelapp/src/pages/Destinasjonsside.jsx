@@ -5,6 +5,7 @@ import "../styles/Destinasjonsside.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router-dom";
+import Rating from "../components/Rating.jsx"
 
 const Destinasjonsside = () => {
   /*
@@ -67,8 +68,8 @@ const Destinasjonsside = () => {
               <div class="rating">
                 <p className="ratingtittel">Min Vurdering</p>
                 <div id="ratingboks">
-                  <p className="ratingp"> {traveldestination.rating}</p>
-                  <p className="stjerne">⭐</p>
+                  <Rating />
+                  {/*<p className="stjerne">⭐</p>*/}
                 </div>
               </div>
               <div class="rating">
