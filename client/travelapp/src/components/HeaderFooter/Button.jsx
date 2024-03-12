@@ -16,9 +16,9 @@ function Button(){
 
                 
                 <div class="links">
-                <NavLink className="float" id="navlinklogginn" to ="/Login">{!bruker && "Login"}  </NavLink>
+                <NavLink className="float" id="navlinklogginn" to ="/Login">{!bruker && "Logg inn"}  </NavLink>
                 
-                <NavLink className="float" id="navlinklogginn" to ="/Login"  onClick={LogOut}> {bruker && "LogOut"}  </NavLink>
+                <NavLink className="float" id="navlinklogginn" to ="/Login"  onClick={LogOut}> {bruker && "Logg ut"}  </NavLink>
             </div>
 
         </div>

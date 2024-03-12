@@ -49,6 +49,12 @@
     top: 5px;
     right: 5px;
     font-size: larger;
+
+}
+
+#stjerne {
+  width: 20%;
+  color: "#ffc107" 
 }
 
 

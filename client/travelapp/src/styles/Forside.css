@@ -1,20 +1,16 @@
-.defaultMain{
-    padding-bottom: 0px;
-    padding-top: 20px;
-    width: 76%;
-   
-   
-
+.defaultMain {
+  padding-bottom: 0px;
+  padding-top: 20px;
+  width: 76%;
 }
 
-.loginMain{
-    width: 100%;
-    min-height: 100%;
-
+.loginMain {
+  width: 100%;
+  min-height: 100%;
 }
 
-#destinasjonsBokserDiv{
-    padding: 5%
+#destinasjonsBokserDiv {
+  padding: 5%;
 }
 
 #sidetab1 {
@@ -24,16 +20,14 @@
   border-bottom-left-radius: 10px;
   background-color: rgb(205, 189, 189);
   padding: 5px;
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: -38px;
+  top: 72px;
   margin-right: -5px;
   z-index: 100;
 }
 
 img#sidetabimg1 {
-  max-width: 30px;
+  width: 22.5px;
   max-height: 30px;
 }
-
-

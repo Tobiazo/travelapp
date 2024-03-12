@@ -180,7 +180,7 @@ const Home = (props) => {
               <Destinasjonsboks
                 key={traveldestination._id}
                 id={traveldestination._id}
-                rating={traveldestination.averageRating}
+                rating={isNaN(traveldestination.averageRating) ? '-' : traveldestination.averageRating}
                 land={traveldestination.destination_country}
                 tittel={traveldestination.destination_name}
                 beskrivelse={traveldestination.ShortDescription}
