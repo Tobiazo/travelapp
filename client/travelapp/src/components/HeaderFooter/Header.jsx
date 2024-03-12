@@ -74,7 +74,7 @@ const Header = () => {
               <div className="dropdown-content" style={{ display: isDropdownOpen ? 'block' : 'none' }} id="dropdownContent">
               <NavLink className="dropdownLink" to="/">{'Hovedside'}</NavLink><br/>
                 <NavLink className="dropdownLink" to="/minevurderinger">{'Mine vurderinger'}</NavLink><br/>
-                <NavLink className="dropdownLink" to="/upload">{'Legg til destinasjon'}</NavLink><br/>
+                <NavLink className="dropdownLink" to="/newDestination">{'Legg til destinasjon'}</NavLink><br/>
                 <NavLink className="dropdownLink" to="/Login" onClick={LogOut}>{'Logg ut'}</NavLink><br/>
               </div>
             </div>
