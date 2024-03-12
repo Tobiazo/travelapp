@@ -10,6 +10,7 @@ import Layout from './components/Layout/Layout'
 import Destinasjonsside from './pages/Destinasjonsside';
 import NewDestination from './pages/NewDestination';
 import MineVurderinger from './pages/MineVurderinger';
+import MineDestinasjoner from './pages/MineDestinasjoner';
 
 function App() {
 
@@ -44,6 +45,11 @@ function App() {
   {
     path: "/minevurderinger",
     element: <Layout content={<MineVurderinger />}sidebarToggle={false}/>
+  },
+
+  {
+    path: "/minedestinasjoner",
+    element: <Layout content={<MineDestinasjoner />}sidebarToggle={false}/>
   }
 
   ])
