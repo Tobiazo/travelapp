@@ -66,18 +66,16 @@ const Destinasjonsside = () => {
           </div>
           <div id="right-side">
             <div id="ratings">
-              <div className="rating">
-                {/*<p className="ratingtittel">Min Vurdering</p>*/}
-              
+              <div className="rating">              
                 <div id="ratingboks">
                   <Rating />
-                  {/*<p className="stjerne">⭐</p>*/}
                 </div>
               </div>
               <div className="rating">
                 <p className="ratingtittel">Snittvurdering</p>
                 <div id="ratingboks">
-                  <p className="ratingp"> {traveldestination.rating}⭐</p>
+                  <p className="rating-star">&#9733;</p> 
+                  <p id="snittvurdering-tall">{traveldestination.rating}</p>
                 </div>
               </div>
             </div>

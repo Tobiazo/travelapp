@@ -40,6 +40,41 @@
     max-height: 30px;
   }
 
-  .MuiSlider-track, .MuiSlider-rail, .MuiSlider-mark, .MuiSlider-thumb{
-    color: rgb(162, 119, 166);
-}
+  #vurderingsboks-top {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .rating-star-sidebar {
+    display: flex;
+    color: #ffc107;
+    font-size: 125%;
+
+  }
+
+  #vurdering-tekst {
+    display: flex;
+    font-size: 125%;
+  }
+
+  #temp-tekst {
+    display: flex;
+    font-size: 125%;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  #temp-tekst-boks {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #thermometer {
+    display: flex;
+    font-size: 10%;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+  }
