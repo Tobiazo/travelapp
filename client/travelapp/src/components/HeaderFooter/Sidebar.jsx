@@ -73,10 +73,14 @@ function Sidebar() {
           </select>
         </div>
 
-        <p>⭐Vurdering:</p>
-
+        <div id="vurderingsboks-top">
+          <p className="rating-star-sidebar">&#9733;</p>
+          <p id="vurdering-tekst"> Vurdering: </p>
+        </div>
         <ContinuousSlider />
-        <p>Temp:</p>
+        <div id="temp-tekst-boks">
+          <p id="temp-tekst"> 🌍 Klima:</p>
+        </div>
         <TempSlider />
       </div>
     </>

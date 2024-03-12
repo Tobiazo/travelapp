@@ -8,6 +8,7 @@ const NewDestination = () => {
   const [destination_name, setDestinationName] = useState("");
   const [destination_contry, setDestinationCountry] = useState("");
   const [destination_continent, setDestinationContinent] = useState("");
+  const [destination_climate, setDestinationClimate] = useState("");
   const [ShortDescription, setShortDescription] = useState("");
   const [longDescription, setLongDescription] = useState("");
   const [uploaded, setUploaded] = useState(false);
@@ -59,6 +60,7 @@ const NewDestination = () => {
     formdata.append("destination_name", destination_name);
     formdata.append("destination_contry", destination_contry);
     formdata.append("destination_continent", destination_continent);
+    formdata.append("destination_climate", destination_climate);
     formdata.append("ShortDescription", ShortDescription);
     formdata.append("longDescription", longDescription);
     formdata.append("author", destinationAuthor);
@@ -148,6 +150,15 @@ const NewDestination = () => {
                         <option value="Asia">Asia</option>
                         <option value="Afrika">Afrika </option>
                         <option value="Oseania">Oseania</option>
+                      </select>
+                      <select
+                        class="select"
+                        onChange={(e) => setDestinationClimate(e.target.value)}
+                      >
+                        <option value="">Velg et klima</option>
+                        <option value="Varmt">Varmt </option>
+                        <option value="Kaldt">Kaldt </option>
+                        <option value="Temperert">Temperert </option>
                       </select>
                     </div>
                     <div class="form-group">
