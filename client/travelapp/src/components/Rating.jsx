@@ -96,10 +96,7 @@ export default function Rating({
     if(localStorage.getItem("loggedIn")) {
     return (
         <div className="rat">
-          <div>
-            <button onClick={removeRating} id="remove-rating" >Fjern rating
-            </button>
-          </div>
+          <p className="ratingtittel" id="min-vurdering-tekst">Min Vurdering</p>
             {[...Array(totalStars)].map((star, index) => {
                 const currentRating = index + 1;
 
@@ -124,6 +121,10 @@ export default function Rating({
                     </label>
                 );
             })}
+          <div>
+            <button onClick={removeRating} id="remove-rating" >Fjern rating
+            </button>
+          </div>
         </div>
     );
 };
