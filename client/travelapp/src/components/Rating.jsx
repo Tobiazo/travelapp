@@ -95,7 +95,7 @@ export default function Rating({
 
     if(localStorage.getItem("loggedIn")) {
     return (
-        <div>
+        <div className="rat">
           <div>
             <button onClick={removeRating} id="remove-rating" >Fjern rating
             </button>
