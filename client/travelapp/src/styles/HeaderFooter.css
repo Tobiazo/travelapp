@@ -18,44 +18,84 @@
   position: fixed;
   color: black;
   font-size: x-large;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   background-color: rgb(197, 173, 173);
   height: 10%;
-  overflow: hidden;
-  top: 0;
+  overflow : visible;
+
 }
 
 #linksContainer {
   padding: 1.5%;
 }
-.links a {
+
+
+
+#navtohome{
+  position: absolute;
+  display: inline-block;
+  left: 20px;
   color: black;
   text-decoration: none;
-}
-.links {
-  color: black;
-  text-decoration: none;
+  background-color: rgb(197, 173, 173);
 }
 
-#sidebarOnButton {
+#navlinklogginn{
+  position: absolute;
+  right: 5%;
+  color: black;
+  text-decoration: none;
+  background-color: rgb(197, 173, 173);
+
+}
+
+
+
+.dropdown-content {
+  /* display: none; */
+  position: absolute;
+  background-color: rgb(197, 173, 173);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  border-radius: 25px;
+  border: 2px solid grey;
+  padding: 20px;
+  width: 250px;
+  height: auto; 
+  right: 0px;
+  margin-top: 50px;
+  margin-right: 20px;
+  
+ } 
+ #hiddenDiv{
+  z-index: 0;
+  position: 'fixed';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+ }
+
+.dropdownLink{
+  color: black;
+  text-decoration: none;
+  background-color: rgb(197, 173, 173);
+  font-size: large;
+}
+
+.dropdownLink:hover{
+  color: white;
+}
+
+#sidebarOnButton{
   right: 0.3%;
   top: 15%;
   position: absolute;
 }
 
-#navtohome {
-  position: absolute;
-  display: inline-block;
-  left: 20px;
-}
-
-#navlinklogginn {
-  position: absolute;
-  right: 5%;
-}
 
 #sidetab2 {
   border: 2px solid black;
@@ -76,6 +116,13 @@ img#sidetabimg2 {
   max-height: 30px;
 }
 
-a.float:hover {
-  color:rgb(131, 159, 178);
-}
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@
     height: 100%;
     width: 22%;
     background-color:  rgb(205, 189, 189);
-    color: balck;
+    color: black;
     padding: 1%;
 }
 
@@ -39,3 +39,7 @@
     max-width: 30px;
     max-height: 30px;
   }
+
+  .MuiSlider-track, .MuiSlider-rail, .MuiSlider-mark, .MuiSlider-thumb{
+    color: rgb(162, 119, 166);
+}
