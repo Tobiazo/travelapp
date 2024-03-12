@@ -74,7 +74,7 @@ const Destinasjonsside = () => {
                 </div>
               </div>
               <div className="rating">
-                <p className="ratingtittel">gj.snitt Vurdering</p>
+                <p className="ratingtittel">Snitt Vurdering</p>
                 <div id="ratingboks">
                   <p className="ratingp"> {traveldestination.rating}⭐</p>
                 </div>
