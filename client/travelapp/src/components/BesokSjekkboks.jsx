@@ -64,10 +64,7 @@ export default function BesokSjekkboks({ id }) {
         }
       });
 
-      axios
-        .put("http://localhost:4000/api/users/edit/" + user._id, { destinations: userDestinations })
-        .then((result) => console.log(result))
-        .catch((err) => console.log(err));
+      updateDestinations(userDestinations);
     }
   };
 
@@ -81,7 +78,7 @@ export default function BesokSjekkboks({ id }) {
           defaultChecked={
             user &&
             user.destinations &&
-            user.destinations.some((dest) => dest.destinationId == id && dest.hasVisited == true)
+            user.destinations.some((dest) => dest.destinationId == id && dest.hasVisited === true)
           }
         />
         <label for="cbx-12"></label>
