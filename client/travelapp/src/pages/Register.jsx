@@ -69,7 +69,7 @@ const Register = (props) => {
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
-                    <h2 class="form-title">Register</h2>
+                    <h2 class="form-title">Registrer deg</h2>
                     <div class="form-group">
                         <label for="Username"></label>
                         <input type="text" name="name" id="name" placeholder="Your Name" 
@@ -86,7 +86,7 @@ const Register = (props) => {
                         onChange={(e) => setPassword1(e.target.value)}/>
                     </div>
                     <div class="form-group form-button">
-                        <button onClick = {handleSubmit} >Register</button>
+                        <button onClick = {handleSubmit} >Registrer</button>
                     </div>
                 </div>
             </div>

@@ -51,7 +51,7 @@ const Login = (props) => {
         <div class="container">
           <div class="signup-content">
             <div class="signup-form">
-              <h2 class="form-title">Log in</h2>
+              <h2 class="form-title">Logg inn</h2>
               <div class="form-group">
                 <label class="loginLabel" for="Username"></label>
                 <input
@@ -73,11 +73,11 @@ const Login = (props) => {
                 />
               </div>
               <div class="form-group form-button">
-                <button onClick={handleLogin}>Log In</button>
+                <button onClick={handleLogin}>Log Inn</button>
               </div>
               <div class="form-group form-button">
                 <NavLink to="/Register" style={{ textDecoration: "none" }}>
-                  <button>New? Register here</button>
+                  <button>Registrer deg</button>
                 </NavLink>
               </div>
             </div>
