@@ -98,12 +98,8 @@
   width: 90%;
   text-align: center;
   margin: auto;
+  
 }
-
-/* .rating {
-  width: 100%;
-  margin: auto;
-} */
 
 #ratingboks {
   padding-left: 0px;
@@ -112,9 +108,9 @@
   background-color: white;
   display: flex;
   margin: 0 auto;
-  text-align: center;
   width: 100%;
-  left: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
 .ratingtittel {
@@ -123,23 +119,18 @@
   padding-bottom: 10px;
 }
 
-.rating p {
-  margin: 0 auto;
-}
-
 #description {
   width: 90%;
-  margin: auto;
+  margin: auto; 
 }
 
-.stjerne {
-  font-size: 30px;
+.rating-star {
+  color: #ffc107;
+  font-size: 175%;
+  margin:  0;
 }
 
-.ratingp {
-  font-size: 30px;
-}
-
-.ratingstar {
-  width: 100%;
+#snittvurdering-tall {
+  font-size: 175%;
+  margin: 0;
 }
