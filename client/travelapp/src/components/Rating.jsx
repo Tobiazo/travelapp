@@ -106,7 +106,7 @@ export default function Rating({
 
                 return (
                     <label key={index}>
-                        <input
+                        <input class="ratingRadio"
                             type="radio"
                             name="rating"
                             value={currentRating}

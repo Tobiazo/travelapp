@@ -8,7 +8,7 @@
 }
 
 /*denne endrer inputs den ikke burde*/
-input[type="radio"] {
+.ratingRadio {
     display: none;
 }
 
