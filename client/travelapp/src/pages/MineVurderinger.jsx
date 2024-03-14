@@ -8,6 +8,8 @@ const MineVurderinger = () => {
   const [destinations, setDestinations] = useState([]);
   const [user, setUser] = useState({});
   const bruker = localStorage.getItem("loggedIn");
+  const [userDestinations, setUserDestinations] = useState(null);
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -17,6 +19,7 @@ const MineVurderinger = () => {
 
         if (response.status === 200) {
           setUser(userData);
+          setUserDestinations(userData.destinations);
           //henter ut destinasjonsdataen
           const destinationIds = userData.destinations.map((destination) => destination.destinationId);
           const destinationsData = await Promise.all(
@@ -59,6 +62,8 @@ const MineVurderinger = () => {
           tittel={destination.destination_name}
           beskrivelse={destination.ShortDescription}
           imgPath={destination.imgPath}
+          userDestinations={userDestinations}
+          setUserDestinations={setUserDestinations}
           />
         ))}
       </div>
