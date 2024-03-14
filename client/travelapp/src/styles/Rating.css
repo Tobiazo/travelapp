@@ -7,6 +7,7 @@
     width: 100%;
 }
 
+/*denne endrer inputs den ikke burde*/
 input[type="radio"] {
     display: none;
 }

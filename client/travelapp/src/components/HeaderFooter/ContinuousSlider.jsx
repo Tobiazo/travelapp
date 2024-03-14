@@ -22,6 +22,10 @@ export default function ContinuousSlider() {
 
   const marks = [
     {
+      value: 0,
+      label: '-',
+    },
+    {
       value: 1,
       label: '1',
     },
@@ -76,7 +80,7 @@ export default function ContinuousSlider() {
         onChange={handleChange}
         valueLabelDisplay="off"
         getAriaValueText={valuetext}
-        min={1}
+        min={0}
         max={10}
         step={0.01}
         marks={marks}

@@ -39,6 +39,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
+
     const fetchUser = async () => {
       try {
         const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
@@ -54,7 +55,7 @@ function Home() {
     };
 
     fetchUser();
-  }, []);
+  }, [user]);
 
   return (
     <div>
@@ -63,63 +64,81 @@ function Home() {
           Filter ser slik ut [[ratingMin, RatingMax], [tags], [kontinenter], klima, showVisisted]
           dersom kontinenter er full skal den sortes som full
         */}
-
+        
         {traveldestinations &&
           traveldestinations
-            .filter((ele) => {
-              //filtrering av Rating
-              return filter[0][0] <= ele.rating && ele.rating <= filter[0][1];
-            })
-            .filter((ele) => {
-              //filtrering av Besøkt/ikke Besøkt
-
-              if (filter[4] == "Vis Begge") {
-                return true;
-              } else if (user == null) {
-                return true;
-              } else if (filter[4] == "Kun Besøkte") {
-                const visitedArray = user.destinations;
-                for (let index = 0; index < visitedArray.length; index++) {
-                  const element = visitedArray[index];
-                  if (element.destinationId == ele._id) {
-                    console.log(element.hasVisited);
-
-                    return element.hasVisited;
-                  }
-                }
-                return false;
-              } else if (filter[4] == "Kun Ubesøkte") {
-                const visitedArray = user.destinations;
-
-                for (let index = 0; index < visitedArray.length; index++) {
-                  const element = visitedArray[index];
-                  if (element.destinationId == ele._id) {
-                    console.log(element.hasVisited);
-
-                    return !element.hasVisited;
-                  }
-                }
-                return true;
-              }
-            })
-            .filter((ele) => {
-              //filtrering av kontinent
-              if (filter[2].length == 0) {
-                return true;
-              } else {
-                return filter[2].indexOf(ele.destination_continent) != -1;
-              }
-            })
-            /* filter(ele =>{            //filtrering av tags
-            if(filter[1].length == 0){
+          
+          .filter((ele) => {
+            //filtrering av Rating
+            if(isNaN(ele.averageRating) && filter[0][0] <= 0){
               return true
             }
             else{
-              return filter[1].indexOf(ele.destination_continent) != -1
+              return filter[0][0] <= ele.averageRating && ele.averageRating <= filter[0][1];
             }
-          }). */
+          })
+          .filter((ele) => {
+            //filtrering av Besøkt/ikke Besøkt
 
-            .map((traveldestination) => (
+            if (filter[4] == "Vis Begge") {
+              return true;
+            } else if (user == null) {
+              return true;
+            } else if (filter[4] == "Kun Besøkte") {
+              const visitedArray = user.destinations;
+              for (let index = 0; index < visitedArray.length; index++) {
+                const element = visitedArray[index];
+                if (element.destinationId == ele._id) {
+
+                  return element.hasVisited;
+                }
+              }
+              return false;
+            } else if (filter[4] == "Kun Ubesøkte") {
+              const visitedArray = user.destinations;
+
+              for (let index = 0; index < visitedArray.length; index++) {
+                const element = visitedArray[index];
+                if (element.destinationId == ele._id) {
+
+                  return !element.hasVisited;
+                }
+              }
+              return true;
+            }
+          })
+          .filter((ele) => {
+            //filtrering av kontinent
+            if (filter[2].length == 0) {
+              return true;
+            } else {
+            
+              return filter[2].indexOf(ele.destination_continent) != -1;
+            }
+          })
+          .filter((ele) => {
+            //filtrering av klima
+            if(filter[3] == ""){
+              return true
+            }
+              
+            else if (ele.destination_climate == filter[3]){
+              return true
+            }
+            else{
+              return false
+            }
+          })
+          /* filter(ele =>{            //filtrering av tags
+          if(filter[1].length == 0){
+            return true
+          }
+          else{
+            return filter[1].indexOf(ele.destination_continent) != -1
+          }
+        }). */
+
+          .map((traveldestination) => (
               <Destinasjonsboks
                 key={traveldestination._id}
                 id={traveldestination._id}
