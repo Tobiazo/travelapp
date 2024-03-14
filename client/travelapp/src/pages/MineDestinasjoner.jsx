@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Destinasjonsboks from "../components/Destinasjonsboks";
 import "../styles/MineVurderinger.css";
+import axios from "axios";
 
 const MineDestinasjoner = () => {
   const [destinations, setDestinations] = useState([]);
   const bruker = localStorage.getItem("loggedIn");
+  const [userDestinations, setUserDestinations] = useState(null);
 
   useEffect(() => {
     const fetchDestinations = async () => {
@@ -19,14 +21,29 @@ const MineDestinasjoner = () => {
     fetchDestinations();
   });
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
+        const userData = response.data;
 
+        if (response.status === 200) {
+          setUserDestinations(userData.destinations);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUser();
+  }, [bruker]);
 
   return (
     <div>
       <p id="overskriftVurderinger">Mine destinasjoner</p>
       <div className="Traveldestinations">
-        {destinations.map(destination => {
-          if (destination.author === localStorage.getItem("loggedIn")) {
+        {destinations.map((destination) => {
+          if (destination.author === localStorage.getItem("loggedIn") && userDestinations) {
             return (
               <Destinasjonsboks
                 key={destination._id}
@@ -35,6 +52,8 @@ const MineDestinasjoner = () => {
                 tittel={destination.destination_name}
                 beskrivelse={destination.ShortDescription}
                 imgPath={destination.imgPath}
+                userDestinations={userDestinations}
+                setUserDestinations={setUserDestinations}
               />
             );
           } else {
