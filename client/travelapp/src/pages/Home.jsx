@@ -1,52 +1,19 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import Login from "./Login";
-import LoginButton from "./../components/LoginButton";
 import Destinasjonsboks from "../components/Destinasjonsboks";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useFilter } from "../components/FilterProvider";
 
-// const Home = (props) => {
-//   const [traveldestinations, setTraveldestinations] = useState(null);
-
-//   //const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const fetchTraveldestinations = async () => {
-//       //feches data from server:
-//       const response = await fetch(
-//         "http://localhost:4000/api/travelDestinations"
-//       );
-//       //makes an array of userobjects:
-//       const json = await response.json();
-
-//       if (response.ok) {
-//         setTraveldestinations(json);
-//       }
-//     };
-//     fetchTraveldestinations();
-
-//   }, []);
-
-//   function setVisit() {
-
-//   }
-
-const Home = (props) => {
+function Home() {
   const [traveldestinations, setTraveldestinations] = useState(null);
-
   const [user, setUser] = useState(null);
-
   const { filter, setFilter } = useFilter();
-
-  //const navigate = useNavigate();
+  const bruker = localStorage.getItem("loggedIn");
+  const [userDestinations, setUserDestinations] = useState(null);
 
   useEffect(() => {
     const fetchTravelDestinations = async () => {
-      const response = await fetch(
-        "http://localhost:4000/api/travelDestinations"
-      );
+      const response = await fetch("http://localhost:4000/api/travelDestinations");
       const json = await response.json();
 
       if (response.ok) {
@@ -71,50 +38,26 @@ const Home = (props) => {
     fetchTravelDestinations();
   }, []);
 
-  function setVisit() {}
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch(
-        "http://localhost:4000/api/users/find/" +
-          localStorage.getItem("loggedIn")
-      );
+      try {
+        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
+        const userData = response.data;
 
-      const json = await response.json();
-      if (response.ok) {
-        setUser(json);
+        if (response.status === 200) {
+          setUser(userData);
+          setUserDestinations(userData.destinations);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
       }
     };
 
     fetchUser();
-  });
+  }, []);
 
   return (
     <div>
-      <div className="mainContainer">
-        <div className={"titleContainer"}>
-          {/*<div>Welcome! HOME</div>
-        </div>
-  <div>This is the home page.</div>*/}
-        </div>
-        <div className={"buttonContainer"}>
-          {/* {loggedIn ? <div>Your email address is {email}</div> : <div />} */}
-        </div>
-        {/* <div id="destinasjonsBokserDiv">
-                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
-                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
-                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />
-                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
-                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
-                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />
-                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
-                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
-                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />
-                <Destinasjonsboks rating ={4} land={"Canada"} tittel={"Paris"} beskrivelse={"Kjærlighetens by. Kjent for god mat og romantisk stemning."}/>
-                <Destinasjonsboks rating ={4} land={"norge"} tittel={"Alicante"} beskrivelse={"Varm ferieby. Kjent for gode strender, med mange norske tursiter"}/>
-                <Destinasjonsboks land={"Toronto"} tittel={"Toronto"} beskrivelse={"Beverenes hjemby. Og mest folkerike byen i canada. Kjent for deres hyggelige tilnærming"} />    
-                </div> */}
-        {/* {loggedIn ? <div>Your email address is {email}</div> : <div />} */}
-      </div>
       <div className="Traveldestinations">
         {/*Formatet for filtering per nå:
           Filter ser slik ut [[ratingMin, RatingMax], [tags], [kontinenter], klima, showVisisted]
@@ -180,16 +123,18 @@ const Home = (props) => {
               <Destinasjonsboks
                 key={traveldestination._id}
                 id={traveldestination._id}
-                rating={isNaN(traveldestination.averageRating) ? '-' : traveldestination.averageRating}
+                rating={isNaN(traveldestination.averageRating) ? "-" : traveldestination.averageRating}
                 land={traveldestination.destination_country}
                 tittel={traveldestination.destination_name}
                 beskrivelse={traveldestination.ShortDescription}
                 imgPath={traveldestination.imgPath}
+                userDestinations={userDestinations}
+                setUserDestinations={setUserDestinations}
               />
             ))}
       </div>
     </div>
   );
-};
+}
 
 export default Home;

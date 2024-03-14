@@ -144,7 +144,6 @@
     position: absolute;
     top: 4.7%;
     left: 91%;
-    z-index: 1;
     pointer-events: none;
   }
   .checkbox-wrapper-12 .cbx svg path {

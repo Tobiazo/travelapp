@@ -1,29 +1,20 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/Forside.css";
 
-export default function BesokSjekkboks({ id }) {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const response = await fetch("http://localhost:4000/api/users/find/" + localStorage.getItem("loggedIn"));
-
-      const json = await response.json();
-      if (response.ok) {
-        setUser(json);
-      }
-    };
-
-    fetchUser();
-  });
+export default function BesokSjekkboks({ id, userDestinations, setUserDestinations }) {
+  const [checked, setChecked] = useState(
+    userDestinations.some((dest) => dest.destinationId === id && dest.hasVisited === true)
+  );
+  const bruker = localStorage.getItem("loggedIn");
 
   function updateDestinations(newDestinations) {
     axios
-      .put("http://localhost:4000/api/users/edit/" + user._id, { destinations: newDestinations })
+      .put("http://localhost:4000/api/users/edit/" + bruker, { destinations: newDestinations })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
+    setUserDestinations(newDestinations);
   }
 
   const setVisit = (e) => {
@@ -31,9 +22,7 @@ export default function BesokSjekkboks({ id }) {
     //legger til destinasjonen som blir aktivert til
     //listen med alle destinasjoner for den innloggede brukeren.
     //Oppdaterer databasen
-    if (e.target.checked) {
-      const userDestinations = [...user.destinations];
-
+    if (!checked) {
       if (userDestinations.some((dest) => dest.destinationId === id)) {
         userDestinations.map((dest) => {
           if (dest.destinationId == id) {
@@ -43,28 +32,28 @@ export default function BesokSjekkboks({ id }) {
             return dest;
           }
         });
-        const newUserDestinations = [...userDestinations];
-        updateDestinations(newUserDestinations);
+        updateDestinations([...userDestinations]);
       } else {
-        const newUserDestinations = [...userDestinations, { destinationId: id, reviewValue: null, hasVisited: true }];
-        updateDestinations(newUserDestinations);
+        updateDestinations([...userDestinations, { destinationId: id, reviewValue: null, hasVisited: true }]);
       }
+      setChecked(!checked);
 
       //Når sjekkboksen blir deaktivert
       //fjerner destinasjonen som blir deaktivert fra
       //listen med alle destinasjoner
       //oppdaterer databasen
-    } else if (!e.target.checked) {
-      const userDestinations = [...user.destinations].map((dest) => {
-        if (dest.destinationId == id) {
-          dest.hasVisited = false;
-          return dest;
-        } else {
-          return dest;
-        }
-      });
-
-      updateDestinations(userDestinations);
+    } else if (checked) {
+      updateDestinations(
+        [...userDestinations].map((dest) => {
+          if (dest.destinationId == id) {
+            dest.hasVisited = false;
+            return dest;
+          } else {
+            return dest;
+          }
+        })
+      );
+      setChecked(!checked);
     }
   };
 
@@ -76,10 +65,9 @@ export default function BesokSjekkboks({ id }) {
           type="checkbox"
           onChange={setVisit}
           defaultChecked={
-            user &&
-            user.destinations &&
-            user.destinations.some((dest) => dest.destinationId == id && dest.hasVisited === true)
+            userDestinations && userDestinations.some((dest) => dest.destinationId === id && dest.hasVisited === true)
           }
+          checked={checked}
         />
         <label for="cbx-12"></label>
         <svg width="15" height="14" viewbox="0 0 15 14" fill="none">

@@ -3,19 +3,21 @@ import "../styles/Forside.css";
 import BesokSjekkboks from "./BesokSjekkboks";
 
 export default function Destinasjonsboks({
-
   id,
   land,
   tittel,
   beskrivelse,
   rating,
   imgPath,
+  userDestinations,
+  setUserDestinations,
 }) {
-
   return (
     <div class="destinasjonsBoks">
       <div>
-      {localStorage.getItem("loggedIn") && <BesokSjekkboks id = {id} />}
+        {localStorage.getItem("loggedIn") && (
+          <BesokSjekkboks id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} />
+        )}
         <div id="destinasjonsBildeDiv">
           <a href={"/destinations/" + id}>
             <img
@@ -34,7 +36,10 @@ export default function Destinasjonsboks({
             </a>
           </div>
           <div id="ratingDiv">
-          <span id="stjerne" style={{ color: "#ffc107" }}>&#9733; </span> {rating}/10
+            <span id="stjerne" style={{ color: "#ffc107" }}>
+              &#9733;{" "}
+            </span>{" "}
+            {rating}/10
           </div>
         </div>
         <div id="underTittel">
