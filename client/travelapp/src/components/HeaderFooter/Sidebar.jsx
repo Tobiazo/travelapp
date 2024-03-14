@@ -20,6 +20,9 @@ function Sidebar() {
   const handleKontinenterChange = (event) => {
     const newFilter = [...filter];
     const checkedValue = event.target.value;
+    console.log("\n\n\n\n")
+    console.log(checkedValue)
+    console.log("\n\n\n\n")
     const isChecked = event.target.checked;
 
     const index = newFilter[2].indexOf(checkedValue);
@@ -29,6 +32,13 @@ function Sidebar() {
     } else if (!isChecked && index !== -1) {
       newFilter[2].splice(index, 1);
     }
+    setFilter(newFilter);
+  };
+
+  const handleKlimaChange = (event) => {
+    const newFilter = [...filter];
+    const checkedValue = event.target.value;
+    newFilter[3] = checkedValue
     setFilter(newFilter);
   };
 
@@ -50,20 +60,22 @@ function Sidebar() {
           </select>
         </div>
         <br />
+        
+        <br />
 
         <label> Kontinenter: </label>
         <div id="kontinentCheckboxContainer" onChange={handleKontinenterChange}>
-          <input type="checkbox" /> <label> Europa</label>
+          <input type="checkbox" value="Europa"/> <label> Europa</label>
           <br />
-          <input type="checkbox" name="Nord-Amerika" /> <label for="Nord-Amerika"> Nord-Amerika</label>
+          <input type="checkbox" value="Nord-Amerika" /> <label for="Nord-Amerika"> Nord-Amerika</label>
           <br />
-          <input type="checkbox" /> <label> Sør-Amerika</label>
+          <input type="checkbox" value="Sør-Amerika"/> <label> Sør-Amerika</label>
           <br />
-          <input type="checkbox" /> <label> Asia</label>
+          <input type="checkbox" value="Asia"/> <label> Asia</label>
           <br />
-          <input type="checkbox" /> <label> Afrika</label>
+          <input type="checkbox" value="Afrika"/> <label> Afrika</label>
           <br />
-          <input type="checkbox" /> <label> Oceania</label>
+          <input type="checkbox" value="Oseania"/> <label> Oseania</label>
         </div>
         <div id="tagsContainer">
           <label> Tags </label>
@@ -81,7 +93,18 @@ function Sidebar() {
         <div id="temp-tekst-boks">
           <p id="temp-tekst"> 🌍 Klima:</p>
         </div>
-        <TempSlider />
+        <div id ="klimaRadioButtons" onChange={handleKlimaChange}>
+            <input class="klimaRadioButton" type="radio" name="klima" value="" />
+            <label htmlFor="">Alle </label>
+            <input class="klimaRadioButton" type="radio" id="varmt" name="klima" value="Varmt" />
+            <label htmlFor="varmt">Varmt </label>
+
+            <input class="klimaRadioButton" type="radio" id="kaldt" name="klima" value="Kaldt" />
+            <label htmlFor="kaldt">Kaldt </label>
+
+            <input class="klimaRadioButton" type="radio" id="temperert" name="klima" value="Temperert" />
+            <label htmlFor="temperert">Temperert </label>
+        </div>
       </div>
     </>
   );

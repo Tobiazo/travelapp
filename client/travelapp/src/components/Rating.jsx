@@ -15,7 +15,7 @@ export default function Rating({
     const [user, setUser] = useState(null);
     const id = useLocation().pathname.split("/")[2];
 
-
+  try {
     useEffect(() => {
       const fetchUser = async () => {
         const response = await fetch(
@@ -30,6 +30,10 @@ export default function Rating({
 
       fetchUser();
     }, []);
+  } catch (error) {
+    console.log("ratingJsx")
+  }
+    
     //Dersom brukeren har gitt nåværende destinasjon en rating vil denne vises i ratingkomponenten
     useEffect(() => {
       if(user && id) {
