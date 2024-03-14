@@ -1,27 +1,31 @@
-
-
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useClickAway } from "@uidotdev/usehooks";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const Header = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [username, setUsername] = useState("");
-  const ref = useClickAway(() => {
-    setIsDropdownOpen(false);
-  });
-  
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     const bruker = localStorage.getItem("loggedIn");
 
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
+        const response = await axios.get(
+          `http://localhost:4000/api/users/find/${bruker}`
+        );
         const userData = response.data;
-        setUsername(userData.username); 
+        setUsername(userData.username);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -32,59 +36,68 @@ const Header = () => {
     }
   }, []);
 
-
-
-  const toggleDropdown = () => {
-    if (isDropdownOpen === false) {
-      setIsDropdownOpen(true); 
-      }
-};
-
   const LogOut = (e) => {
     e.preventDefault();
     localStorage.setItem("loggedIn", "");
     window.location.reload(false);
   };
 
+  let navigate = useNavigate();
+  const newDestination = () => {
+    navigate("/newDestination");
+  };
+
+  const mineVurderinger = () => {
+    navigate("/minevurderinger");
+  };
+  const mainPaige = (e) => {
+    navigate("/");
+  };
+
   const isLoggedIn = localStorage.getItem("loggedIn");
 
   return (
     <div id="header">
-      <div id="linksContainer">
-        <div id="links">
+      <div id="logo">
+        <div id="naviger">
           <NavLink id="navtohome" to="/">
             EventyrListen
           </NavLink>
-
-          {/* Render login/logout button */}
-          {isLoggedIn ? (
-            <NavLink className="navlink" id="navlinklogginn" onClick={toggleDropdown}>
-              {username} {"▽"}
-            </NavLink>
-          ) : (
-            <NavLink className="navlink" id="navlinklogginn" to="/Login">
-              Logg inn
-            </NavLink>
-          )}
-
-          {/* Dropdown content */}
-          {isLoggedIn && (
-            
-            <div className="dropdown"ref={ref}> <button onClick={() => toggleDropdown(false)}></button> 
-              <div className="dropdown-content" style={{ display: isDropdownOpen ? 'block' : 'none' }} id="dropdownContent">
-              <NavLink className="dropdownLink" to="/">{'Hovedside'}</NavLink><br/>
-                <NavLink className="dropdownLink" to="/minevurderinger">{'Mine vurderinger'}</NavLink><br/>
-                <NavLink className="dropdownLink" to="/newDestination">{'Legg til destinasjon'}</NavLink><br/>
-                <NavLink className="dropdownLink" to="/Login" onClick={LogOut}>{'Logg ut'}</NavLink><br/>
-              </div>
-            </div>
-          )}
         </div>
-        {/* {isDropdownOpen && (
-          // <div ref={ref}> <button onClick={() => toggleDropdown(false)}></button> </div>
-        )} */}
-      
       </div>
+
+      {/* Render login/logout button */}
+      {isLoggedIn ? (
+        <div id="userDropdown">
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            Meny
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={mainPaige}>Hovedside</MenuItem>
+            <MenuItem onClick={mineVurderinger}>Mine vurderinger</MenuItem>
+            <MenuItem onClick={newDestination}>Legg til destinasjon</MenuItem>
+            <MenuItem onClick={LogOut}>Logg ut</MenuItem>
+          </Menu>
+        </div>
+      ) : (
+        <NavLink className="navlink" id="navlinklogginn" to="/Login">
+          Logg inn
+        </NavLink>
+      )}
     </div>
   );
 };
