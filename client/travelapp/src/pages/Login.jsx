@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, json, Navigate } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import "../styles/Login.css";
 
 const Login = (props) => {

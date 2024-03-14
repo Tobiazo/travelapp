@@ -6,7 +6,6 @@ import "../styles/MineVurderinger.css";
 const MineVurderinger = () => {
     //lagrer data om destinasjoner og bruker dra databasen:
   const [destinations, setDestinations] = useState([]);
-  const [user, setUser] = useState({});
   const bruker = localStorage.getItem("loggedIn");
   const [userDestinations, setUserDestinations] = useState(null);
 
@@ -18,7 +17,6 @@ const MineVurderinger = () => {
         const userData = response.data;
 
         if (response.status === 200) {
-          setUser(userData);
           setUserDestinations(userData.destinations);
           //henter ut destinasjonsdataen
           const destinationIds = userData.destinations.map((destination) => destination.destinationId);

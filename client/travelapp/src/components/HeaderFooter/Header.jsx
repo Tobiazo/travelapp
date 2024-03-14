@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 const Header = () => {
-  const [username, setUsername] = useState("");
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -15,26 +13,6 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  useEffect(() => {
-    const bruker = localStorage.getItem("loggedIn");
-
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:4000/api/users/find/${bruker}`
-        );
-        const userData = response.data;
-        setUsername(userData.username);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    if (bruker) {
-      fetchUser();
-    }
-  }, []);
 
   const LogOut = (e) => {
     e.preventDefault();

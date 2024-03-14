@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/NewDestination.css";
-import { NavLink, json, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const NewDestination = () => {
   const [file, setFile] = useState(null);
@@ -16,16 +16,7 @@ const NewDestination = () => {
   const destinationAuthor = localStorage.getItem("loggedIn");
 
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const options = [
-    "Fjell",
-    "Ski",
-    "Kultur",
-    "Bading",
-    "Storby",
-    "Historie",
-    "Shopping",
-    "Sol",
-  ];
+  const options = ["Fjell", "Ski", "Kultur", "Bading", "Storby", "Historie", "Shopping", "Sol"];
   const handleSelect = (event) => {
     const value = event.target.value;
     if (!selectedOptions.includes(value)) {
@@ -34,9 +25,7 @@ const NewDestination = () => {
   };
 
   const removeOption = (optionToRemove) => {
-    setSelectedOptions(
-      selectedOptions.filter((option) => option !== optionToRemove)
-    );
+    setSelectedOptions(selectedOptions.filter((option) => option !== optionToRemove));
   };
 
   useEffect(() => {
@@ -82,7 +71,7 @@ const NewDestination = () => {
           <div class="signup-content">
             <div class="signup-form">
               <h2 class="form-title">Opprett ny destinasjon</h2>
-              <img class="preview-picture" src={preview}></img>
+              <img class="preview-picture" src={preview} alt="IMG goes here"></img>
               <div class="form-group">
                 <div>
                   <form onSubmit={submit}>
@@ -108,10 +97,7 @@ const NewDestination = () => {
                       ></input>
                     </div>
                     <div class="form-group">
-                      <label
-                        class="longDescriptionLabel"
-                        for="LongDescription"
-                      ></label>
+                      <label class="longDescriptionLabel" for="LongDescription"></label>
                       <textarea
                         onChange={(e) => setShortDescription(e.target.value)}
                         type="text"
@@ -123,10 +109,7 @@ const NewDestination = () => {
                       ></textarea>
                     </div>
                     <div class="form-group">
-                      <label
-                        class="longDescriptionLabel"
-                        for="LongDescription"
-                      ></label>
+                      <label class="longDescriptionLabel" for="LongDescription"></label>
                       <textarea
                         rows={8}
                         onChange={(e) => setLongDescription(e.target.value)}
@@ -137,12 +120,7 @@ const NewDestination = () => {
                       ></textarea>
                     </div>
                     <div class="form-group">
-                      <select
-                        class="select"
-                        onChange={(e) =>
-                          setDestinationContinent(e.target.value)
-                        }
-                      >
+                      <select class="select" onChange={(e) => setDestinationContinent(e.target.value)}>
                         <option value="">Velg et kontinent</option>
                         <option value="Europa">Europa </option>
                         <option value="Nord-Amerika">Nord-Amerika </option>
@@ -151,10 +129,7 @@ const NewDestination = () => {
                         <option value="Afrika">Afrika </option>
                         <option value="Oseania">Oseania</option>
                       </select>
-                      <select
-                        class="select"
-                        onChange={(e) => setDestinationClimate(e.target.value)}
-                      >
+                      <select class="select" onChange={(e) => setDestinationClimate(e.target.value)}>
                         <option value="">Velg et klima</option>
                         <option value="Varmt">Varmt </option>
                         <option value="Kaldt">Kaldt </option>
@@ -177,10 +152,7 @@ const NewDestination = () => {
                         {selectedOptions.map((option) => (
                           <span class="kategoriSpan" key={option}>
                             {option}{" "}
-                            <button
-                              class="form-button"
-                              onClick={() => removeOption(option)}
-                            >
+                            <button class="form-button" onClick={() => removeOption(option)}>
                               x
                             </button>
                           </span>
