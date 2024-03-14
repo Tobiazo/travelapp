@@ -5,6 +5,8 @@
 }
 
 .loginMain {
+  padding-bottom: 0px;
+  padding-top: 0.01%;
   width: 100%;
   min-height: 100%;
 }
