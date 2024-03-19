@@ -34,3 +34,14 @@ img#sidetabimg1 {
   width: 22.5px;
   max-height: 30px;
 }
+
+#anbefalte-dest-tekst {
+  display: flex;
+  color: black;
+  font-size: 130%;
+  margin-left: 1%;
+}
+
+#anbef-dest-container {
+  border-bottom: 4px solid rgb(205, 189, 189);
+}

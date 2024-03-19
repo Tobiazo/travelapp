@@ -3,6 +3,7 @@ import Destinasjonsboks from "../components/Destinasjonsboks";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useFilter } from "../components/FilterProvider";
+import AnbefalteDestinasjoner from "../components/AnbefalteDestinasjoner";
 
 function Home() {
   const [traveldestinations, setTraveldestinations] = useState(null);
