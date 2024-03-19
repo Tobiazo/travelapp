@@ -41,6 +41,13 @@ function Sidebar() {
     setFilter(newFilter);
   };
 
+  const handleTagChange = () => {
+    const newFilter = [...filter];
+    const checkedValue = selectedOptions;
+    newFilter[1] = checkedValue;
+    setFilter(newFilter);
+  };
+
   const [selectedOptions, setSelectedOptions] = useState([]);
   const options = [
     "Fjell",
@@ -129,6 +136,9 @@ function Sidebar() {
               </span>
             ))}
           </div>
+        </div>
+        <div class="form-group form-button">
+          <button onClick={handleTagChange}>Filtrer etter kategori</button>
         </div>
 
         <div id="vurderingsboks-top">

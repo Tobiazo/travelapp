@@ -130,14 +130,16 @@ function Home() {
                 return false;
               }
             })
-            // .filter((ele) => {
-            //   //filtrering av tags
-            //   if (filter[1].length == 0) {
-            //     return true;
-            //   } else {
-            //     return filter[1].indexOf(ele.destination_continent) != -1;
-            //   }
-            // })
+            .filter((ele) => {
+              //filtrering av tags
+              if (filter[1].length == 0) {
+                return true;
+              } else {
+                return filter[1].some((e) => {
+                  return ele.category.indexOf(e) !== -1;
+                });
+              }
+            })
 
             .map((traveldestination) => (
               <Destinasjonsboks
