@@ -1,10 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import axios from "axios";
 
 const Header = () => {
+  const [user, setUser] = useState(null);
+  const bruker = localStorage.getItem("loggedIn");
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
+        const userData = response.data;
+
+        if (response.status === 200) {
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUser();
+  }, [bruker]);
+
+
+  const isAdmin = user && user.isAdmin;
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -35,7 +58,7 @@ const Header = () => {
   const isLoggedIn = localStorage.getItem("loggedIn");
 
   return (
-    <div id="header">
+    <div id="header" className={isAdmin ? 'admin-header' : ''}>
       <div id="logo">
         <div id="naviger">
           <NavLink id="navtohome" to="/">
