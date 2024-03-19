@@ -14,7 +14,9 @@ function Home() {
 
   useEffect(() => {
     const fetchTravelDestinations = async () => {
-      const response = await fetch("http://localhost:4000/api/travelDestinations");
+      const response = await fetch(
+        "http://localhost:4000/api/travelDestinations"
+      );
       const json = await response.json();
 
       if (response.ok) {
@@ -42,7 +44,9 @@ function Home() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
+        const response = await axios.get(
+          `http://localhost:4000/api/users/find/${bruker}`
+        );
         const userData = response.data;
 
         if (response.status === 200) {
@@ -75,7 +79,10 @@ function Home() {
               if (isNaN(ele.averageRating) && filter[0][0] <= 0) {
                 return true;
               } else {
-                return filter[0][0] <= ele.averageRating && ele.averageRating <= filter[0][1];
+                return (
+                  filter[0][0] <= ele.averageRating &&
+                  ele.averageRating <= filter[0][1]
+                );
               }
             })
             .filter((ele) => {
@@ -116,28 +123,35 @@ function Home() {
             })
             .filter((ele) => {
               //filtrering av klima
-              if (filter[3] === "") {
+              if (filter[3] === null || filter[3] === "alle") {
                 return true;
-              } else if (ele.destination_climate == filter[3]) { //Må ha == i stedet for === her
+              } else if (ele.destination_climate == filter[3]) {
+                //Må ha == i stedet for === her
                 return true;
               } else {
                 return false;
               }
             })
-            /* filter(ele =>{            //filtrering av tags
-          if(filter[1].length == 0){
-            return true
-          }
-          else{
-            return filter[1].indexOf(ele.destination_continent) != -1
-          }
-        }). */
+            .filter((ele) => {
+              //filtrering av tags
+              if (filter[1].length == 0) {
+                return true;
+              } else {
+                return filter[1].some((e) => {
+                  return ele.category.indexOf(e) !== -1;
+                });
+              }
+            })
 
             .map((traveldestination) => (
               <Destinasjonsboks
                 key={traveldestination._id}
                 id={traveldestination._id}
-                rating={isNaN(traveldestination.averageRating) ? "-" : traveldestination.averageRating}
+                rating={
+                  isNaN(traveldestination.averageRating)
+                    ? "-"
+                    : traveldestination.averageRating
+                }
                 land={traveldestination.destination_country}
                 tittel={traveldestination.destination_name}
                 beskrivelse={traveldestination.ShortDescription}
