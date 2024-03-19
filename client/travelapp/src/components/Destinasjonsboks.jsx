@@ -47,7 +47,7 @@ export default function Destinasjonsboks({
         <div id="underTittel">
           <div id="tekstBeskrivelseReisedestinasjonsBoksDiv">
             <p id="tekstBeskrivelseReisedestinasjonsBoks">{beskrivelse}</p>
-            <p><DeleteDestinations></DeleteDestinations></p>
+            <div><DeleteDestinations></DeleteDestinations></div>
           </div>
         </div>
       </div>

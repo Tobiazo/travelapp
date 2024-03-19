@@ -39,22 +39,19 @@ const DeleteDestinations = () => {
 
   return (
     <div>
-      <div >
-        {destinations.map((destination) => {
-          if ( bruker.isAdmin ) {
-            return (
-                <div className="slettDestinasjon">
-                <button type="button"> Slett  </button>
-                </div>
-
-                );
-            } else {
-              return null;
-            }
-          })}
+    <div>
+      {destinations.map((destination) => {
+        // Your code for each destination goes here
+      })}
+      {(!bruker.isAdmin || destinations.author === localStorage.getItem("loggedIn")) && (
+        <div className="slettDestinasjon">
+          <button type="button"> Slett </button>
         </div>
-      </div>
-    );
-  };
-  
+      )}
+ 
+      
+    </div>
+  </div>
+);
+      };
   export default DeleteDestinations;
