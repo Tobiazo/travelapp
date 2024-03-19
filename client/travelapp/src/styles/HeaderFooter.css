@@ -140,8 +140,17 @@ img#sidetabimg2 {
 }
 
 
-
 #header.admin-header {
+  display: flex;
+  position: fixed;
+  color: black;
+  font-size: x-large;
+  z-index: 2;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  height: 10%;
+  overflow : hidden;
   background-color: #ff4f4f; 
   color: white; /* Endre tekstfargen hvis nødvendig */
 }
