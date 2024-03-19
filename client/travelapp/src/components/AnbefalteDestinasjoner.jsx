@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import Destinasjonsboks from "./Destinasjonsboks";
 import "../styles/MineVurderinger.css";
 
-const AnbefalteDestinasjoner = () => {
+const AnbefalteDestinasjoner = ({
+    setUserDestinations
+
+}) => {
     //lagrer data om destinasjoner og bruker dra databasen:
   const [allDestinations, setAllDestinations] = useState([]);
-  const [userDestinations, setUserDestinations] = useState([]);
+  const [userDest, setUserDest] = useState([]);
   const [recommendedDestinations, setRecommendedDestinations] = useState([]);
 
   useEffect(() => {
@@ -28,7 +31,7 @@ const AnbefalteDestinasjoner = () => {
                 "http://localhost:4000/api/users/find/" + localStorage.getItem("loggedIn"));
 
             const allUserDestinations = response.data;
-            setUserDestinations(allUserDestinations.destinations || []);
+            setUserDest(allUserDestinations.destinations || []);
         } catch (error) {
             console.error("Error fetching users destinations", error)
         }
@@ -36,20 +39,13 @@ const AnbefalteDestinasjoner = () => {
 
     fetchUserDestinations();
     fetchDestinations();
-
   },[]);
 
   //Finner to tilfeldige destinasjoner som kan anbefales
   useEffect(() => {
-    // if(allDestinations.length > 0 && userDestinations.length > 0) {
-    //     const filteredDestinations = (allDestinations.filter(dest => 
-    //         !userDestinations.some(userDest => userDest.destinationId === dest._id )) || allDestinations.filter(desti => 
-    //             userDestinations.some(userDesti => userDesti.destinationId === desti._id && userDesti.hasVisited === false)))
-    if(allDestinations.length > 0 && userDestinations.length > 0) {
-        const filteredDestinations = allDestinations.filter(dest => 
-            !userDestinations.some(userDest => userDest.destinationId === dest._id ))
-    
-        
+    if(allDestinations.length > 0 && userDest.length > 0) {
+        const filteredDestinations = (allDestinations.filter(dest => 
+            !userDest.some(userDestItem => (userDestItem.destinationId === dest._id))))
 
         if (filteredDestinations.length > 3) {
             const shuffledDestinations = filteredDestinations.sort(() => 0.5 - Math.random());
@@ -59,37 +55,41 @@ const AnbefalteDestinasjoner = () => {
             const selectedDestinations = filteredDestinations
             setRecommendedDestinations(selectedDestinations)
             }
-        } else {
-            const shuffledDestinations = allDestinations.sort(() => 0.5 - Math.random());
-            const selectedDestinations = shuffledDestinations.slice(0,3);
-            setRecommendedDestinations(selectedDestinations)
-        }
+    } else {
+        const shuffledDestinations = allDestinations.sort(() => 0.5 - Math.random());
+        const selectedDestinations = shuffledDestinations.slice(0,3);
+        setRecommendedDestinations(selectedDestinations)
+    }
+  }, [userDest, allDestinations]);
 
-  }, [allDestinations, userDestinations]);
+  if(localStorage.getItem("loggedIn")){
 
-  if (recommendedDestinations.length === 0){
-    return (
-        <h2 id= "anbefalte-dest-tekst" >Ingen anbefalte destinasjoner</h2>
-    )
-  } else {
-    return (
-        <div id="anbef-dest-container">
-            <h2 id= "anbefalte-dest-tekst" >Anbefalte destinasjoner</h2>
-            <div className="Traveldestinations">
-                {recommendedDestinations.map((traveldestination) => (
-                    <Destinasjonsboks
-                        key={traveldestination._id}
-                        id={traveldestination._id}
-                        rating={isNaN(traveldestination.averageRating) ? "-" : traveldestination.averageRating}
-                        land={traveldestination.destination_country}
-                        tittel={traveldestination.destination_name}
-                        beskrivelse={traveldestination.ShortDescription}
-                        imgPath={traveldestination.imgPath}
-                        userDestinations={recommendedDestinations}
-                    />
-                ))}
+    if (recommendedDestinations.length === 0){
+        return (
+            <h2 id= "anbefalte-dest-tekst" >Ingen anbefalte destinasjoner</h2>
+        )
+    } else {
+        return (
+            <div id="anbef-dest-container">
+                <div className="Traveldestinations">
+                <h2 id= "anbefalte-dest-tekst" >Anbefalte destinasjoner</h2>
+                    {recommendedDestinations.map((traveldestination) => (
+                        <Destinasjonsboks
+                            key={traveldestination._id}
+                            id={traveldestination._id}
+                            rating={isNaN(traveldestination.averageRating) ? "-" : traveldestination.averageRating}
+                            land={traveldestination.destination_country}
+                            tittel={traveldestination.destination_name}
+                            beskrivelse={traveldestination.ShortDescription}
+                            imgPath={traveldestination.imgPath}
+                            userDestinations={recommendedDestinations}
+                            setUserDestinations={setUserDestinations}
+
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
-    )};
+        )};
+    }
 };
 export default AnbefalteDestinasjoner;
