@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/Forside.css";
 import BesokSjekkboks from "./BesokSjekkboks";
+import DeleteDestinations from "./DeleteDestinations";
+
 
 export default function Destinasjonsboks({
   id,
@@ -45,6 +47,7 @@ export default function Destinasjonsboks({
         <div id="underTittel">
           <div id="tekstBeskrivelseReisedestinasjonsBoksDiv">
             <p id="tekstBeskrivelseReisedestinasjonsBoks">{beskrivelse}</p>
+            <p><DeleteDestinations></DeleteDestinations></p>
           </div>
         </div>
       </div>

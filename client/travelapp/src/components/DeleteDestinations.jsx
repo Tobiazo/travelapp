@@ -39,9 +39,9 @@ const DeleteDestinations = () => {
 
   return (
     <div>
-      <div className="Traveldestinations">
+      <div >
         {destinations.map((destination) => {
-          if ( bruker.isAdmin && userDestinations) {
+          if ( bruker.isAdmin ) {
             return (
                 <div className="slettDestinasjon">
                 <button type="button"> Slett  </button>
