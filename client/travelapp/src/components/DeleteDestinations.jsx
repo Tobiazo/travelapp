@@ -7,6 +7,7 @@ const DeleteDestinations = () => {
   const bruker = localStorage.getItem("loggedIn");
   const [userDestinations, setUserDestinations] = useState(null);
 
+
   useEffect(() => {
     const fetchDestinations = async () => {
       const response = await fetch("http://localhost:4000/api/travelDestinations/");
@@ -37,15 +38,23 @@ const DeleteDestinations = () => {
     fetchUser();
   }, [bruker]);
 
+  DeleteFunction(async () => {
+    await Promise.all(json.map(async (traveldestination) => {
+        const averageResponse = await fetch(
+            `http://localhost:4000/api/travelDestinations/delete/${traveldestination.id}`
+        );
+        const averageJson = await averageResponse.json();
+        return averageJson;
+    }));
+});
+
+
   return (
     <div>
     <div>
-      {destinations.map((destination) => {
-        // Your code for each destination goes here
-      })}
-      {(!bruker.isAdmin || destinations.author === localStorage.getItem("loggedIn")) && (
+      {!bruker.isAdmin && (
         <div className="slettDestinasjon">
-          <button type="button"> Slett </button>
+          <button type="button" onClick={DeleteFunction}> Slett </button>
         </div>
       )}
  
