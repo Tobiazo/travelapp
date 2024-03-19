@@ -82,14 +82,16 @@ function Sidebar() {
           </div>
         </NavLink>
 
-        <div id="Besøkt/Ubesøkt">
-          <label> Besøkt/Ubesøkt </label>
-          <select onChange={handleBesøktChange} name="Besøkte" id="">
-            <option value="Vis Begge">Vis Begge</option>
-            <option value="Kun Besøkte">Kun Besøkte</option>
-            <option value="Kun Ubesøkte">Kun Ubesøkte</option>
-          </select>
-        </div>
+        {localStorage.getItem("loggedIn") && (
+          <div id="Besøkt/Ubesøkt">
+            <label> Besøkt/Ubesøkt </label>
+            <select onChange={handleBesøktChange} name="Besøkte" id="">
+              <option value="Vis Begge">Vis Begge</option>
+              <option value="Kun Besøkte">Kun Besøkte</option>
+              <option value="Kun Ubesøkte">Kun Ubesøkte</option>
+            </select>
+          </div>
+        )}
         <br />
 
         <br />

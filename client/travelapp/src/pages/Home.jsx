@@ -33,7 +33,7 @@ function Home() {
             };
           })
         );
-
+        console.log(destinationsWithAverage);
         setTraveldestinations(destinationsWithAverage);
       }
     };
@@ -68,12 +68,12 @@ function Home() {
           Filter ser slik ut [[ratingMin, RatingMax], [tags], [kontinenter], klima, showVisisted]
           dersom kontinenter er full skal den sortes som full
         */}
-        <AnbefalteDestinasjoner
-        userDestinations={userDestinations}
-        setUserDestinations={setUserDestinations}/>
+        {/* <AnbefalteDestinasjoner
+          userDestinations={userDestinations}
+          setUserDestinations={setUserDestinations}
+        /> */}
 
-        {userDestinations &&
-          traveldestinations &&
+        {traveldestinations &&
           traveldestinations
 
             .filter((ele) => {
@@ -89,8 +89,9 @@ function Home() {
             })
             .filter((ele) => {
               //filtrering av Besøkt/ikke Besøkt
-
-              if (filter[4] === "Vis Begge") {
+              if (user === null) {
+                return true;
+              } else if (filter[4] === "Vis Begge") {
                 return true;
               } else if (user === null) {
                 return true;
