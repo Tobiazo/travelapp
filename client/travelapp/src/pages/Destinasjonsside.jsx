@@ -1,37 +1,37 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import PhotoCarousel from "../components/PhotoCarousel.jsx";
 import "../styles/Destinasjonsside.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Rating from "../components/Rating.jsx";
 
 const Destinasjonsside = () => {
-  /*
-    const images = [
-        {ParisImage},
-        {Paris2},
-      ];
-    */
-  //const navigate = useNavigate();
-
   const id = useLocation().pathname.split("/")[2];
   const [traveldestination, setDestination] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [avgRating, setAvgRating] = useState(null);
+  const [fireUpdate, setFireUpdate] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     axios
       .get(`http://localhost:4000/api/travelDestinations/${id}`)
       .then((response) => {
         setDestination(response.data);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    const getAvgRating = async () => {
+      const averageResponse = await fetch(`http://localhost:4000/api/travelDestinations/average/${id}`);
+      const averageJson = await averageResponse.json();
+      console.log(JSON.stringify(averageJson));
+      setAvgRating(averageJson);
+    };
+
+    getAvgRating();
+  }, [fireUpdate, id]);
 
   const categoryList = traveldestination.category;
   const imgPath = traveldestination.imgPath;
@@ -66,16 +66,20 @@ const Destinasjonsside = () => {
           </div>
           <div id="right-side">
             <div id="ratings">
-              <div className="rating">              
+              <div className="rating">
                 <div id="ratingboks">
-                  <Rating />
+                  <Rating fireUpdate={fireUpdate} setFireUpdate={setFireUpdate} />
                 </div>
               </div>
               <div className="rating">
                 <p className="ratingtittel">Snittvurdering</p>
                 <div id="ratingboks">
-                  <p className="rating-star">&#9733;</p> 
-                  <p id="snittvurdering-tall">{traveldestination.rating}</p>
+                  <p className="rating-star">&#9733;</p>
+                  <p id="snittvurdering-tall">
+                    {avgRating && isNaN(JSON.stringify(avgRating).split(":")[1].replace('"', "").replace('"}', ""))
+                      ? "-"
+                      : avgRating && JSON.stringify(avgRating).split(":")[1].replace('"', "").replace('"}', "")}
+                  </p>
                 </div>
               </div>
             </div>

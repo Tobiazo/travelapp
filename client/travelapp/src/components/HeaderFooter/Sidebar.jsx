@@ -1,7 +1,6 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ContinuousSlider from "./ContinuousSlider";
-import TempSlider from "./Tempslider";
 import { useFilter } from "../FilterProvider";
 import "../../styles/HeaderFooter.css";
 import sidetabimg from "../../bilder/sidetab.png";
@@ -20,9 +19,9 @@ function Sidebar() {
   const handleKontinenterChange = (event) => {
     const newFilter = [...filter];
     const checkedValue = event.target.value;
-    console.log("\n\n\n\n")
-    console.log(checkedValue)
-    console.log("\n\n\n\n")
+    console.log("\n\n\n\n");
+    console.log(checkedValue);
+    console.log("\n\n\n\n");
     const isChecked = event.target.checked;
 
     const index = newFilter[2].indexOf(checkedValue);
@@ -38,7 +37,7 @@ function Sidebar() {
   const handleKlimaChange = (event) => {
     const newFilter = [...filter];
     const checkedValue = event.target.value;
-    newFilter[3] = checkedValue
+    newFilter[3] = checkedValue;
     setFilter(newFilter);
   };
 
@@ -47,7 +46,7 @@ function Sidebar() {
       <div id="sidebar">
         <NavLink to="/noSidebar">
           <div id="sidetab2">
-            <img id="sidetabimg2" src={sidetabimg}></img>
+            <img id="sidetabimg2" src={sidetabimg} alt="IMG goes here"></img>
           </div>
         </NavLink>
 
@@ -60,22 +59,22 @@ function Sidebar() {
           </select>
         </div>
         <br />
-        
+
         <br />
 
         <label> Kontinenter: </label>
         <div id="kontinentCheckboxContainer" onChange={handleKontinenterChange}>
-          <input type="checkbox" value="Europa"/> <label> Europa</label>
+          <input type="checkbox" value="Europa" /> <label> Europa</label>
           <br />
           <input type="checkbox" value="Nord-Amerika" /> <label for="Nord-Amerika"> Nord-Amerika</label>
           <br />
-          <input type="checkbox" value="Sør-Amerika"/> <label> Sør-Amerika</label>
+          <input type="checkbox" value="Sør-Amerika" /> <label> Sør-Amerika</label>
           <br />
-          <input type="checkbox" value="Asia"/> <label> Asia</label>
+          <input type="checkbox" value="Asia" /> <label> Asia</label>
           <br />
-          <input type="checkbox" value="Afrika"/> <label> Afrika</label>
+          <input type="checkbox" value="Afrika" /> <label> Afrika</label>
           <br />
-          <input type="checkbox" value="Oseania"/> <label> Oseania</label>
+          <input type="checkbox" value="Oseania" /> <label> Oseania</label>
         </div>
         <div id="tagsContainer">
           <label> Tags </label>
@@ -93,17 +92,17 @@ function Sidebar() {
         <div id="temp-tekst-boks">
           <p id="temp-tekst"> 🌍 Klima:</p>
         </div>
-        <div id ="klimaRadioButtons" onChange={handleKlimaChange}>
-            <input class="klimaRadioButton" type="radio" name="klima" value="" />
-            <label htmlFor="">Alle </label>
-            <input class="klimaRadioButton" type="radio" id="varmt" name="klima" value="Varmt" />
-            <label htmlFor="varmt">Varmt </label>
+        <div id="klimaRadioButtons" onChange={handleKlimaChange}>
+          <input class="klimaRadioButton" type="radio" name="klima" value="" />
+          <label htmlFor="">Alle </label>
+          <input class="klimaRadioButton" type="radio" id="varmt" name="klima" value="Varmt" />
+          <label htmlFor="varmt">Varmt </label>
 
-            <input class="klimaRadioButton" type="radio" id="kaldt" name="klima" value="Kaldt" />
-            <label htmlFor="kaldt">Kaldt </label>
+          <input class="klimaRadioButton" type="radio" id="kaldt" name="klima" value="Kaldt" />
+          <label htmlFor="kaldt">Kaldt </label>
 
-            <input class="klimaRadioButton" type="radio" id="temperert" name="klima" value="Temperert" />
-            <label htmlFor="temperert">Temperert </label>
+          <input class="klimaRadioButton" type="radio" id="temperert" name="klima" value="Temperert" />
+          <label htmlFor="temperert">Temperert </label>
         </div>
       </div>
     </>

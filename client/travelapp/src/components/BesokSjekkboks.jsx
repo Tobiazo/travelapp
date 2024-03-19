@@ -25,7 +25,7 @@ export default function BesokSjekkboks({ id, userDestinations, setUserDestinatio
     if (!checked) {
       if (userDestinations.some((dest) => dest.destinationId === id)) {
         userDestinations.map((dest) => {
-          if (dest.destinationId == id) {
+          if (dest.destinationId === id) {
             dest.hasVisited = true;
             return dest;
           } else {
@@ -45,7 +45,7 @@ export default function BesokSjekkboks({ id, userDestinations, setUserDestinatio
     } else if (checked) {
       updateDestinations(
         [...userDestinations].map((dest) => {
-          if (dest.destinationId == id) {
+          if (dest.destinationId === id) {
             dest.hasVisited = false;
             return dest;
           } else {
