@@ -121,7 +121,7 @@ function Home() {
             })
             .filter((ele) => {
               //filtrering av klima
-              if (filter[3] === "") {
+              if (filter[3] === null || filter[3] === "alle") {
                 return true;
               } else if (ele.destination_climate == filter[3]) {
                 //Må ha == i stedet for === her

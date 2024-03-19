@@ -140,8 +140,13 @@ function Sidebar() {
           <p id="temp-tekst"> 🌍 Klima:</p>
         </div>
         <div id="klimaRadioButtons" onChange={handleKlimaChange}>
-          <input class="klimaRadioButton" type="radio" name="klima" value="" />
-          <label htmlFor="">Alle </label>
+          <input
+            class="klimaRadioButton"
+            type="radio"
+            name="klima"
+            value="alle"
+          />
+          <label htmlFor={null}>Alle </label>
           <input
             class="klimaRadioButton"
             type="radio"
