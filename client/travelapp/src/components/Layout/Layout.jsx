@@ -45,7 +45,7 @@ export default function Layout({ content, sidebarToggle = 2 }) {
   }
 
   return (
-    <div className={user && user.isAdmin ? 'admin-background' : ''}>
+    <div>
       <Header />
       <FilterProvider>
         {sidebarToggle === 2 && <Sidebar />}
