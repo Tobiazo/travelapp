@@ -140,13 +140,9 @@ img#sidetabimg2 {
 }
 
 
-/* Legg til en egen farge når bruker.isAdmin er true */
-.admin-background {
-  background-color: #87CEEB;
-}
 
 #header.admin-header {
-  background-color: #87CEEB; 
+  background-color: #ff4f4f; 
   color: white; /* Endre tekstfargen hvis nødvendig */
 }
 
