@@ -68,7 +68,9 @@ function Home() {
           Filter ser slik ut [[ratingMin, RatingMax], [tags], [kontinenter], klima, showVisisted]
           dersom kontinenter er full skal den sortes som full
         */}
-        <AnbefalteDestinasjoner/>
+        <AnbefalteDestinasjoner
+        userDestinations={userDestinations}
+        setUserDestinations={setUserDestinations}/>
 
         {userDestinations &&
           traveldestinations &&

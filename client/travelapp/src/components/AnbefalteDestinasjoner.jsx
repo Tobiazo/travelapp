@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import Destinasjonsboks from "./Destinasjonsboks";
 import "../styles/MineVurderinger.css";
 
 const AnbefalteDestinasjoner = () => {
   const [allDestinations, setAllDestinations] = useState([]);
-  const [userDestinations, setUserDestinations] = useState([]);
+  const [userDest, setUserDest] = useState([]);
   const [recommendedDestinations, setRecommendedDestinations] = useState([]);
 
   useEffect(() => {
