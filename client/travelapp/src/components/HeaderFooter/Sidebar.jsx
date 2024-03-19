@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ContinuousSlider from "./ContinuousSlider";
 import { useFilter } from "../FilterProvider";
@@ -41,6 +41,31 @@ function Sidebar() {
     setFilter(newFilter);
   };
 
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const options = [
+    "Fjell",
+    "Ski",
+    "Kultur",
+    "Bading",
+    "Storby",
+    "Historie",
+    "Shopping",
+    "Sol",
+  ];
+
+  const handleSelect = (event) => {
+    const value = event.target.value;
+    if (!selectedOptions.includes(value)) {
+      setSelectedOptions([...selectedOptions, value]);
+    }
+  };
+
+  const removeOption = (optionToRemove) => {
+    setSelectedOptions(
+      selectedOptions.filter((option) => option !== optionToRemove)
+    );
+  };
+
   return (
     <>
       <div id="sidebar">
@@ -66,9 +91,11 @@ function Sidebar() {
         <div id="kontinentCheckboxContainer" onChange={handleKontinenterChange}>
           <input type="checkbox" value="Europa" /> <label> Europa</label>
           <br />
-          <input type="checkbox" value="Nord-Amerika" /> <label for="Nord-Amerika"> Nord-Amerika</label>
+          <input type="checkbox" value="Nord-Amerika" />{" "}
+          <label for="Nord-Amerika"> Nord-Amerika</label>
           <br />
-          <input type="checkbox" value="Sør-Amerika" /> <label> Sør-Amerika</label>
+          <input type="checkbox" value="Sør-Amerika" />{" "}
+          <label> Sør-Amerika</label>
           <br />
           <input type="checkbox" value="Asia" /> <label> Asia</label>
           <br />
@@ -76,12 +103,32 @@ function Sidebar() {
           <br />
           <input type="checkbox" value="Oseania" /> <label> Oseania</label>
         </div>
-        <div id="tagsContainer">
-          <label> Tags </label>
-          <select name="Besøkte" id="">
-            <option value="Ingen">Ingen</option>
-            <option value="Tag1">Sykkling</option>
+
+        <div class="form-group">
+          <select class="select" onChange={handleSelect} value="">
+            <option value="">Velg en kategori</option>
+            {options.map(
+              (option) =>
+                !selectedOptions.includes(option) && (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                )
+            )}
           </select>
+          <div class="form-group">
+            {selectedOptions.map((option) => (
+              <span class="kategoriSpan" key={option}>
+                {option}{" "}
+                <button
+                  class="form-button"
+                  onClick={() => removeOption(option)}
+                >
+                  x
+                </button>
+              </span>
+            ))}
+          </div>
         </div>
 
         <div id="vurderingsboks-top">
@@ -95,13 +142,31 @@ function Sidebar() {
         <div id="klimaRadioButtons" onChange={handleKlimaChange}>
           <input class="klimaRadioButton" type="radio" name="klima" value="" />
           <label htmlFor="">Alle </label>
-          <input class="klimaRadioButton" type="radio" id="varmt" name="klima" value="Varmt" />
+          <input
+            class="klimaRadioButton"
+            type="radio"
+            id="varmt"
+            name="klima"
+            value="Varmt"
+          />
           <label htmlFor="varmt">Varmt </label>
 
-          <input class="klimaRadioButton" type="radio" id="kaldt" name="klima" value="Kaldt" />
+          <input
+            class="klimaRadioButton"
+            type="radio"
+            id="kaldt"
+            name="klima"
+            value="Kaldt"
+          />
           <label htmlFor="kaldt">Kaldt </label>
 
-          <input class="klimaRadioButton" type="radio" id="temperert" name="klima" value="Temperert" />
+          <input
+            class="klimaRadioButton"
+            type="radio"
+            id="temperert"
+            name="klima"
+            value="Temperert"
+          />
           <label htmlFor="temperert">Temperert </label>
         </div>
       </div>
