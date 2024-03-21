@@ -51,6 +51,7 @@ const AnbefalteDestinasjoner = (
   useEffect(() => {
     if (allDestinations.length > 0 && userDestinations.length > 0) {
       const filteredDestinations = [...allDestinations].filter(dest => ![...userDestinations].some(userDest => userDest.destinationId === dest._id));
+      console.log(filteredDestinations);
       if (filteredDestinations.length > 3) {
         const shuffledDestinations = filteredDestinations.sort(() => 0.5 - Math.random());
         const selectedDestinations = shuffledDestinations.slice(0, 3);
@@ -65,7 +66,7 @@ const AnbefalteDestinasjoner = (
     }
   }, [allDestinations, userDestinations]);
 
-  if(localStorage.getItem("loggedIn")) {
+  if(localStorage.getItem("loggedIn") && recommendedDestinations.length > 0) {
     return (
       <div id="anbef-dest-container">
         <h2 id="anbefalte-dest-tekst">Anbefalte destinasjoner</h2>
