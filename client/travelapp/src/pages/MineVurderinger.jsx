@@ -53,7 +53,7 @@ const MineVurderinger = () => {
   return (
     <div>
       <p id="overskriftVurderinger">Mine vurderinger</p>
-      <div className="Traveldestinations">
+      <div className="MineVurderingerTraveldestinations">
         {destinations.map((destination) => (
           <Destinasjonsboks
             key={destination._id}

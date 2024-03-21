@@ -58,7 +58,7 @@ const MineDestinasjoner = () => {
   return (
     <div>
       <p id="overskriftVurderinger">Mine destinasjoner</p>
-      <div className="Traveldestinations">
+      <div className="MineDestinasjonerTraveldestinations">
         {destinations.map((destination) => {
           if (destination.author === localStorage.getItem("loggedIn") && userDestinations) {
             return (
