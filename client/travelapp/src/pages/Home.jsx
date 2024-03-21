@@ -38,7 +38,7 @@ function Home( ) {
           })
         );
         console.log(destinationsWithAverage);
-        setTraveldestinations(destinationsWithAverage);
+        setTraveldestinations(destinationsWithAverage.reverse());
       }
     };
 
