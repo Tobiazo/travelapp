@@ -4,7 +4,7 @@ function Footer(){
     return (
         <div id= "footer">
             
-            <p> © NTNU {new Date().getFullYear()} studenter TDT4140</p>
+            <p className='footer-p'> © NTNU {new Date().getFullYear()} studenter TDT4140</p>
 
         </div> 
     )

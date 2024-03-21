@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import ContinuousSlider from "./ContinuousSlider";
 import { useFilter } from "../FilterProvider";
 import "../../styles/HeaderFooter.css";
 import sidetabimg from "../../bilder/sidetab.png";
+import { AnbefalteDestContext } from "../AnbefalteDestProvider";
 
 function Sidebar() {
   /* Filter ser slik ut [[ratingMin, RatingMax], [tags], [kontinenter], klima, showVisisted] */
   const { filter, setFilter } = useFilter();
+  const {setVisAnbefalinger} = useContext(AnbefalteDestContext);
 
   const handleBesøktChange = (event) => {
     const newFilter = [...filter];
@@ -73,6 +75,11 @@ function Sidebar() {
     );
   };
 
+  const handleAnbefalingerChange = (event) => {
+    setVisAnbefalinger(event.target.value === "Vis anbefalinger");
+  };
+  
+
   return (
     <>
       <div id="sidebar">
@@ -82,16 +89,26 @@ function Sidebar() {
           </div>
         </NavLink>
 
-        <div id="Besøkt/Ubesøkt">
-          <label> Besøkt/Ubesøkt </label>
-          <select onChange={handleBesøktChange} name="Besøkte" id="">
-            <option value="Vis Begge">Vis Begge</option>
-            <option value="Kun Besøkte">Kun Besøkte</option>
-            <option value="Kun Ubesøkte">Kun Ubesøkte</option>
-          </select>
-        </div>
+        {localStorage.getItem("loggedIn") && (
+          <div id="Besøkt/Ubesøkt">
+            <label> Besøkt/Ubesøkt </label>
+            <select onChange={handleBesøktChange} name="Besøkte" id="">
+              <option value="Vis Begge">Vis Begge</option>
+              <option value="Kun Besøkte">Kun Besøkte</option>
+              <option value="Kun Ubesøkte">Kun Ubesøkte</option>
+            </select>
+          </div>
+        )}
         <br />
-
+         {localStorage.getItem("loggedIn") && (
+        <div id="toggle-anbefalinger">
+          <label id="anbefalt-dest-label" >Anbefalte destinasjoner</label>
+          <select onChange={handleAnbefalingerChange} name="" id="">
+            <option value="Vis anbefalinger">Vis anbefalinger</option>
+            <option value="Skjul anbefalinger">Skjul anbefalinger</option>
+          </select> 
+        </div>
+         )}
         <br />
 
         <label> Kontinenter: </label>

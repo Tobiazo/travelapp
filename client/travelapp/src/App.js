@@ -9,13 +9,17 @@ import Destinasjonsside from './pages/Destinasjonsside';
 import NewDestination from './pages/NewDestination';
 import MineVurderinger from './pages/MineVurderinger';
 import MineDestinasjoner from './pages/MineDestinasjoner';
+import AnbefalteDestProvider  from './components/AnbefalteDestProvider';
+import { useState } from 'react';
 
 function App() {
+
+  const [visAnbefalinger, setVisAnbefalinger] = useState("Vis Anbefalinger");
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout content={<Home />}/>
+      element: <Layout content={<Home />} />
     },
     {
       path: "/noSidebar",
@@ -53,8 +57,10 @@ function App() {
   ])
 
   return (
-
-      <RouterProvider router = {router} />
+    
+      <AnbefalteDestProvider value={{visAnbefalinger, setVisAnbefalinger}}>
+        <RouterProvider router = {router} />
+      </AnbefalteDestProvider> 
       
   );
 }

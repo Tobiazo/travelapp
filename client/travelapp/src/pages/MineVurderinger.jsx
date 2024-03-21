@@ -4,11 +4,10 @@ import Destinasjonsboks from "../components/Destinasjonsboks";
 import "../styles/MineVurderinger.css";
 
 const MineVurderinger = () => {
-    //lagrer data om destinasjoner og bruker dra databasen:
+  //lagrer data om destinasjoner og bruker dra databasen:
   const [destinations, setDestinations] = useState([]);
   const bruker = localStorage.getItem("loggedIn");
   const [userDestinations, setUserDestinations] = useState(null);
-
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,16 +17,21 @@ const MineVurderinger = () => {
 
         if (response.status === 200) {
           setUserDestinations(userData.destinations);
+          console.log(userData);
+          console.log(userDestinations);
           //henter ut destinasjonsdataen
-          const destinationIds = userData.destinations.map((destination) => destination.destinationId);
+          const destinationIds = userData.destinations
+            .filter((dest) => dest.reviewValue !== null).filter((dest) => dest.reviewValue !== undefined)
+            .map((destination) => destination.destinationId);
+
           const destinationsData = await Promise.all(
             destinationIds.map(async (destinationId) => {
               const destResponse = await axios.get(`http://localhost:4000/api/travelDestinations/${destinationId}`);
-              //returnerer destinasjonen, men med reviewValue inkludert: 
+              //returnerer destinasjonen, men med reviewValue inkludert:
               return { ...destResponse.data, reviewValue: getReviewValue(userData, destinationId) };
             })
           );
-          //lagrer destinasjonene:) 
+          //lagrer destinasjonene:)
           setDestinations(destinationsData);
         }
       } catch (error) {
@@ -35,33 +39,32 @@ const MineVurderinger = () => {
       }
     };
 
-    //brukerdata hentes når brukeren endres. 
+    //brukerdata hentes når brukeren endres.
     if (bruker) {
       fetchUser();
     }
   }, [bruker]);
 
-
   const getReviewValue = (userData, destinationId) => {
-    const destination = userData.destinations.find(dest => dest.destinationId === destinationId);
+    const destination = userData.destinations.find((dest) => dest.destinationId === destinationId);
     return destination ? destination.reviewValue : null;
   };
 
   return (
     <div>
       <p id="overskriftVurderinger">Mine vurderinger</p>
-      <div className="Traveldestinations">
+      <div className="MineVurderingerTraveldestinations">
         {destinations.map((destination) => (
           <Destinasjonsboks
-          key={destination._id}
-          id={destination._id}
-          rating={destination.reviewValue}
-          land={destination.destination_country}
-          tittel={destination.destination_name}
-          beskrivelse={destination.ShortDescription}
-          imgPath={destination.imgPath}
-          userDestinations={userDestinations}
-          setUserDestinations={setUserDestinations}
+            key={destination._id}
+            id={destination._id}
+            rating={destination.reviewValue}
+            land={destination.destination_country}
+            tittel={destination.destination_name}
+            beskrivelse={destination.ShortDescription}
+            imgPath={destination.imgPath}
+            userDestinations={userDestinations}
+            setUserDestinations={setUserDestinations}
           />
         ))}
       </div>

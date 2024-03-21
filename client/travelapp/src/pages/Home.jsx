@@ -1,17 +1,21 @@
 import React from "react";
 import Destinasjonsboks from "../components/Destinasjonsboks";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useFilter } from "../components/FilterProvider";
 import AnbefalteDestinasjoner from "../components/AnbefalteDestinasjoner";
+import { AnbefalteDestContext } from "../components/AnbefalteDestProvider";
 
-function Home() {
+function Home( ) {
   const [traveldestinations, setTraveldestinations] = useState(null);
   const [user, setUser] = useState(null);
   const { filter } = useFilter();
   const bruker = localStorage.getItem("loggedIn");
   const [userDestinations, setUserDestinations] = useState(null);
   const [update,setupdate] = useState(false);
+  const {visAnbefalinger} = useContext(AnbefalteDestContext);
+
+
 
   useEffect(() => {
     const fetchTravelDestinations = async () => {
@@ -19,6 +23,7 @@ function Home() {
         "http://localhost:4000/api/travelDestinations"
       );
       const json = await response.json();
+      console.log(json);
 
       if (response.ok) {
         // finner gjennomsnitt for hver destinasjon ved å mappe over alle destinasjonene.
@@ -34,8 +39,8 @@ function Home() {
             };
           })
         );
-
-        setTraveldestinations(destinationsWithAverage);
+        console.log(destinationsWithAverage);
+        setTraveldestinations(destinationsWithAverage.reverse());
       }
     };
 
@@ -65,14 +70,16 @@ function Home() {
   return (
     <div>
       <div className="Traveldestinations">
-        {/*Formatet for filtering per nå:
+        {/* Formatet for filtering per nå:
           Filter ser slik ut [[ratingMin, RatingMax], [tags], [kontinenter], klima, showVisisted]
           dersom kontinenter er full skal den sortes som full
         */}
-        <AnbefalteDestinasjoner/>
+        {bruker && visAnbefalinger && <AnbefalteDestinasjoner
+        userDestinations={userDestinations}
+        setUserDestinations={setUserDestinations}
+        />}
 
-        {userDestinations &&
-          traveldestinations &&
+        {traveldestinations &&
           traveldestinations
 
             .filter((ele) => {
@@ -88,8 +95,9 @@ function Home() {
             })
             .filter((ele) => {
               //filtrering av Besøkt/ikke Besøkt
-
-              if (filter[4] === "Vis Begge") {
+              if (user === null) {
+                return true;
+              } else if (filter[4] === "Vis Begge") {
                 return true;
               } else if (user === null) {
                 return true;
