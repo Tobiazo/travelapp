@@ -64,7 +64,7 @@ const AnbefalteDestinasjoner = () => {
   return (
     <div id="anbef-dest-container">
       <h2 id="anbefalte-dest-tekst">Anbefalte destinasjoner</h2>
-      <div className="Traveldestinations">
+      <div className="recommended-traveldestinations">
         {recommendedDestinations.length === 0 ? (
           <h2 id="anbefalte-dest-tekst">Ingen anbefalte destinasjoner</h2>
         ) : (

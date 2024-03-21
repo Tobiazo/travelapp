@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [visAnbefalinger, setVisAnbefalinger] = useState(true);
+  const [visAnbefalinger, setVisAnbefalinger] = useState("Vis Anbefalinger");
 
   const router = createBrowserRouter([
     {
