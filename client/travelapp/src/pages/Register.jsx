@@ -65,8 +65,8 @@ const Register = (props) => {
     return <Navigate to="/Login"> </Navigate>;
   } else {
     return (
-      <div class="main-container">
-        <div class="container">
+      <div class="main-container-log">
+        <div class="container-log">
           <div class="signup-content">
             <div class="signup-form">
               <h2 class="form-title">Registrer deg</h2>

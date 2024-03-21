@@ -17,9 +17,7 @@ const Header = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:4000/api/users/find/${bruker}`
-        );
+        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
         const userData = response.data;
 
         if (response.status === 200) {
@@ -62,15 +60,9 @@ const Header = () => {
   };
 
   useEffect(() => {
-    document
-      .getElementById("dark-icon")
-      .setAttribute("display", isDark ? "block" : "none");
-    document
-      .getElementById("light-icon")
-      .setAttribute("display", isDark ? "none" : "block");
-    document
-      .getElementById("root")
-      .setAttribute("data-theme", isDark ? "light" : "dark");
+    document.getElementById("dark-icon").setAttribute("display", isDark ? "none" : "block");
+    document.getElementById("light-icon").setAttribute("display", isDark ? "block" : "none");
+    document.getElementById("root").setAttribute("data-theme", isDark ? "dark" : "light");
   }, [isDark]);
 
   return (
