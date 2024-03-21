@@ -17,7 +17,9 @@ const Header = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/users/find/${bruker}`);
+        const response = await axios.get(
+          `http://localhost:4000/api/users/find/${bruker}`
+        );
         const userData = response.data;
 
         if (response.status === 200) {
@@ -31,6 +33,9 @@ const Header = () => {
     fetchUser();
   }, [bruker]);
 
+  const isAdmin = user && user.isAdmin;
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -55,6 +60,9 @@ const Header = () => {
   const mainPaige = (e) => {
     navigate("/");
   };
+  const mineDestinasjoner = () => {
+    navigate("/mineDestinasjoner");
+  };
 
   useEffect (() => {
     document.getElementById("dark-icon").setAttribute("display", isDark ? "block" : "none");
@@ -63,8 +71,7 @@ const Header = () => {
   },[isDark])
 
   return (
-
-    <div id="header" className={isAdmin ? 'admin-header' : ''}>
+    <div id="header" className={isAdmin ? "admin-header" : ""}>
       <div id="logo">
         <div id="naviger">
           <NavLink id="navtohome" to="/">
@@ -129,6 +136,7 @@ const Header = () => {
             }}
           >
             <MenuItem onClick={mainPaige}>Hovedside</MenuItem>
+            <MenuItem onClick={mineDestinasjoner}>Mine destinasjoner</MenuItem>
             <MenuItem onClick={mineVurderinger}>Mine vurderinger</MenuItem>
             <MenuItem onClick={newDestination}>Legg til destinasjon</MenuItem>
             <MenuItem onClick={LogOut}>Logg ut</MenuItem>
