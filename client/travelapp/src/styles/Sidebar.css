@@ -1,80 +1,78 @@
-#sidebar{
-    position:fixed;
-    z-index: 1;
-    right: 0px;
-    top: 10%;
-    height: 100%;
-    width: 22%;
-    background-color:  rgb(205, 189, 189);
-    color: black;
-    padding: 1%;
+#sidebar {
+  position: fixed;
+  z-index: 1;
+  right: 0px;
+  top: 10%;
+  height: 100%;
+  width: 22%;
+  background-color: var(--sidetab-color);
+  color: var(--primary-text-color);
+  padding: 1%;
 }
 
-#kontinentCheckboxContainer{
-    position: relative;
-    margin-bottom: 10%;
-    left: 3%;
-    margin-top: 0;
+#kontinentCheckboxContainer {
+  position: relative;
+  margin-bottom: 10%;
+  left: 3%;
+  margin-top: 0;
 }
 
-#tagsContainer{
-    margin-bottom: 10%;
+#tagsContainer {
+  margin-bottom: 10%;
 }
 
 #sidetab2 {
-    border: 2px solid black;
-    border-right: none;
-    border-top: none;
-    border-bottom-left-radius: 10px;
-    background-color: rgb(205, 189, 189);
-    padding: 5px;
-    position: absolute;
-    right: 101.5%;
-    top: 0;
-    margin-right: -5px;
-    z-index: 100;
-  }
-  
-  img#sidetabimg2 {
-    max-width: 30px;
-    max-height: 30px;
-  }
+  border: 2px solid black;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  background-color: var(--sidetab-color);
+  padding: 5px;
+  position: absolute;
+  right: 101.5%;
+  top: 0;
+  margin-right: -1.5%;
+  z-index: 100;
+}
 
-  #vurderingsboks-top {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
+img#sidetabimg2 {
+  max-width: 30px;
+  max-height: 30px;
+}
 
-  .rating-star-sidebar {
-    display: flex;
-    color: #ffc107;
-    font-size: 125%;
+#vurderingsboks-top {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 
-  }
+.rating-star-sidebar {
+  display: flex;
+  color: #ffc107;
+  font-size: 125%;
+}
 
-  #vurdering-tekst {
-    display: flex;
-    font-size: 125%;
-  }
+#vurdering-tekst {
+  display: flex;
+  font-size: 125%;
+}
 
-  #temp-tekst {
-    display: flex;
-    font-size: 125%;
-    align-items: center;
-    justify-content: center;
+#temp-tekst {
+  display: flex;
+  font-size: 125%;
+  align-items: center;
+  justify-content: center;
+}
 
-  }
+#temp-tekst-boks {
+  justify-content: center;
+  align-items: center;
+}
 
-  #temp-tekst-boks {
-    justify-content: center;
-    align-items: center;
-  }
-
-  #thermometer {
-    display: flex;
-    font-size: 10%;
-    justify-content: center;
-    align-items: center;
-    height: 50%;
-  }
+#thermometer {
+  display: flex;
+  font-size: 10%;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
