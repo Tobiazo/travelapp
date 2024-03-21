@@ -15,7 +15,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout content={<Home />}/>
+      element: <Layout content={<Home />} />
     },
     {
       path: "/noSidebar",

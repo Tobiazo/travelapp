@@ -1,34 +1,33 @@
 .Rating {
-    font-family: sans-serif;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    width: 100%;
+  font-family: sans-serif;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
 }
 
 /*denne endrer inputs den ikke burde*/
 .ratingRadio {
-    display: none;
+  display: none;
 }
 
 .star {
-    cursor: pointer;
-    font-size: 1.75rem;
-    margin: 0.05%;
-    text-align: center;
+  cursor: pointer;
+  font-size: 1.75rem;
+  margin: 0.05%;
+  text-align: center;
 }
 
 #remove-rating {
-    border: 2px solid;
-    transition-duration: 0.4s;
-
+  border: 2px solid;
+  transition-duration: 0.4s;
 }
 
 #remove-rating:hover {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 .rat {
-    width: 100%;
+  width: 100%;
 }
