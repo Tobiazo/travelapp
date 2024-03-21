@@ -4,7 +4,7 @@ import React, {createContext, useState} from "react";
 export const AnbefalteDestContext = createContext();
 
 export const AnbefalteDestProvider = ({ children }) => {
-    const [visAnbefalinger, setVisAnbefalinger] = useState(false);
+    const [visAnbefalinger, setVisAnbefalinger] = useState(true);
     
     return (
         <AnbefalteDestContext.Provider value={{ visAnbefalinger, setVisAnbefalinger }}>
