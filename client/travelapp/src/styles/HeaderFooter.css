@@ -61,7 +61,7 @@
 }
 
 .darkmode {
-  width: 80vw;
+  width: 75%;
 }
 
 #navtohome {
@@ -83,9 +83,10 @@
 
 #navlinklogginn {
   position: absolute;
-  right: 5%;
+  right: 0.5%;
   text-decoration: none;
   background-color: var(--foreground-color);
+  color: var(--primary-text-color);
 }
 
 .dropdown-content {
@@ -120,12 +121,6 @@
   right: 0.3%;
   top: 15%;
   position: absolute;
-}
-
-#navlinklogginn {
-  position: absolute;
-  right: 5%;
-  color: var(--primary-text-color);
 }
 
 .dark-icon {

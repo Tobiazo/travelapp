@@ -23,14 +23,9 @@ const Login = (props) => {
   const handleLogin = (e) => {
     for (let index = 0; index < users.length; index++) {
       if (JSON.stringify(users[index].username) === JSON.stringify(username)) {
-        if (
-          JSON.stringify(users[index].password) === JSON.stringify(password)
-        ) {
+        if (JSON.stringify(users[index].password) === JSON.stringify(password)) {
           for (let index = 0; index < users.length; index++) {
-            if (
-              JSON.stringify(users[index].username).toLowerCase() ===
-              JSON.stringify(username).toLowerCase()
-            ) {
+            if (JSON.stringify(users[index].username).toLowerCase() === JSON.stringify(username).toLowerCase()) {
               localStorage.setItem("loggedIn", users[index]._id);
               setLoggedIn(true);
               return;
@@ -73,7 +68,7 @@ const Login = (props) => {
                 />
               </div>
               <div class="form-group form-button">
-                <button onClick={handleLogin}>Log Inn</button>
+                <button onClick={handleLogin}>Logg Inn</button>
               </div>
               <div class="form-group form-button">
                 <NavLink to="/Register" style={{ textDecoration: "none" }}>

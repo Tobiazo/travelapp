@@ -70,6 +70,7 @@ input#name {
   padding: 6px 30px;
   box-sizing: border-box;
   background-color: var(--input-color);
+  color: var(--primary-text-color);
 
   &:focus {
     outline: none;
