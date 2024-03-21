@@ -24,7 +24,7 @@ export default function Destinasjonsboks({
           <BesokSjekkboks id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} />
         )}
         <div id="destinasjonsBildeDiv">
-        {(!localStorage.getItem("loggedIn").isAdmin) && <DeleteDestinations id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} update={update} setupdate ={setupdate}/>}
+        {(localStorage.getItem("loggedIn").isAdmin) && <DeleteDestinations id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} update={update} setupdate ={setupdate}/>}
           <a href={"/destinations/" + id}>
             <img
               class="destinasjonsBilde"
