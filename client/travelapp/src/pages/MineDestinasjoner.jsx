@@ -8,18 +8,35 @@ const MineDestinasjoner = () => {
   const bruker = localStorage.getItem("loggedIn");
   const [userDestinations, setUserDestinations] = useState(null);
 
-  useEffect(() => {
-    const fetchDestinations = async () => {
-      const response = await fetch("http://localhost:4000/api/travelDestinations/");
 
+  useEffect(() => {
+    const fetchTravelDestinations = async () => {
+      const response = await fetch(
+        "http://localhost:4000/api/travelDestinations"
+      );
       const json = await response.json();
+
       if (response.ok) {
-        setDestinations(json);
+        // finner gjennomsnitt for hver destinasjon ved å mappe over alle destinasjonene.
+        const destinationsWithAverage = await Promise.all(
+          json.map(async (traveldestination) => {
+            const averageResponse = await fetch(
+              `http://localhost:4000/api/travelDestinations/average/${traveldestination._id}`
+            );
+            const averageJson = await averageResponse.json();
+            return {
+              ...traveldestination,
+              averageRating: Math.round(averageJson.averageRating * 100) / 100,
+            };
+          })
+        );
+
+        setDestinations(destinationsWithAverage);
       }
     };
 
-    fetchDestinations();
-  });
+    fetchTravelDestinations();
+  }, []);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -48,6 +65,11 @@ const MineDestinasjoner = () => {
               <Destinasjonsboks
                 key={destination._id}
                 id={destination._id}
+                rating={
+                  isNaN(destination.averageRating)
+                    ? "-"
+                    : destination.averageRating
+                }
                 land={destination.destination_country}
                 tittel={destination.destination_name}
                 beskrivelse={destination.ShortDescription}
