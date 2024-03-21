@@ -55,8 +55,8 @@ const Header = () => {
   const mainPaige = (e) => {
     navigate("/");
   };
-  const mineDestinasjoner = () => {
-    navigate("/mineDestinasjoner");
+  const MineDestinasjoner = (e) => {
+    navigate("/minedestinasjoner");
   };
 
   useEffect(() => {
@@ -131,7 +131,7 @@ const Header = () => {
             }}
           >
             <MenuItem onClick={mainPaige}>Hovedside</MenuItem>
-            <MenuItem onClick={mineDestinasjoner}>Mine destinasjoner</MenuItem>
+            <MenuItem onClick={MineDestinasjoner}>Mine destinasjoner</MenuItem>
             <MenuItem onClick={mineVurderinger}>Mine vurderinger</MenuItem>
             <MenuItem onClick={newDestination}>Legg til destinasjon</MenuItem>
             <MenuItem onClick={LogOut}>Logg ut</MenuItem>

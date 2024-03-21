@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/Forside.css";
 import BesokSjekkboks from "./BesokSjekkboks";
+import DeleteDestinations from "./DeleteDestinations";
+
 
 export default function Destinasjonsboks({
   id,
@@ -11,20 +13,25 @@ export default function Destinasjonsboks({
   imgPath,
   userDestinations,
   setUserDestinations,
+  update,
+  setupdate
 }) {
   return (
     <div class="destinasjonsBoks">
       <div>
+    
         {localStorage.getItem("loggedIn") && (
           <BesokSjekkboks id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} />
         )}
         <div id="destinasjonsBildeDiv">
+        {(localStorage.getItem("loggedIn").isAdmin) && <DeleteDestinations id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} update={update} setupdate ={setupdate}/>}
           <a href={"/destinations/" + id}>
             <img
               class="destinasjonsBilde"
               src={`http://localhost:4000/images/${imgPath}`}
               alt="Her er ett bilde av destinasjonen"
             />
+
           </a>
         </div>
       </div>

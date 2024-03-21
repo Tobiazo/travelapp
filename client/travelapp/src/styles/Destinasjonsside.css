@@ -142,6 +142,10 @@
   margin: 0;
 }
 
+.slettDestinasjon{
+  display:block;
+  text-decoration: underline;
+}
 #remove-rating {
   width: 80%;
   margin: 0 auto;
@@ -153,3 +157,4 @@
 .listitem {
   background-color: var(--dest-list);
 }
+
