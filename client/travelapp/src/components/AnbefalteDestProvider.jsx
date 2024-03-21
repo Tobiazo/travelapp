@@ -10,7 +10,7 @@ export const AnbefalteDestProvider = ({ children }) => {
         <AnbefalteDestContext.Provider value={{ visAnbefalinger, setVisAnbefalinger }}>
         {children}
         </AnbefalteDestContext.Provider>
-    );
+        );
     };
 
 export default AnbefalteDestProvider;

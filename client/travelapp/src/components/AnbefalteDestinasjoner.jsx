@@ -3,10 +3,14 @@ import axios from "axios";
 import Destinasjonsboks from "./Destinasjonsboks";
 import "../styles/MineVurderinger.css";
 
-const AnbefalteDestinasjoner = () => {
+const AnbefalteDestinasjoner = (
+  {userDestinations, setUserDestinations}
+) => {
   const [allDestinations, setAllDestinations] = useState([]);
-  const [userDestinations, setUserDestinations] = useState([]);
+  //const [userDestinations, setUserDestinations] = useState([]);
   const [recommendedDestinations, setRecommendedDestinations] = useState([]);
+  
+  
 
   useEffect(() => {
     const fetchDestinations = async () => {
@@ -30,23 +34,23 @@ const AnbefalteDestinasjoner = () => {
       }
     };
 
-    const fetchUserDestinations = async () => {
-      try {
-        const response = await axios.get(`http://localhost:4000/api/users/find/${localStorage.getItem("loggedIn")}`);
-        const allUserDestinations = response.data;
-        setUserDestinations(allUserDestinations.destinations || []);
-      } catch (error) {
-        console.error("Error fetching users destinations", error);
-      }
-    };
+  //   const fetchUserDestinations = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:4000/api/users/find/${localStorage.getItem("loggedIn")}`);
+  //       const allUserDestinations = response.data;
+  //       setUserDestinations(allUserDestinations.destinations || []);
+  //     } catch (error) {
+  //       console.error("Error fetching users destinations", error);
+  //     }
+  //   };
 
-    fetchUserDestinations();
-    fetchDestinations();
+  //   fetchUserDestinations();
+      fetchDestinations();
   }, []);
 
   useEffect(() => {
     if (allDestinations.length > 0 && userDestinations.length > 0) {
-      const filteredDestinations = allDestinations.filter(dest => !userDestinations.some(userDest => userDest.destinationId === dest._id));
+      const filteredDestinations = [...allDestinations].filter(dest => ![...userDestinations].some(userDest => userDest.destinationId === dest._id));
       if (filteredDestinations.length > 3) {
         const shuffledDestinations = filteredDestinations.sort(() => 0.5 - Math.random());
         const selectedDestinations = shuffledDestinations.slice(0, 3);
@@ -78,7 +82,7 @@ const AnbefalteDestinasjoner = () => {
                 tittel={traveldestination.destination_name}
                 beskrivelse={traveldestination.ShortDescription}
                 imgPath={traveldestination.imgPath}
-                userDestinations={recommendedDestinations}
+                userDestinations={userDestinations}
                 setUserDestinations={setUserDestinations}
               />
             ))
