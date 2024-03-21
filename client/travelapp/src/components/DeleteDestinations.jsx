@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles/DeleteButton.css";
 
-export default function DeleteDestinations({ id, userDestinations, setUserDestinations }) {
+export default function DeleteDestinations({ id, userDestinations, setUserDestinations, update, setupdate }) {
   const [checked, setChecked] = useState(
     userDestinations?.some((dest) => dest.destinationId === id)
   );
@@ -17,13 +17,16 @@ export default function DeleteDestinations({ id, userDestinations, setUserDestin
   }
 
   function deleteDestination() {
+    console.log(userDestinations)
+    console.log(id);
+    const updatedDestinations = [...userDestinations].filter(dest => dest.destinationId !== id);
+    setUserDestinations(updatedDestinations);
+    setupdate(!update);
+    
     axios
-      .delete(`http://localhost:4000/api/destinations/${id}`)
+      .delete(`http://localhost:4000/api/travelDestinations/delete/${id}`)
       .then((result) => {
-        console.log(result);
-        // If successfully deleted, remove the destination from user's destinations
-        const updatedDestinations = userDestinations.filter(dest => dest.destinationId !== id);
-        updateDestinations(updatedDestinations);
+        console.log('Deleted post');
       })
       .catch((err) => {
         console.error('Error deleting destination:', err);

@@ -11,6 +11,7 @@ function Home() {
   const { filter } = useFilter();
   const bruker = localStorage.getItem("loggedIn");
   const [userDestinations, setUserDestinations] = useState(null);
+  const [update,setupdate] = useState(false);
 
   useEffect(() => {
     const fetchTravelDestinations = async () => {
@@ -39,7 +40,7 @@ function Home() {
     };
 
     fetchTravelDestinations();
-  }, []);
+  }, [update]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -158,6 +159,8 @@ function Home() {
                 imgPath={traveldestination.imgPath}
                 userDestinations={userDestinations}
                 setUserDestinations={setUserDestinations}
+                update= {update}
+                setupdate = {setupdate}
               />
             ))}
       </div>
