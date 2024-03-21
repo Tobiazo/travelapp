@@ -55,16 +55,18 @@ const Header = () => {
   const mainPaige = (e) => {
     navigate("/");
   };
+  const mineDestinasjoner = () => {
+    navigate("/mineDestinasjoner");
+  };
 
-  useEffect (() => {
-    document.getElementById("dark-icon").setAttribute("display", isDark ? "block" : "none");
-    document.getElementById("light-icon").setAttribute("display", isDark ? "none" : "block");
-    document.getElementById("root").setAttribute("data-theme", isDark ? "light" : "dark");
-  },[isDark])
+  useEffect(() => {
+    document.getElementById("dark-icon").setAttribute("display", isDark ? "none" : "block");
+    document.getElementById("light-icon").setAttribute("display", isDark ? "block" : "none");
+    document.getElementById("root").setAttribute("data-theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   return (
-
-    <div id="header" className={isAdmin ? 'admin-header' : ''}>
+    <div id="header" className={isAdmin ? "admin-header" : ""}>
       <div id="logo">
         <div id="naviger">
           <NavLink id="navtohome" to="/">
@@ -129,6 +131,7 @@ const Header = () => {
             }}
           >
             <MenuItem onClick={mainPaige}>Hovedside</MenuItem>
+            <MenuItem onClick={mineDestinasjoner}>Mine destinasjoner</MenuItem>
             <MenuItem onClick={mineVurderinger}>Mine vurderinger</MenuItem>
             <MenuItem onClick={newDestination}>Legg til destinasjon</MenuItem>
             <MenuItem onClick={LogOut}>Logg ut</MenuItem>

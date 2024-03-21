@@ -1,18 +1,18 @@
-  #footer {
-    color: rgb(67, 69, 70);
-    font-size: large;
-    position: relative;
-    height: 50px;
-    background-color: var(--foreground-color2);
-    bottom: 0px;
-    margin-bottom: 0;
-    left: 0px;
-    right: 0px;
-    z-index: 0;
-    flex: 1;
-    padding: 5px 0 5px 0;
-    flex-shrink: 0;
-  }
+#footer {
+  color: rgb(67, 69, 70);
+  font-size: large;
+  position: relative;
+  height: 50px;
+  background-color: var(--foreground-color2);
+  bottom: 0px;
+  margin-bottom: 0;
+  left: 0px;
+  right: 0px;
+  z-index: 0;
+  flex: 1;
+  padding: 5px 0 5px 0;
+  flex-shrink: 0;
+}
 
 #header {
   display: flex;
@@ -61,7 +61,7 @@
 }
 
 .darkmode {
-  width: 80vw;
+  width: 75%;
 }
 
 #navtohome {
@@ -83,9 +83,10 @@
 
 #navlinklogginn {
   position: absolute;
-  right: 5%;
+  right: 0.5%;
   text-decoration: none;
   background-color: var(--foreground-color);
+  color: var(--primary-text-color);
 }
 
 .dropdown-content {
@@ -122,11 +123,6 @@
   position: absolute;
 }
 
-#navlinklogginn {
-  position: absolute;
-  right: 5%;
-}
-
 .dark-icon {
   display: none;
 }
@@ -153,7 +149,7 @@ img {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   height: 10%;
-  overflow : hidden;
-  background-color: #ff4f4f; 
+  overflow: hidden;
+  background-color: #ff4f4f;
   color: white; /* Endre tekstfargen hvis nødvendig */
 }

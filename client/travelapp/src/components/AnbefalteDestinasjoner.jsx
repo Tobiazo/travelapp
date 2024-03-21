@@ -61,29 +61,32 @@ const AnbefalteDestinasjoner = () => {
     }
   }, [allDestinations, userDestinations]);
 
-  return (
-    <div id="anbef-dest-container">
-      <h2 id="anbefalte-dest-tekst">Anbefalte destinasjoner</h2>
-      <div className="Traveldestinations">
-        {recommendedDestinations.length === 0 ? (
-          <h2 id="anbefalte-dest-tekst">Ingen anbefalte destinasjoner</h2>
-        ) : (
-          recommendedDestinations.map((traveldestination) => (
-            <Destinasjonsboks
-              key={traveldestination._id}
-              id={traveldestination._id}
-              rating={isNaN(traveldestination.averageRating) ? "-" : traveldestination.averageRating}
-              land={traveldestination.destination_country}
-              tittel={traveldestination.destination_name}
-              beskrivelse={traveldestination.ShortDescription}
-              imgPath={traveldestination.imgPath}
-              userDestinations={recommendedDestinations}
-            />
-          ))
-        )}
+  if(localStorage.getItem("loggedIn")) {
+    return (
+      <div id="anbef-dest-container">
+        <h2 id="anbefalte-dest-tekst">Anbefalte destinasjoner</h2>
+        <div className="recommended-traveldestinations">
+          {recommendedDestinations.length === 0 ? (
+            <h2 id="anbefalte-dest-tekst">Ingen anbefalte destinasjoner</h2>
+          ) : (
+            recommendedDestinations.map((traveldestination) => (
+              <Destinasjonsboks
+                key={traveldestination._id}
+                id={traveldestination._id}
+                rating={isNaN(traveldestination.averageRating) ? "-" : traveldestination.averageRating}
+                land={traveldestination.destination_country}
+                tittel={traveldestination.destination_name}
+                beskrivelse={traveldestination.ShortDescription}
+                imgPath={traveldestination.imgPath}
+                userDestinations={recommendedDestinations}
+                setUserDestinations={setUserDestinations}
+              />
+            ))
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );  
+  };
 };
 
 export default AnbefalteDestinasjoner;

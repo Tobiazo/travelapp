@@ -74,7 +74,8 @@ function Home( ) {
         */}
         {visAnbefalinger && <AnbefalteDestinasjoner
         userDestinations={userDestinations}
-        setUserDestinations={setUserDestinations}/>}
+        setUserDestinations={setUserDestinations}
+        />}
 
         {traveldestinations &&
           traveldestinations

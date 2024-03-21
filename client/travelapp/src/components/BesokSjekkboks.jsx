@@ -5,7 +5,7 @@ import "../styles/Forside.css";
 
 export default function BesokSjekkboks({ id, userDestinations, setUserDestinations }) {
   const [checked, setChecked] = useState(
-    userDestinations.some((dest) => dest.destinationId === id && dest.hasVisited === true)
+    userDestinations?.some((dest) => dest.destinationId === id && dest.hasVisited === true)
   );
   const bruker = localStorage.getItem("loggedIn");
 
