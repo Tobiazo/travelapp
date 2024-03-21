@@ -17,10 +17,13 @@ const MineVurderinger = () => {
 
         if (response.status === 200) {
           setUserDestinations(userData.destinations);
+          console.log(userData);
+          console.log(userDestinations);
           //henter ut destinasjonsdataen
           const destinationIds = userData.destinations
-            .filter((dest) => dest.reviewValue !== null)
+            .filter((dest) => dest.reviewValue !== null).filter((dest) => dest.reviewValue !== undefined)
             .map((destination) => destination.destinationId);
+
           const destinationsData = await Promise.all(
             destinationIds.map(async (destinationId) => {
               const destResponse = await axios.get(`http://localhost:4000/api/travelDestinations/${destinationId}`);
