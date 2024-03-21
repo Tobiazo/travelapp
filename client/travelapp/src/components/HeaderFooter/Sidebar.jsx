@@ -102,7 +102,7 @@ function Sidebar() {
         <br />
          {localStorage.getItem("loggedIn") && (
         <div id="toggle-anbefalinger">
-          <label>Anbefalte destinasjoner</label>
+          <label id="anbefalt-dest-label" >Anbefalte destinasjoner</label>
           <select onChange={handleAnbefalingerChange} name="" id="">
             <option value="Vis anbefalinger">Vis anbefalinger</option>
             <option value="Skjul anbefalinger">Skjul anbefalinger</option>
