@@ -61,6 +61,7 @@ const AnbefalteDestinasjoner = () => {
     }
   }, [allDestinations, userDestinations]);
 
+  if(localStorage.getItem("loggedIn")) {
   return (
     <div id="anbef-dest-container">
       <h2 id="anbefalte-dest-tekst">Anbefalte destinasjoner</h2>
@@ -84,6 +85,7 @@ const AnbefalteDestinasjoner = () => {
       </div>
     </div>
   );
+};
 };
 
 export default AnbefalteDestinasjoner;
