@@ -1,123 +1,133 @@
 .main-container {
-    padding: 150px 0;
-    display: block;
+  padding: 150px 0;
+  display: block;
 }
 
 .container {
-    margin: 0 auto;
-    border-radius: 20px;
-    width: 50%;
+  margin: 0 auto;
+  border-radius: 20px;
+  width: 50%;
+  background-color: var(--destbox-color);
+  border-radius: 25px;
 }
 
-.signup-content{
-    flex-direction: column;
-    justify-content: center;
-    padding: 75px 0;
+.signup-content {
+  flex-direction: column;
+  justify-content: center;
+  padding: 75px 0;
+  border-radius: 25px;
 }
 
 .signup-form {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0 30px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 30px;
 
-    width: 100%;
-    display: block;
-    margin-top: 0;
+  width: 90%;
+  display: block;
+  margin-top: 0;
+  border-radius: 25px;
 }
 
 h2 {
-    line-height: 1.66;
-    margin: 0;
-    padding: 0;
-    font-weight: 700;
-    color: black;
-    font-size: 36px;
-    text-align: center;
-    margin-bottom: 33px;
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 33px;
+  color: var(--primary-text-color);
 }
 
 .form-group {
-    position: relative;
-    margin-bottom: 25px;
-    overflow: hidden;
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden;
 }
 
 .form-group:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 #loginLabel {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #222;
-    cursor: default;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #222;
+  cursor: default;
 }
 
-input#name{
-    width: 100%;
-    display: block;
-    border: none;
-    border-bottom: 2px solid #999;
-    padding: 6px 30px;
-    box-sizing: border-box;   
-    
-    &:focus {
-        outline: none;
-        border-color:skyblue;
-    }
+input#name {
+  width: 100%;
+  display: block;
+  border: none;
+  border-bottom: 2px solid #999;
+  padding: 6px 30px;
+  box-sizing: border-box;
+  background-color: var(--foreground-color2);
+
+  &:focus {
     outline: none;
-    appearance: unset!important;
+    border-color: skyblue;
+  }
+  outline: none;
+  appearance: unset !important;
 }
 
 input[type="text" i]#name {
-    writing-mode: horizontal-tb !important;
-    padding-block: 1px;
-    padding-inline: 2px;
+  writing-mode: horizontal-tb !important;
+  padding-block: 1px;
+  padding-inline: 2px;
+  border-radius: 5px;
+  padding: 1%;
 }
 
 input[type="password" i]#name {
-    writing-mode: horizontal-tb !important;
-    padding-block: 1px;
-    padding-inline: 2px;
+  writing-mode: horizontal-tb !important;
+  padding-block: 1px;
+  padding-inline: 2px;
+  border-radius: 5px;
+  padding: 1%;
 }
 
 input[type="submit" i]#name {
-    user-select: none;
-    appearance: auto;
-    align-items: flex-start;
-    text-align: center;
-    white-space: pre;
-    padding-block: 1px;
-    padding-inline: 6px;
-}
-
-.loginPageButton {
-    /* user-select: none; */
-    appearance: auto;
-    align-items: flex-start;
-    text-align: center;
-    white-space: pre;
-    padding-block: 5px;
-    padding-inline: 6px;
-
-    width: 100%;
-    display: block;
-    border: none;
-    border-bottom: 1px solid #999;
-    padding: 6px 30px;
-    box-sizing: border-box; 
-    border-radius: 5px;
-}
-
-.loginPageButton:hover{
-    background-color: lightgray;
+  -webkit-user-select: none;
+  user-select: none;
+  appearance: auto;
+  align-items: flex-start;
+  text-align: center;
+  white-space: pre;
+  padding-block: 1px;
+  padding-inline: 6px;
 }
 
 
-.form-group input:valid + span, 
+
+#l .loginPageButton {
+  /* user-select: none; */
+  appearance: auto;
+  align-items: flex-start;
+  text-align: center;
+  white-space: pre;
+  padding-block: 5px;
+  padding-inline: 6px;
+  width: 100%;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #999;
+  padding: 6px 30px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.loginPageButton:hover {
+  background-color: lightslategray;
+}
+
+.form-group input:valid + span,
 .form-group input:focus + span {
-    transform: translate3d(0, -120%, 0);
+  transform: translate3d(0, -120%, 0);
 }
-

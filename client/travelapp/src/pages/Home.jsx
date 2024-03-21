@@ -18,6 +18,7 @@ function Home() {
         "http://localhost:4000/api/travelDestinations"
       );
       const json = await response.json();
+      console.log(json);
 
       if (response.ok) {
         // finner gjennomsnitt for hver destinasjon ved å mappe over alle destinasjonene.
