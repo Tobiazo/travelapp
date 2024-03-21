@@ -33,9 +33,6 @@ const Header = () => {
     fetchUser();
   }, [bruker]);
 
-  const isAdmin = user && user.isAdmin;
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -65,9 +62,15 @@ const Header = () => {
   };
 
   useEffect(() => {
-    document.getElementById("dark-icon").setAttribute("display", isDark ? "none" : "block");
-    document.getElementById("light-icon").setAttribute("display", isDark ? "block" : "none");
-    document.getElementById("root").setAttribute("data-theme", isDark ? "dark" : "light");
+    document
+      .getElementById("dark-icon")
+      .setAttribute("display", isDark ? "block" : "none");
+    document
+      .getElementById("light-icon")
+      .setAttribute("display", isDark ? "none" : "block");
+    document
+      .getElementById("root")
+      .setAttribute("data-theme", isDark ? "light" : "dark");
   }, [isDark]);
 
   return (
