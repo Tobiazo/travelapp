@@ -17,16 +17,19 @@ export default function Destinasjonsboks({
   return (
     <div class="destinasjonsBoks">
       <div>
+    
         {localStorage.getItem("loggedIn") && (
           <BesokSjekkboks id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} />
         )}
         <div id="destinasjonsBildeDiv">
+        {(!localStorage.getItem("loggedIn").isAdmin) && <DeleteDestinations/>}
           <a href={"/destinations/" + id}>
             <img
               class="destinasjonsBilde"
               src={`http://localhost:4000/images/${imgPath}`}
               alt="Her er ett bilde av destinasjonen"
             />
+
           </a>
         </div>
       </div>
@@ -47,7 +50,6 @@ export default function Destinasjonsboks({
         <div id="underTittel">
           <div id="tekstBeskrivelseReisedestinasjonsBoksDiv">
             <p id="tekstBeskrivelseReisedestinasjonsBoks">{beskrivelse}</p>
-            <div><DeleteDestinations></DeleteDestinations></div>
           </div>
         </div>
       </div>

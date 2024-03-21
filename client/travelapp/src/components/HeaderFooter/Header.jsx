@@ -31,6 +31,9 @@ const Header = () => {
   const mainPaige = (e) => {
     navigate("/");
   };
+  const MineDestinasjoner = (e) => {
+    navigate("/minedestinasjoner");
+  };
 
   const isLoggedIn = localStorage.getItem("loggedIn");
 
@@ -66,6 +69,7 @@ const Header = () => {
             }}
           >
             <MenuItem onClick={mainPaige}>Hovedside</MenuItem>
+            <MenuItem onClick={MineDestinasjoner}>Mine destinasjoner</MenuItem>
             <MenuItem onClick={mineVurderinger}>Mine vurderinger</MenuItem>
             <MenuItem onClick={newDestination}>Legg til destinasjon</MenuItem>
             <MenuItem onClick={LogOut}>Logg ut</MenuItem>

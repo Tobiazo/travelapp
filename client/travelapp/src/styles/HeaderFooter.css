@@ -19,7 +19,7 @@
   position: fixed;
   color: black;
   font-size: x-large;
-  z-index: 2;
+  z-index: 10000;
   width: 100%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
