@@ -169,6 +169,8 @@ function Home( ) {
                 setUserDestinations={setUserDestinations}
                 update= {update}
                 setupdate = {setupdate}
+                user = {user}
+                author={traveldestination.author}
               />
             ))}
       </div>

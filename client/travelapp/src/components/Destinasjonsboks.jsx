@@ -3,7 +3,6 @@ import "../styles/Forside.css";
 import BesokSjekkboks from "./BesokSjekkboks";
 import DeleteDestinations from "./DeleteDestinations";
 
-
 export default function Destinasjonsboks({
   id,
   land,
@@ -14,24 +13,32 @@ export default function Destinasjonsboks({
   userDestinations,
   setUserDestinations,
   update,
-  setupdate
+  setupdate,
+  user,
+  author,
 }) {
   return (
     <div class="destinasjonsBoks">
       <div>
-    
         {localStorage.getItem("loggedIn") && (
           <BesokSjekkboks id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} />
         )}
+        {user && (user.isAdmin || user._id === author) && (
+          <DeleteDestinations
+            id={id}
+            userDestinations={userDestinations}
+            setUserDestinations={setUserDestinations}
+            update={update}
+            setupdate={setupdate}
+          />
+        )}
         <div id="destinasjonsBildeDiv">
-        {(localStorage.getItem("loggedIn").isAdmin) && <DeleteDestinations id={id} userDestinations={userDestinations} setUserDestinations={setUserDestinations} update={update} setupdate ={setupdate}/>}
           <a href={"/destinations/" + id}>
             <img
               class="destinasjonsBilde"
               src={`http://localhost:4000/images/${imgPath}`}
               alt="Her er ett bilde av destinasjonen"
             />
-
           </a>
         </div>
       </div>

@@ -51,7 +51,6 @@ const AnbefalteDestinasjoner = (
   useEffect(() => {
     if (allDestinations.length > 0 && userDestinations.length > 0) {
       const filteredDestinations = [...allDestinations].filter(dest => ![...userDestinations].some(userDest => userDest.destinationId === dest._id));
-      console.log(filteredDestinations);
       if (filteredDestinations.length > 3) {
         const shuffledDestinations = filteredDestinations.sort(() => 0.5 - Math.random());
         const selectedDestinations = shuffledDestinations.slice(0, 3);

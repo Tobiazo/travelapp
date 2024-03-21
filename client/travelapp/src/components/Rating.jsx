@@ -25,7 +25,6 @@ export default function Rating({ fireUpdate, setFireUpdate }) {
       fetchUser();
     }, []);
   } catch (error) {
-    console.log("ratingJsx");
   }
 
   //Dersom brukeren har gitt nåværende destinasjon en rating vil denne vises i ratingkomponenten
