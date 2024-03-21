@@ -56,15 +56,14 @@ const Header = () => {
     navigate("/");
   };
 
-  useEffect (() => {
-    document.getElementById("dark-icon").setAttribute("display", isDark ? "block" : "none");
-    document.getElementById("light-icon").setAttribute("display", isDark ? "none" : "block");
-    document.getElementById("root").setAttribute("data-theme", isDark ? "light" : "dark");
-  },[isDark])
+  useEffect(() => {
+    document.getElementById("dark-icon").setAttribute("display", isDark ? "none" : "block");
+    document.getElementById("light-icon").setAttribute("display", isDark ? "block" : "none");
+    document.getElementById("root").setAttribute("data-theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   return (
-
-    <div id="header" className={isAdmin ? 'admin-header' : ''}>
+    <div id="header" className={isAdmin ? "admin-header" : ""}>
       <div id="logo">
         <div id="naviger">
           <NavLink id="navtohome" to="/">
